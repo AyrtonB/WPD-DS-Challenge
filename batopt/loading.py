@@ -12,7 +12,7 @@ def load_training_dataset(raw_data_dir: str, dataset_name: str='demand', parse_d
     if parse_dt_idx == True:
         assert 'datetime' in df.columns, 'if `parse_dt_idx` is True then `datetime` must be a column in the dataset'
 
-        df['datetime'] = pd.to_datetime(df['datetime'])
+        df['datetime'] = pd.to_datetime(df['datetime'], utc=True)
         df = df.set_index('datetime')
 
     return df

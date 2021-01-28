@@ -4,6 +4,13 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"encode_file_as_utf8": "00-utilities.ipynb",
          "convert_nbs_to_md": "00-utilities.ipynb",
+         "MyHTMLParser": "00-utilities.ipynb",
+         "convert_df_to_md": "00-utilities.ipynb",
+         "extract_div_to_md_table": "00-utilities.ipynb",
+         "extract_div_to_md_tables": "00-utilities.ipynb",
+         "clean_md_file_tables": "00-utilities.ipynb",
+         "get_substring_idxs": "00-utilities.ipynb",
+         "clean_md_file_img_fps": "00-utilities.ipynb",
          "AxTransformer": "00-utilities.ipynb",
          "set_date_ticks": "00-utilities.ipynb",
          "load_training_dataset": "01-data-loading.ipynb",
