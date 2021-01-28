@@ -1,0 +1,30 @@
+name: batopt
+
+channels:
+  - conda-forge
+  - fastai
+  
+dependencies:
+  - python>=3.7
+  - pandas
+  - matplotlib
+  - jupyterlab
+  - seaborn
+  - mkdocs
+  - mkdocs-material
+  - python-dotenv
+  - dagster
+  - lxml
+  - scikit-learn
+  - typer
+  - pip
+  
+  - pip:
+      - -e .
+      - nbdev
+      - ipypb
+      - feautils
+      - mkdocs-material-extensions
+      - mkdocstrings
+      - configparser
+      - junix

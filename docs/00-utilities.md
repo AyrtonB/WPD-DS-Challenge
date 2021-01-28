@@ -1,0 +1,134 @@
+# Utilities
+
+
+
+```python
+#exports
+import numpy as np
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+import junix
+from html.parser import HTMLParser
+from nbdev.export2html import convert_md
+
+import os
+import codecs
+from ipypb import track
+from warnings import warn
+from distutils.dir_util import copy_tree
+from collections.abc import Iterable
+from sklearn import linear_model
+```
+
+<br>
+
+### User Inputs
+
+```python
+dev_nbs_dir = '.'
+docs_dir = '../docs'
+docs_nb_img_dir = f'{docs_dir}/img/nbs'
+nb_img_dir = '../img/nbs'
+```
+
+<br>
+
+### Converting Notebooks to Markdown
+
+```python
+#exports
+def encode_file_as_utf8(fp):
+    with codecs.open(fp, 'r') as file:
+        contents = file.read(1048576)
+        file.close()
+
+        if not contents:
+            pass
+        else:
+            with codecs.open(fp, 'w', 'utf-8') as file:
+                file.write(contents)
+            
+def convert_nbs_to_md(nbs_dir, docs_nb_img_dir, docs_dir):
+    nb_files = [f for f in os.listdir(nbs_dir) if f[-6:]=='.ipynb']
+
+    for nb_file in track(nb_files):
+        nb_fp = f'{nbs_dir}/{nb_file}'
+        junix.export_images(nb_fp, docs_nb_img_dir)
+        convert_md(nb_fp, docs_dir, img_path=f'{docs_nb_img_dir}/', jekyll=False)
+
+        md_fp =  docs_dir + '/'+ nb_file.replace('.ipynb', '') + '.md'
+        encode_file_as_utf8(md_fp)
+```
+
+```python
+convert_nbs_to_md(dev_nbs_dir, docs_nb_img_dir, docs_dir)
+```
+
+```python
+<br>
+
+### Cleaning Markdown Tables
+```
+
+<br>
+
+### Plotting
+
+`AxTransformer` enables conversion from data coordinates to tick locations, `set_date_ticks` allows custom date ranges to be applied to plots (including a seaborn heatmap)
+
+```python
+#exports
+class AxTransformer:
+    def __init__(self, datetime_vals=False):
+        self.datetime_vals = datetime_vals
+        self.lr = linear_model.LinearRegression()
+        
+        return
+    
+    def process_tick_vals(self, tick_vals):
+        if not isinstance(tick_vals, Iterable) or isinstance(tick_vals, str):
+            tick_vals = [tick_vals]
+            
+        if self.datetime_vals == True:
+            tick_vals = pd.to_datetime(tick_vals).astype(int).values
+            
+        tick_vals = np.array(tick_vals)
+            
+        return tick_vals
+    
+    def fit(self, ax, axis='x'):
+        axis = getattr(ax, f'get_{axis}axis')()
+        
+        tick_locs = axis.get_ticklocs()
+        tick_vals = self.process_tick_vals([label._text for label in axis.get_ticklabels()])
+        
+        self.lr.fit(tick_vals.reshape(-1, 1), tick_locs)
+        
+        return
+    
+    def transform(self, tick_vals):        
+        tick_vals = self.process_tick_vals(tick_vals)
+        tick_locs = self.lr.predict(np.array(tick_vals).reshape(-1, 1))
+        
+        return tick_locs
+    
+def set_date_ticks(ax, start_date, end_date, axis='y', date_format='%Y-%m-%d', **date_range_kwargs):
+    dt_rng = pd.date_range(start_date, end_date, **date_range_kwargs)
+
+    ax_transformer = AxTransformer(datetime_vals=True)
+    ax_transformer.fit(ax, axis=axis)
+    
+    getattr(ax, f'set_{axis}ticks')(ax_transformer.transform(dt_rng))
+    getattr(ax, f'set_{axis}ticklabels')(dt_rng.strftime(date_format))
+    
+    ax.tick_params(axis=axis, which='both', bottom=True, top=False, labelbottom=True)
+    
+    return ax
+```
+
+<br>
+
+Finally we'll export the relevant code to our `batopt` module

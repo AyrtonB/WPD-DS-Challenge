@@ -1,0 +1,42 @@
+site_name: WPD-DS-Challenge
+repo_url: https://github.com/AyrtonB/WPD-DS-Challenge
+edit_uri: edit/main/docs/
+repo_name: WPD-DS-Challenge
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/git-alt
+  features:
+    - header.autohide
+    - navigation.tabs
+    - navigation.instant
+    - search.suggest
+  palette:
+    primary: black
+
+extra:
+  generator: false
+      
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tasklist
+  - footnotes
+  - attr_list
+  - pymdownx.snippets
+  - pymdownx.highlight
+  - pymdownx.superfences
+  
+plugins:
+  - search
+  
+nav:
+  - Home: index.md
+  - Development: 
+    - Utilities: 00-utilities.md
+    - Loading: 01-data-loading.md
+  - Notes: 
+    - Brief: notes/00-brief.md
+    - Kick-off: notes/01-kickoff-meeting.md
