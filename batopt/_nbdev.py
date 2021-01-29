@@ -28,7 +28,16 @@ index = {"encode_file_as_utf8": "00-utilities.ipynb",
          "interpolate_missing_site_power": "01-data-cleaning.ipynb",
          "interpolate_missing_weather_solar": "01-data-cleaning.ipynb",
          "construct_df_features": "02-demand-forecast.ipynb",
-         "estimate_daily_demand_quantiles": "02-demand-forecast.ipynb"}
+         "estimate_daily_demand_quantiles": "02-demand-forecast.ipynb",
+         "charge_to_capacity": "04-battery-optimisation.ipynb",
+         "schedule_is_legal": "04-battery-optimisation.ipynb",
+         "B_min": "04-battery-optimisation.ipynb",
+         "B_max": "04-battery-optimisation.ipynb",
+         "C_min": "04-battery-optimisation.ipynb",
+         "C_max": "04-battery-optimisation.ipynb",
+         "charge_times": "04-battery-optimisation.ipynb",
+         "discharge_times": "04-battery-optimisation.ipynb",
+         "no_activity_times": "04-battery-optimisation.ipynb"}
 
 modules = ["utils.py",
            "clean.py",
