@@ -26,7 +26,9 @@ index = {"encode_file_as_utf8": "00-utilities.ipynb",
          "interpolate_missing_site_irradiance": "01-data-cleaning.ipynb",
          "construct_df_power_features": "01-data-cleaning.ipynb",
          "interpolate_missing_site_power": "01-data-cleaning.ipynb",
-         "interpolate_missing_weather_solar": "01-data-cleaning.ipynb"}
+         "interpolate_missing_weather_solar": "01-data-cleaning.ipynb",
+         "construct_df_features": "02-demand-forecast.ipynb",
+         "estimate_daily_demand_quantiles": "02-demand-forecast.ipynb"}
 
 modules = ["utils.py",
            "clean.py",

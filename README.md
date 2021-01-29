@@ -18,6 +18,8 @@ solar farm in Devon, southwest England.
 * In other words it is a constrained optimisation/control problem under uncertainty.
 * There will be four assessed weeks as part of this challenge.
 
+A recording of the kick-off meeting can also be found [here](https://www.youtube.com/watch?t=1&v=Tu1bLROBNbo&feature=youtu.be&ab_channel=EnergySystemsCatapult).
+
 <br>
 <br>
 
