@@ -5,14 +5,37 @@ This repository includes the workflow used by the UCL ESAIL team for submissions
 <br>
 <br>
 
+### Challenge Details
+
+High-level overview:
+
+* A 6MWh/2.5MW battery is connected to a primary distribution substation and a 5MW
+solar farm in Devon, southwest England.
+* Design the control of a storage device to support the distribution network to:
+    * Maximise the daily evening peak reduction.
+    * Using as much solar photovoltaic energy as possible.
+* This will be done for each day for the week following the current challenge date.
+* In other words it is a constrained optimisation/control problem under uncertainty.
+* There will be four assessed weeks as part of this challenge.
+
+<br>
+<br>
+
+### Literature
+
+The literature used in this work is being tracked using Zotero within the [ESAIL group](https://www.zotero.org/groups/2739875/esail/library), please add new papers and comment on existing ones. These should hopefully make it a lot easier down the line if we turn the work into a paper.
+
+<br>
+<br>
+
 ### Environment Set-Up
 
 The easiest way to set-up your `conda` environment is with the `setup_env.bat` script for Windows. Alternatively you can carry out these manual steps from the terminal:
 
 ```bash
-conda env create -f environment.yml
-conda activate batopt
-ipython kernel install --user --name=batopt
+> conda env create -f environment.yml
+> conda activate batopt
+> ipython kernel install --user --name=batopt
 ```
 
 
