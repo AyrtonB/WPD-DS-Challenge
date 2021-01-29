@@ -22,6 +22,7 @@ dependencies:
   - pip:
       - -e .
       - nbdev
+      - moepy
       - ipypb
       - feautils
       - mkdocs-material-extensions
