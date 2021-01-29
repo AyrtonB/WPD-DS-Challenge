@@ -13,12 +13,28 @@ index = {"encode_file_as_utf8": "00-utilities.ipynb",
          "clean_md_file_img_fps": "00-utilities.ipynb",
          "AxTransformer": "00-utilities.ipynb",
          "set_date_ticks": "00-utilities.ipynb",
-         "load_training_dataset": "01-data-loading.ipynb",
-         "combine_training_datasets": "01-data-loading.ipynb",
-         "identify_df_dt_entries": "01-data-loading.ipynb"}
+         "reindex_df_dt_idx": "01-data-cleaning.ipynb",
+         "load_training_dataset": "01-data-cleaning.ipynb",
+         "combine_training_datasets": "01-data-cleaning.ipynb",
+         "identify_df_dt_entries": "01-data-cleaning.ipynb",
+         "construct_df_temp_features": "01-data-cleaning.ipynb",
+         "split_X_y_data": "01-data-cleaning.ipynb",
+         "generate_kfold_preds": "01-data-cleaning.ipynb",
+         "evaluate_models": "01-data-cleaning.ipynb",
+         "interpolate_missing_panel_temps": "01-data-cleaning.ipynb",
+         "construct_df_irradiance_features": "01-data-cleaning.ipynb",
+         "interpolate_missing_site_irradiance": "01-data-cleaning.ipynb",
+         "construct_df_power_features": "01-data-cleaning.ipynb",
+         "interpolate_missing_site_power": "01-data-cleaning.ipynb",
+         "interpolate_missing_weather_solar": "01-data-cleaning.ipynb"}
 
 modules = ["utils.py",
-           "loading.py"]
+           "clean.py",
+           "demand.py",
+           "pv.py",
+           "battery.py",
+           "eval.py",
+           "pipeline.py"]
 
 doc_url = "https://AyrtonB.github.io/WPD-DS-Challenge/"
 
