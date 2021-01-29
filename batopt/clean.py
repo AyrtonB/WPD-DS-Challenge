@@ -41,6 +41,7 @@ def load_training_dataset(raw_data_dir: str, dataset_name: str='demand', parse_d
 
         df['datetime'] = pd.to_datetime(df['datetime'], utc=True)
         df = df.set_index('datetime').pipe(reindex_df_dt_idx, freq=dt_idx_freq).sort_index(axis=1)
+        df.index.name = 'datetime'
 
     return df
 
@@ -54,7 +55,7 @@ def combine_training_datasets(raw_data_dir):
         cols_to_be_overwritten = set(df_combined.columns) - (set(df_combined.columns) - set(df_single_dataset.columns))
         assert len(cols_to_be_overwritten) == 0, f"The following columns exist in multiple datasets meaning data would be overwritten: {', '.join(cols_to_be_overwritten)}"
 
-        df_combined = df_combined.append(df_single_dataset)
+        df_combined[df_single_dataset.columns] = df_single_dataset
 
     df_combined = df_combined.sort_index()
 
