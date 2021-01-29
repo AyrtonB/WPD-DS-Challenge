@@ -1,5 +1,5 @@
 # Project specific
-data/raw # Need to check what raw data we are allowed to share on GitHub
+resources/**
 
 # Hidden and temp
 *.bak
