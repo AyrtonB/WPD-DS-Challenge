@@ -21,6 +21,46 @@ solar farm in Devon, southwest England.
 A recording of the kick-off meeting can also be found [here](https://www.youtube.com/watch?t=1&v=Tu1bLROBNbo&feature=youtu.be&ab_channel=EnergySystemsCatapult).
 
 <br>
+
+Battery Charging:
+
+***To be added***
+
+<br>
+
+Battery Discharging:
+
+We'll start by defining the cost function for the demand forecasting component of the battery discharge optimisation.
+
+For each day ($𝑑$ = 1, … , 7) the peak percentage reduction is calculated using:
+
+$$R_{d, peak} = 100\left(\frac{\max_{k\in\{32,...,42\}}\left(L_{d, k}\right) - \max_{k\in\{32,...,42\}}\left(L_{d, k}+B_{d, k}\right)}{\max_{k\in\{32,...,42\}}\left(L_{d, k}\right)}\right)$$
+
+Where:
+* $L_{d, k}$ is the average power (in MW) over the $k^{th}$ half hour of day $d$, where $k = 1$ would mean the period from midnight to 00:30 AM on the current day, $d$. 
+* $B_{d, k}$ is the average power (in MW) over the $k^{th}$ half hour of day $d$, to minimise the peak demand over the evening period (the half hours $𝑘$ = 32 𝑡𝑜 42)
+
+Our goal is to maximise the peak percentage reduction from 3.30PM to 9PM.
+
+<br>
+
+Constraints:
+
+We also have a number of constraints. The first constraint is on the maximum import and export of energy, in this case:
+
+$$-2.5MW = B_{min} \leq B_{d, k} \leq B_{max} = 2.5MW$$
+
+Secondly the battery cannot charge beyond its capacity, $C_{d, k}$, (in MWh):
+
+$$0 \leq C_{d, k} \leq C_{max} = 6MWh$$
+
+The total charge in the battery at the next time step $C_{d, k+1}$ is related to how much is currently in the battery and how much charged within the battery at time $k$, i.e.
+
+$$C_{d, k+1} = C_{d, k} + 0.5B_{d, k}$$
+
+Finally, the battery must start empty at the start of each day in the test week. I.e. $C_{d,1} = 0$ for $d = 1, … , 7$.
+
+<br>
 <br>
 
 ### Literature
@@ -44,7 +84,7 @@ The easiest way to set-up your `conda` environment is with the `setup_env.bat` s
 <br>
 <br>
 
-### Nb-Dev
+### Nb-Dev Design Approach
 
 ##### What is Nb-Dev?
 
@@ -54,7 +94,7 @@ The easiest way to set-up your `conda` environment is with the `setup_env.bat` s
 
 ##### Why use Nb-Dev?
 
-It enables notebooks to be used as the origin of both the documentation and the code-base, improving code-readability and fitting more nicely within the standard data-science workflow
+It enables notebooks to be used as the origin of both the documentation and the code-base, improving code-readability and fitting more nicely within the standard data-science workflow. The library also provides a [several tools](https://nbdev.fast.ai/merge.html) to handle common problems such as merge issues with notebooks.
 
 <br>
 
