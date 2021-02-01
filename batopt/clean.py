@@ -133,11 +133,15 @@ def generate_kfold_preds(
 
     return df_pred
 
-def evaluate_models(X, y, models):
+# Cell
+def evaluate_models(X, y, models, post_pred_proc_func=None, index=None):
     model_scores = dict()
 
     for model_name, model in track(models.items()):
-        df_pred = generate_kfold_preds(X, y, model)
+        df_pred = generate_kfold_preds(X, y, model, index=index)
+
+        if post_pred_proc_func is not None:
+            df_pred['pred'] = post_pred_proc_func(df_pred['pred'])
 
         model_scores[model_name] = {
             'mae': mean_absolute_error(df_pred['true'], df_pred['pred']),
