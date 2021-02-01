@@ -109,7 +109,8 @@ def generate_kfold_preds(
     X,
     y,
     model=LinearRegression(),
-    kfold_kwargs={'n_splits': 5, 'shuffle': True}
+    kfold_kwargs={'n_splits': 5, 'shuffle': True},
+    index=None
 ):
 
     kfold = KFold(**kfold_kwargs)
@@ -125,6 +126,10 @@ def generate_kfold_preds(
         df_pred.loc[test_idxs, 'pred'] = model.predict(X_test)
 
     df_pred = df_pred.sort_index()
+
+    if index is not None:
+        assert len(index) == df_pred.shape[0], 'The passed index must be the same length as X and y'
+        df_pred.index = index
 
     return df_pred
 
