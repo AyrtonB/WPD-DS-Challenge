@@ -32,13 +32,14 @@ Battery Discharging:
 
 We'll start by defining the cost function for the demand forecasting component of the battery discharge optimisation.
 
-For each day ($𝑑$ = 1, … , 7) the peak percentage reduction is calculated using:
+For each day (
+<img src="https://render.githubusercontent.com/render/math?math=d"> = 1, … , 7) the peak percentage reduction is calculated using:
 
-$$R_{d, peak} = 100\left(\frac{\max_{k\in\{32,...,42\}}\left(L_{d, k}\right) - \max_{k\in\{32,...,42\}}\left(L_{d, k}+B_{d, k}\right)}{\max_{k\in\{32,...,42\}}\left(L_{d, k}\right)}\right)$$
+<img src="https://render.githubusercontent.com/render/math?math=R_{d, peak} = 100\left(\frac{\max_{k\in\{32,...,42\}}\left(L_{d, k}\right) - \max_{k\in\{32,...,42\}}\left(L_{d, k}+B_{d, k}\right)}{\max_{k\in\{32,...,42\}}\left(L_{d, k}\right)}\right)">
 
 Where:
-* $L_{d, k}$ is the average power (in MW) over the $k^{th}$ half hour of day $d$, where $k = 1$ would mean the period from midnight to 00:30 AM on the current day, $d$. 
-* $B_{d, k}$ is the average power (in MW) over the $k^{th}$ half hour of day $d$, to minimise the peak demand over the evening period (the half hours $𝑘$ = 32 𝑡𝑜 42)
+* <img src="https://render.githubusercontent.com/render/math?math=L_{d, k}"> is the average power (in MW) over the <img src="https://render.githubusercontent.com/render/math?math=k^{th}"> half hour of day <img src="https://render.githubusercontent.com/render/math?math=d">, where <img src="https://render.githubusercontent.com/render/math?math=k = 1"> would mean the period from midnight to 00:30 AM on the current day,  <img src="https://render.githubusercontent.com/render/math?math=d">. 
+* <img src="https://render.githubusercontent.com/render/math?math=B_{d, k}"> is the average power (in MW) over the <img src="https://render.githubusercontent.com/render/math?math=k^{th}"> half hour of day <img src="https://render.githubusercontent.com/render/math?math=d">, to minimise the peak demand over the evening period (the half hours <img src="https://render.githubusercontent.com/render/math?math=k"> = 32 to 42)
 
 Our goal is to maximise the peak percentage reduction from 3.30PM to 9PM.
 
@@ -48,17 +49,17 @@ Constraints:
 
 We also have a number of constraints. The first constraint is on the maximum import and export of energy, in this case:
 
-$$-2.5MW = B_{min} \leq B_{d, k} \leq B_{max} = 2.5MW$$
+<img src="https://render.githubusercontent.com/render/math?math=-2.5MW = B_{min} \leq B_{d, k} \leq B_{max} = 2.5MW">
 
-Secondly the battery cannot charge beyond its capacity, $C_{d, k}$, (in MWh):
+Secondly the battery cannot charge beyond its capacity, <img src="https://render.githubusercontent.com/render/math?math=C_{d, k}">, (in MWh):
 
-$$0 \leq C_{d, k} \leq C_{max} = 6MWh$$
+<img src="https://render.githubusercontent.com/render/math?math=0 \leq C_{d, k} \leq C_{max} = 6MWh">
 
-The total charge in the battery at the next time step $C_{d, k+1}$ is related to how much is currently in the battery and how much charged within the battery at time $k$, i.e.
+The total charge in the battery at the next time step <img src="https://render.githubusercontent.com/render/math?math=C_{d, k+1}"> is related to how much is currently in the battery and how much charged within the battery at time <img src="https://render.githubusercontent.com/render/math?math=k">, i.e.
 
-$$C_{d, k+1} = C_{d, k} + 0.5B_{d, k}$$
+<img src="https://render.githubusercontent.com/render/math?math=C_{d, k+1} = C_{d, k} + 0.5B_{d, k}">
 
-Finally, the battery must start empty at the start of each day in the test week. I.e. $C_{d,1} = 0$ for $d = 1, … , 7$.
+Finally, the battery must start empty at the start of each day in the test week. I.e. <img src="https://render.githubusercontent.com/render/math?math=C_{d,1} = 0"> for <img src="https://render.githubusercontent.com/render/math?math=d = 1,...,7">.
 
 <br>
 <br>
