@@ -2,7 +2,8 @@
 
 __all__ = ['estimate_daily_demand_quantiles', 'sample_random_day', 'sample_random_days', 'reset_idx_dt',
            'extract_evening_demand_profile', 'flatten_peak', 'construct_discharge_profile', 'construct_discharge_s',
-           'construct_df_discharge_features', 'normalise_total_discharge', 'clip_discharge_rate', 'post_pred_proc_func']
+           'construct_df_discharge_features', 'extract_evening_datetimes', 'normalise_total_discharge',
+           'clip_discharge_rate', 'post_pred_proc_func', 'evaluate_discharge_profile', 'evaluate_discharge_models']
 
 # Cell
 import numpy as np
@@ -22,6 +23,7 @@ from batopt import clean
 
 import os
 import random
+from ipypb import track
 import FEAutils as hlp
 
 # Cell
@@ -133,6 +135,13 @@ def construct_df_discharge_features(df):
     return df_features
 
 # Cell
+def extract_evening_datetimes(df):
+    hour = df.index.hour + df.index.minute/60
+    evening_datetimes = df.index[(20.5>=hour) & (15.5<=hour)]
+
+    return evening_datetimes
+
+# Cell
 def normalise_total_discharge(s_pred, charge=6, time_unit=0.5):
     s_daily_discharge = s_pred.groupby(s_pred.index.date).sum()
 
@@ -149,3 +158,50 @@ post_pred_proc_func = lambda s_pred: (s_pred
                                       .pipe(normalise_total_discharge)
                                       .pipe(clip_discharge_rate)
                                      )
+
+# Cell
+def evaluate_discharge_profile(df_pred, df):
+    evening_datetimes = extract_evening_datetimes(df)
+    assert df_pred.shape[0] == df.loc[evening_datetimes].shape[0], 'Predictions dataframe must be the same length as the number of evening datetimes in the main dataframe'
+
+    s_old_peaks = df['demand_MW'].loc[evening_datetimes].groupby(evening_datetimes.date).max()
+    s_new_peaks = (df['demand_MW'].loc[evening_datetimes]+df_pred['pred']).groupby(evening_datetimes.date).max()
+    s_optimal_peaks = (df['demand_MW'].loc[evening_datetimes]+df_pred['true']).groupby(evening_datetimes.date).max()
+
+    s_new_peak_reduction = 100*(s_old_peaks-s_new_peaks)/s_old_peaks
+    s_optimal_peak_reduction = 100*(s_old_peaks-s_optimal_peaks)/s_old_peaks
+
+    # aftr cleaning anomalous demand data should add an assert to check for non finite values
+
+    pct_of_max_possible_reduction = 100*(s_new_peak_reduction.replace(np.inf, np.nan).dropna().mean()/
+                                         s_optimal_peak_reduction.replace(np.inf, np.nan).dropna().mean())
+
+    return pct_of_max_possible_reduction
+
+def evaluate_discharge_models(df, models, features_kwargs={}):
+    df_features = construct_df_discharge_features(df, **features_kwargs)
+    s_discharge = construct_discharge_s(df['demand_MW'], start_time='15:30', end_time='20:30')
+
+    evening_datetimes = extract_evening_datetimes(df)
+
+    X = df_features.loc[evening_datetimes].values
+    y = s_discharge.loc[evening_datetimes].values
+
+    model_scores = dict()
+
+    for model_name, model in track(models.items()):
+        df_pred = clean.generate_kfold_preds(X, y, model, index=evening_datetimes)
+        df_pred['pred'] = post_pred_proc_func(df_pred['pred'])
+
+        model_scores[model_name] = {
+            'pct_optimal_reduction': evaluate_discharge_profile(df_pred, df),
+            'optimal_discharge_mae': mean_absolute_error(df_pred['true'], df_pred['pred']),
+            'optimal_discharge_rmse': np.sqrt(mean_squared_error(df_pred['true'], df_pred['pred']))
+        }
+
+    df_model_scores = pd.DataFrame(model_scores)
+
+    df_model_scores.index.name = 'metric'
+    df_model_scores.columns.name = 'model'
+
+    return df_model_scores

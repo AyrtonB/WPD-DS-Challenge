@@ -146,7 +146,7 @@ def evaluate_models(X, y, models, post_pred_proc_func=None, index=None):
         model_scores[model_name] = {
             'mae': mean_absolute_error(df_pred['true'], df_pred['pred']),
             'rmse': np.sqrt(mean_squared_error(df_pred['true'], df_pred['pred']))
-    }
+        }
 
     df_model_scores = pd.DataFrame(model_scores)
 
