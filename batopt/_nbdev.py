@@ -35,7 +35,10 @@ index = {"encode_file_as_utf8": "00-utilities.ipynb",
          "flatten_peak": "02-battery-discharge.ipynb",
          "construct_discharge_profile": "02-battery-discharge.ipynb",
          "construct_discharge_s": "02-battery-discharge.ipynb",
-         "construct_df_discharge_features": "02-battery-discharge.ipynb"}
+         "construct_df_discharge_features": "02-battery-discharge.ipynb",
+         "normalise_total_discharge": "02-battery-discharge.ipynb",
+         "clip_discharge_rate": "02-battery-discharge.ipynb",
+         "post_pred_proc_func": "02-battery-discharge.ipynb"}
 
 modules = ["utils.py",
            "clean.py",

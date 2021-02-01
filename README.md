@@ -7,7 +7,7 @@ This repository includes the workflow used by the UCL ESAIL team for submissions
 
 ### Challenge Details
 
-High-level overview:
+##### High-level Overview
 
 * A 6MWh/2.5MW battery is connected to a primary distribution substation and a 5MW
 solar farm in Devon, southwest England.
@@ -22,13 +22,13 @@ A recording of the kick-off meeting can also be found [here](https://www.youtube
 
 <br>
 
-Battery Charging:
+##### Battery Charging
 
 ***To be added***
 
 <br>
 
-Battery Discharging:
+##### Battery Discharging
 
 We'll start by defining the cost function for the demand forecasting component of the battery discharge optimisation.
 
@@ -45,7 +45,7 @@ Our goal is to maximise the peak percentage reduction from 3.30PM to 9PM.
 
 <br>
 
-Constraints:
+##### Constraints
 
 We also have a number of constraints. The first constraint is on the maximum import and export of energy, in this case:
 

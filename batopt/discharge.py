@@ -2,7 +2,7 @@
 
 __all__ = ['estimate_daily_demand_quantiles', 'sample_random_day', 'sample_random_days', 'reset_idx_dt',
            'extract_evening_demand_profile', 'flatten_peak', 'construct_discharge_profile', 'construct_discharge_s',
-           'construct_df_discharge_features']
+           'construct_df_discharge_features', 'normalise_total_discharge', 'clip_discharge_rate', 'post_pred_proc_func']
 
 # Cell
 import numpy as np
@@ -113,6 +113,7 @@ def construct_discharge_s(s_demand, start_time='15:30', end_time='20:30'):
     for dt in s_demand.index.strftime('%Y-%m-%d').unique():
         evening_demand_profile = s_demand[dt].pipe(extract_evening_demand_profile)
         adj_evening_demand_profile = flatten_peak(evening_demand_profile)
+
         discharge_profile = construct_discharge_profile(evening_demand_profile, adj_evening_demand_profile)
         s_discharge[f'{dt} {start_time}':f'{dt} {end_time}'] = discharge_profile
 
@@ -130,3 +131,21 @@ def construct_df_discharge_features(df):
     df_features['hour'] = dts.hour + dts.minute/60
 
     return df_features
+
+# Cell
+def normalise_total_discharge(s_pred, charge=6, time_unit=0.5):
+    s_daily_discharge = s_pred.groupby(s_pred.index.date).sum()
+
+    for date, total_discharge in s_daily_discharge.items():
+        s_pred.loc[str(date)] *= -charge/(time_unit*total_discharge)
+
+    return s_pred
+
+# Cell
+clip_discharge_rate = lambda s_pred, max_rate=-2.5, min_rate=0: s_pred.clip(lower=max_rate, upper=min_rate)
+
+# Cell
+post_pred_proc_func = lambda s_pred: (s_pred
+                                      .pipe(normalise_total_discharge)
+                                      .pipe(clip_discharge_rate)
+                                     )
