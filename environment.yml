@@ -16,6 +16,7 @@ dependencies:
   - dagster
   - lxml
   - scikit-learn
+  - scikit-optimize
   - typer
   - pip
   
