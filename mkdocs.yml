@@ -36,7 +36,12 @@ nav:
   - Home: index.md
   - Development: 
     - Utilities: 00-utilities.md
-    - Loading: 01-data-loading.md
+    - Cleaning: 01-data-cleaning.md
+    - Discharging: 02-battery-discharge.md
+    - Charging: 03-pv-forecast.md
+    - Optimiser: 04-battery-optimisation.md
+    - Evaluation: 05-evaluation.md
+    - Pipeline: 06-pipeline.md
   - Notes: 
     - Brief: notes/00-brief.md
     - Kick-off: notes/01-kickoff-meeting.md
