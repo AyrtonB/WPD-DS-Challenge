@@ -3,7 +3,8 @@
 __all__ = ['estimate_daily_demand_quantiles', 'sample_random_day', 'sample_random_days', 'reset_idx_dt',
            'extract_evening_demand_profile', 'flatten_peak', 'construct_discharge_profile', 'construct_discharge_s',
            'construct_df_discharge_features', 'extract_evening_datetimes', 'normalise_total_discharge',
-           'clip_discharge_rate', 'post_pred_proc_func', 'evaluate_discharge_profile', 'evaluate_discharge_models']
+           'clip_discharge_rate', 'post_pred_proc_func', 'construct_peak_reduction_calculator',
+           'evaluate_discharge_models']
 
 # Cell
 import numpy as np
@@ -12,14 +13,19 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.metrics import make_scorer, r2_score, mean_absolute_error, mean_squared_error
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 
+from skopt.plots import plot_objective
+from skopt.space import Real, Categorical, Integer
+
+from statsmodels.tsa.stattools import acf
 from moepy.lowess import Lowess, quantile_model
 
-from batopt import clean
+from batopt import clean, utils
 
 import os
 import random
@@ -126,11 +132,19 @@ def construct_df_discharge_features(df):
     # Filtering for the temperature weather data
     df_features = df[df.columns[df.columns.str.contains('temp_location')]].copy()
 
-    # Adding date features
+    # Adding lagged demand
+    df_features['demand_7d_lag'] = df['demand_MW'].shift(48*7)
+
+    # Adding datetime features
     dts = df_features.index.tz_convert('Europe/London') # We want to use the 'behavioural' timezone
 
     df_features['weekend'] = dts.dayofweek.isin([5, 6]).astype(int)
     df_features['hour'] = dts.hour + dts.minute/60
+    df_features['doy'] = dts.dayofyear
+    df_features['dow'] = dts.dayofweek
+
+    # Removing NaN values
+    df_features = df_features.dropna()
 
     return df_features
 
@@ -160,41 +174,56 @@ post_pred_proc_func = lambda s_pred: (s_pred
                                      )
 
 # Cell
-def evaluate_discharge_profile(df_pred, df):
-    evening_datetimes = extract_evening_datetimes(df)
-    assert df_pred.shape[0] == df.loc[evening_datetimes].shape[0], 'Predictions dataframe must be the same length as the number of evening datetimes in the main dataframe'
+def construct_peak_reduction_calculator(s_demand, evening_datetimes=None, scorer=False):
+    if evening_datetimes is None:
+        evening_datetimes = extract_evening_datetimes(s_demand)
 
-    s_old_peaks = df['demand_MW'].loc[evening_datetimes].groupby(evening_datetimes.date).max()
-    s_new_peaks = (df['demand_MW'].loc[evening_datetimes]+df_pred['pred']).groupby(evening_datetimes.date).max()
-    s_optimal_peaks = (df['demand_MW'].loc[evening_datetimes]+df_pred['true']).groupby(evening_datetimes.date).max()
+    def calc_peak_reduction(y, y_pred):
+        # Checking evening datetimes
+        if hasattr(y_pred, 'index') == True:
+            evening_datetimes = extract_evening_datetimes(y_pred)
 
-    s_new_peak_reduction = 100*(s_old_peaks-s_new_peaks)/s_old_peaks
-    s_optimal_peak_reduction = 100*(s_old_peaks-s_optimal_peaks)/s_old_peaks
+        assert y_pred.shape[0] == s_demand.loc[evening_datetimes].shape[0], f'The prediction series must be the same length as the number of evening datetimes in the main dataframe, {y_pred.shape[0]} {s_demand.loc[evening_datetimes].shape[0]}'
 
-    # aftr cleaning anomalous demand data should add an assert to check for non finite values
+        # Identifying daily peaks
+        s_old_peaks = s_demand.loc[evening_datetimes].groupby(evening_datetimes.date).max()
+        s_new_peaks = (s_demand.loc[evening_datetimes]+y_pred).groupby(evening_datetimes.date).max()
+        s_optimal_peaks = (s_demand.loc[evening_datetimes]+y).groupby(evening_datetimes.date).max()
 
-    pct_of_max_possible_reduction = 100*(s_new_peak_reduction.replace(np.inf, np.nan).dropna().mean()/
-                                         s_optimal_peak_reduction.replace(np.inf, np.nan).dropna().mean())
+        # Calculating the peak reduction
+        s_new_pct_peak_reduction = 100*(s_old_peaks-s_new_peaks)/s_old_peaks
+        s_optimal_pct_peak_reduction = 100*(s_old_peaks-s_optimal_peaks)/s_old_peaks
 
-    return pct_of_max_possible_reduction
+        # after cleaning anomalous demand data should add an assert to check for non finite values
+
+        pct_of_max_possible_reduction = 100*(s_new_pct_peak_reduction.replace(np.inf, np.nan).dropna().mean()/
+                                             s_optimal_pct_peak_reduction.replace(np.inf, np.nan).dropna().mean())
+
+        return pct_of_max_possible_reduction
+
+    if scorer == True:
+        return make_scorer(calc_peak_reduction)
+    else:
+        return calc_peak_reduction
 
 def evaluate_discharge_models(df, models, features_kwargs={}):
     df_features = construct_df_discharge_features(df, **features_kwargs)
     s_discharge = construct_discharge_s(df['demand_MW'], start_time='15:30', end_time='20:30')
 
-    evening_datetimes = extract_evening_datetimes(df)
+    evening_datetimes = extract_evening_datetimes(df_features)
 
     X = df_features.loc[evening_datetimes].values
     y = s_discharge.loc[evening_datetimes].values
 
     model_scores = dict()
+    peak_reduction_calc = construct_peak_reduction_calculator(s_demand=df['demand_MW'], evening_datetimes=evening_datetimes)
 
     for model_name, model in track(models.items()):
         df_pred = clean.generate_kfold_preds(X, y, model, index=evening_datetimes)
         df_pred['pred'] = post_pred_proc_func(df_pred['pred'])
 
         model_scores[model_name] = {
-            'pct_optimal_reduction': evaluate_discharge_profile(df_pred, df),
+            'pct_optimal_reduction': peak_reduction_calc(df_pred['true'], df_pred['pred']),
             'optimal_discharge_mae': mean_absolute_error(df_pred['true'], df_pred['pred']),
             'optimal_discharge_rmse': np.sqrt(mean_squared_error(df_pred['true'], df_pred['pred']))
         }

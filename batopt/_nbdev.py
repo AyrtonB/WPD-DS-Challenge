@@ -2,8 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"encode_file_as_utf8": "00-utilities.ipynb",
+index = {"bayes_search_CV_init": "00-utilities.ipynb",
+         "BayesSearchCV.__init__": "00-utilities.ipynb",
+         "bayes_search_CV__fit": "00-utilities.ipynb",
+         "add_series_index": "00-utilities.ipynb",
+         "PandasRandomForestRegressor": "00-utilities.ipynb",
+         "convert_file_to_json": "00-utilities.ipynb",
+         "encode_file_as_utf8": "00-utilities.ipynb",
          "convert_nbs_to_md": "00-utilities.ipynb",
+         "junix.exporter.convert_file_to_json": "00-utilities.ipynb",
          "MyHTMLParser": "00-utilities.ipynb",
          "convert_df_to_md": "00-utilities.ipynb",
          "extract_div_to_md_table": "00-utilities.ipynb",
@@ -40,13 +47,21 @@ index = {"encode_file_as_utf8": "00-utilities.ipynb",
          "normalise_total_discharge": "02-battery-discharge.ipynb",
          "clip_discharge_rate": "02-battery-discharge.ipynb",
          "post_pred_proc_func": "02-battery-discharge.ipynb",
-         "evaluate_discharge_profile": "02-battery-discharge.ipynb",
-         "evaluate_discharge_models": "02-battery-discharge.ipynb"}
+         "construct_peak_reduction_calculator": "02-battery-discharge.ipynb",
+         "evaluate_discharge_models": "02-battery-discharge.ipynb",
+         "estimate_daily_solar_quantiles": "03-pv-forecast.ipynb",
+         "dts": "03-pv-forecast.ipynb",
+         "x": "03-pv-forecast.ipynb",
+         "y": "03-pv-forecast.ipynb",
+         "rerun_daily_solar_model": "03-pv-forecast.ipynb",
+         "daily_solar_filename": "03-pv-forecast.ipynb",
+         "extract_solar_profile": "03-pv-forecast.ipynb",
+         "charge_profile": "03-pv-forecast.ipynb"}
 
 modules = ["utils.py",
            "clean.py",
            "discharge.py",
-           "pv.py",
+           "charge.py",
            "battery.py",
            "eval.py",
            "pipeline.py"]
