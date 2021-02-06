@@ -3,12 +3,12 @@
 __all__ = ['estimate_daily_solar_quantiles', 'dts', 'x', 'y', 'rerun_daily_solar_model', 'daily_solar_filename',
            'extract_solar_profile', 'charge_profile_greedy', 'topup_charge_naive', 'scale_charge',
            'optimal_charge_profile', 'random_solar_profile', 'x', 'construct_charge_profile', 'construct_charge_s',
-           'construct_df_charge_features', 'extract_charging_datetimes', 'normalise_total_charge', 'clip_charge_rate',
-           'post_pred_charge_proc_func', 'estimate_daily_solar_quantiles', 'dts', 'x', 'y', 'rerun_daily_solar_model',
-           'daily_solar_filename', 'extract_solar_profile', 'charge_profile_greedy', 'topup_charge_naive',
-           'scale_charge', 'optimal_charge_profile', 'random_day', 'x', 'construct_charge_s', 's_charge',
-           'construct_df_charge_features', 'extract_charging_datetimes', 'normalise_total_charge', 'clip_charge_rate',
-           'post_pred_charge_proc_func']
+           'construct_df_charge_features', 'extract_charging_datetimes', 'prepare_training_input_data',
+           'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func', 'estimate_daily_solar_quantiles',
+           'dts', 'x', 'y', 'rerun_daily_solar_model', 'daily_solar_filename', 'extract_solar_profile',
+           'charge_profile_greedy', 'topup_charge_naive', 'scale_charge', 'optimal_charge_profile', 'random_day', 'x',
+           'construct_charge_s', 's_charge', 'construct_df_charge_features', 'extract_charging_datetimes',
+           'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func']
 
 # Cell
 import numpy as np
@@ -114,9 +114,16 @@ def construct_charge_s(s_pv, start_time='00:00', end_time='15:00'):
     return s_charge
 
 # Cell
-def construct_df_charge_features(df):
+def construct_df_charge_features(df, dt_rng=None):
+    if dt_rng is None:
+        dt_rng = pd.date_range(df.index.min(), df.index.max(), freq='30T')
+
+    df_features = pd.DataFrame(index=dt_rng)
+
     # Filtering for the temperature weather data
-    df_features = df[df.columns[df.columns.str.contains('temp_location')]].copy()
+    temp_loc_cols = df.columns[df.columns.str.contains('temp_location')]
+    df_features.loc[df.index, temp_loc_cols] = df[temp_loc_cols].copy()
+    df_features = df_features.ffill(limit=1)
 
     # Adding lagged demand
     df_features['demand_7d_lag'] = df['demand_MW'].shift(48*7)
@@ -140,6 +147,29 @@ def extract_charging_datetimes(df, start_hour=5, end_hour=15):
     charging_datetimes = df.index[(hour>=start_hour) & (hour<=end_hour)]
 
     return charging_datetimes
+
+# Cell
+def prepare_training_input_data(intermediate_data_dir):
+    # Loading input data
+    df = clean.combine_training_datasets(intermediate_data_dir).interpolate(limit=1)
+    df_features = construct_df_charge_features(df)
+
+    # Filtering for overlapping feature and target data
+    dt_idx = pd.date_range(df_features.index.min(), df['demand_MW'].dropna().index.max()-pd.Timedelta(minutes=30), freq='30T')
+
+    s_pv = df.loc[dt_idx, 'pv_power_mw']
+    df_features = df_features.loc[dt_idx]
+
+    # Constructing the discharge series
+    s_charge = construct_charge_s(s_pv, start_time='00:00', end_time='15:00')
+
+    # Filtering for evening datetimes
+    charging_datetimes = extract_charging_datetimes(df_features)
+
+    X = df_features.loc[charging_datetimes]
+    y = s_charge.loc[charging_datetimes]
+
+    return X, y, charging_datetimes
 
 # Cell
 def normalise_total_charge(s_pred, charge=6., time_unit=0.5):

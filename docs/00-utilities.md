@@ -17,7 +17,6 @@ from nbdev.export2html import convert_md
 from joblib import Parallel, delayed
 from scipy.stats import rankdata
 from skopt import BayesSearchCV
-from skopt.callbacks import check_callback
 
 import os
 import codecs
@@ -34,7 +33,6 @@ from sklearn.metrics import r2_score
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.base import is_classifier, clone
 from sklearn.utils.validation import indexable
-from sklearn.utils import check_random_state
 
 try:
     from sklearn.metrics import check_scoring
@@ -260,7 +258,7 @@ pandas_RF
 
 
 
-    PandasRandomForestRegressor(score_func=<function r2_score at 0x000001FF6FBE6D30>)
+    PandasRandomForestRegressor(score_func=<function r2_score at 0x00000224383448B0>)
 
 
 
@@ -312,7 +310,7 @@ convert_nbs_to_md(dev_nbs_dir, docs_nb_img_dir, docs_dir)
 <progress style="width:60ex" max="7" value="7" class="Progress-main"/></progress>
 <span class="Progress-label"><strong>100%</strong></span>
 <span class="Iteration-label">7/7</span>
-<span class="Time-label">[00:03<00:00, 0.37s/it]</span></div>
+<span class="Time-label">[00:03<00:00, 0.44s/it]</span></div>
 
 
 <br>

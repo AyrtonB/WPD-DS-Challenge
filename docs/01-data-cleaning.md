@@ -128,18 +128,31 @@ df_weather.head(3)
 
 
 
-<br>
+single_datasets = dict()
+dataset_names = ['demand', 'pv', 'weather']
+
+for dataset_name in dataset_names:
+    single_datasets[dataset_name] = load_training_dataset(raw_data_dir, dataset_name)<br>
 
 We'll also create a function that reads all of the datasets in at once and then combines them
 
 ```python
 #exports
 def combine_training_datasets(raw_data_dir):
-    df_combined = pd.DataFrame()
+    single_datasets = dict()
+    dataset_names = ['demand', 'pv', 'weather']
 
-    for dataset_name in ['demand', 'pv', 'weather']:
-        df_single_dataset = load_training_dataset(raw_data_dir, dataset_name)
+    for dataset_name in dataset_names:
+        single_datasets[dataset_name] = load_training_dataset(raw_data_dir, dataset_name)
+    
+    min_dt = min([df.index.min() for df in single_datasets.values()])
+    max_dt = max([df.index.max() for df in single_datasets.values()]) + pd.Timedelta(minutes=30)
 
+    dt_rng = pd.date_range(min_dt, max_dt, freq='30T')
+    df_combined = pd.DataFrame(index=dt_rng, columns=dataset_names)
+    
+    for dataset_name in dataset_names:
+        df_single_dataset = single_datasets[dataset_name]
         cols_to_be_overwritten = set(df_combined.columns) - (set(df_combined.columns) - set(df_single_dataset.columns))
         assert len(cols_to_be_overwritten) == 0, f"The following columns exist in multiple datasets meaning data would be overwritten: {', '.join(cols_to_be_overwritten)}"
 
@@ -159,11 +172,12 @@ df_combined.head(3)
 
 
 
-| ('Unnamed: 0_level_0', 'datetime')   |   ('demand_MW', 'Unnamed: 1_level_1') |   ('irradiance_Wm-2', 'Unnamed: 2_level_1') |   ('panel_temp_C', 'Unnamed: 3_level_1') |   ('pv_power_mw', 'Unnamed: 4_level_1') |   ('solar_location1', 'Unnamed: 5_level_1') |   ('solar_location2', 'Unnamed: 6_level_1') |   ('solar_location3', 'Unnamed: 7_level_1') |   ('solar_location4', 'Unnamed: 8_level_1') |   ('solar_location5', 'Unnamed: 9_level_1') |   ('solar_location6', 'Unnamed: 10_level_1') |   ('temp_location1', 'Unnamed: 11_level_1') |   ('temp_location2', 'Unnamed: 12_level_1') |   ('temp_location3', 'Unnamed: 13_level_1') |   ('temp_location4', 'Unnamed: 14_level_1') |   ('temp_location5', 'Unnamed: 15_level_1') |   ('temp_location6', 'Unnamed: 16_level_1') |
-|:-------------------------------------|--------------------------------------:|--------------------------------------------:|-----------------------------------------:|----------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|---------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|
-| 2017-11-03 00:00:00+00:00            |                                  2.19 |                                           0 |                                     7.05 |                                       0 |                                           0 |                                           0 |                                           0 |                                           0 |                                           0 |                                            0 |                                        8.56 |                                        9.64 |                                        7.46 |                                        6.68 |                                       13.09 |                                       13.2  |
-| 2017-11-03 00:30:00+00:00            |                                  2.14 |                                           0 |                                     7.38 |                                       0 |                                         nan |                                         nan |                                         nan |                                         nan |                                         nan |                                          nan |                                      nan    |                                      nan    |                                      nan    |                                      nan    |                                      nan    |                                      nan    |
-| 2017-11-03 01:00:00+00:00            |                                  2.01 |                                           0 |                                     7.7  |                                       0 |                                           0 |                                           0 |                                           0 |                                           0 |                                           0 |                                            0 |                                        8.69 |                                        9.71 |                                        7.14 |                                        6.27 |                                       13.21 |                                       13.32 |</div>
+|                           |   demand |   pv |   weather |   demand_MW |   irradiance_Wm-2 |   panel_temp_C |   pv_power_mw |   solar_location1 |   solar_location2 |   solar_location3 |   solar_location4 |   solar_location5 |   solar_location6 |   temp_location1 |   temp_location2 |   temp_location3 |   temp_location4 |   temp_location5 |   temp_location6 |
+|:--------------------------|---------:|-----:|----------:|------------:|------------------:|---------------:|--------------:|------------------:|------------------:|------------------:|------------------:|------------------:|------------------:|-----------------:|-----------------:|-----------------:|-----------------:|-----------------:|-----------------:|
+| 2015-01-01 00:00:00+00:00 |      nan |  nan |       nan |         nan |               nan |            nan |           nan |                 0 |                 0 |                 0 |                 0 |                 0 |                 0 |             9.75 |             9.65 |             8.83 |             7.58 |            11.62 |            11.22 |
+| 2015-01-01 00:30:00+00:00 |      nan |  nan |       nan |         nan |               nan |            nan |           nan |               nan |               nan |               nan |               nan |               nan |               nan |           nan    |           nan    |           nan    |           nan    |           nan    |           nan    |
+| 2015-01-01 01:00:00+00:00 |      nan |  nan |       nan |         nan |               nan |            nan |           nan |                 0 |                 0 |                 0 |                 0 |                 0 |                 0 |             9.91 |             9.76 |             8.9  |             7.62 |            11.65 |            11.32 |</div>
+
 
 
 
@@ -205,7 +219,7 @@ utils.set_date_ticks(ax, '2015-01-01', '2018-07-31', axis='x', freq='Qs', date_f
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1ac9ef6e3c8>
+    <AxesSubplot:>
 
 
 
@@ -391,7 +405,7 @@ df_pv['panel_temp_C'].isnull().astype(int).plot()
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1ac9f3c3208>
+    <AxesSubplot:xlabel='datetime'>
 
 
 
@@ -452,7 +466,7 @@ sns.heatmap(df_temp_features.corr())
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1aca150ac48>
+    <AxesSubplot:>
 
 
 
@@ -472,15 +486,23 @@ sns.distplot(df_temp_features.drop('site_temp', axis=1).max(axis=1), color='C2',
 plt.legend(frameon=False)
 ```
 
+    C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+      warnings.warn(msg, FutureWarning)
+    C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+      warnings.warn(msg, FutureWarning)
+    C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+      warnings.warn(msg, FutureWarning)
+    
 
 
 
-    <matplotlib.legend.Legend at 0x1aca232e1c8>
+
+    <matplotlib.legend.Legend at 0x15e3f226940>
 
 
 
 
-![png](img/nbs/output_40_1.png)
+![png](img/nbs/output_40_2.png)
 
 
 ```python
@@ -498,6 +520,16 @@ def split_X_y_data(df, target_col='site_temp'):
     y = df[target_col].values
     
     return X, y
+
+def split_X_y_data_with_index(df, target_col='site_temp'):
+    df = df.dropna()
+    X_cols = df.drop(target_col, axis=1).columns
+
+    X = df[X_cols].values
+    y = df[target_col].values
+    index = df.index
+    
+    return X, y, index
 ```
 
 ```python
@@ -555,11 +587,11 @@ df_pred.head()
 
 |    |    pred |   true |
 |---:|--------:|-------:|
-|  0 | 5.08748 |   7.05 |
-|  1 | 5.43903 |   7.38 |
-|  2 | 6.01406 |   7.7  |
-|  3 | 6.01061 |   7.48 |
-|  4 | 5.78311 |   7.2  |</div>
+|  0 | 5.19665 |   7.05 |
+|  1 | 5.57765 |   7.38 |
+|  2 | 5.94208 |   7.7  |
+|  3 | 6.07092 |   7.48 |
+|  4 | 5.77677 |   7.2  |</div>
 
 
 
@@ -628,11 +660,11 @@ df_pred.head()
 
 |    |   pred |   true |
 |---:|-------:|-------:|
-|  0 | 7.1847 |   7.05 |
-|  1 | 7.628  |   7.38 |
-|  2 | 7.3443 |   7.7  |
-|  3 | 7.2489 |   7.48 |
-|  4 | 7.6457 |   7.2  |</div>
+|  0 | 7.1133 |   7.05 |
+|  1 | 7.1721 |   7.38 |
+|  2 | 7.3059 |   7.7  |
+|  3 | 7.5396 |   7.48 |
+|  4 | 7.5324 |   7.2  |</div>
 
 
 
@@ -645,7 +677,7 @@ s_residuals.plot(linewidth=0.3)
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1aca2488408>
+    <AxesSubplot:>
 
 
 
@@ -785,13 +817,13 @@ df_pred.head()
 
 
 
-|    |      pred |   true |
-|---:|----------:|-------:|
-|  0 | -0.001751 |      0 |
-|  1 | -0.000854 |      0 |
-|  2 | -0.001628 |      0 |
-|  3 | -0.000781 |      0 |
-|  4 | -0.001751 |      0 |</div>
+|    |     pred |   true |
+|---:|---------:|-------:|
+|  0 | 0        |      0 |
+|  1 | 0        |      0 |
+|  2 | 0        |      0 |
+|  3 | 0.000181 |      0 |
+|  4 | 0        |      0 |</div>
 
 
 
@@ -893,7 +925,7 @@ models = {
 rerun_site_power_model = False
 model_scores_filename = 'site_power_interp_model_results.csv'
 
-X, y = split_X_y_data(df_power_features, 'pv_power_mw')
+X, y, dates = split_X_y_data_with_index(df_power_features, 'pv_power_mw')
 
 if (rerun_site_power_model == True) or (model_scores_filename not in os.listdir(cache_data_dir)):
     df_model_scores = evaluate_models(X, y, models)
@@ -922,7 +954,16 @@ df_pred.head()
 ```
 
 
-![png](img/nbs/output_64_0.png)
+
+
+|    |      pred |   true |
+|---:|----------:|-------:|
+|  0 | -0.000348 |      0 |
+|  1 |  0.000689 |      0 |
+|  2 | -0.000551 |      0 |
+|  3 |  0.000689 |      0 |
+|  4 |  0.000316 |      0 |</div>
+
 
 
 ```python
@@ -942,6 +983,87 @@ plt.ylabel('Prediction')
 
 ![png](img/nbs/output_65_1.png)
 
+
+##### Anomalous data points in PV data
+
+The PV data shows a number of points where the observed value is 0 but the prediction is much higher. 
+
+First let's try and identify them (setting the tolerance to be lower will capture more values as anomalous). 
+
+```python
+def identify_anomalies_pv(df_pred, tolerance=0.2):
+    foo = df_pred.copy()
+    foo['difference'] = foo.pred - foo.true
+    foo = foo[(foo.difference > tolerance) & (foo.true == 0)]
+    return foo.index
+
+anomalous_dates = dates[identify_anomalies_pv(df_pred)]
+anomalous_df = df_power_features[df_power_features.index.isin(anomalous_dates)]
+plt.hist(anomalous_df.hour) # Check this histogram to eyeball if any unreasonable anomalous values are caught by the tolerance (e.g. late at night)
+```
+
+
+
+
+    (array([ 3.,  3.,  6., 10., 10., 10., 10.,  5.,  2.,  4.]),
+     array([ 6.5 ,  7.65,  8.8 ,  9.95, 11.1 , 12.25, 13.4 , 14.55, 15.7 ,
+            16.85, 18.  ]),
+     <BarContainer object of 10 artists>)
+
+
+
+
+![png](img/nbs/output_67_1.png)
+
+
+Replace these values in `df_power_features`. 
+
+```python
+df_power_features_clean = df_power_features.copy()
+df_power_features_clean.loc[df_power_features_clean.index.isin(anomalous_dates), 'pv_power_mw'] = np.nan
+```
+
+Rerun the previous model fitting and check the pred vs. actual graph. 
+
+```python
+models = {
+    'std_linear': LinearRegression(),
+    'random_forest': RandomForestRegressor(),
+    'boosted': GradientBoostingRegressor()
+}
+
+rerun_site_power_model = False
+model_scores_filename = 'site_power_interp_clean_model_results.csv'
+
+X, y, dates = split_X_y_data_with_index(df_power_features_clean, 'pv_power_mw')
+
+if (rerun_site_power_model == True) or (model_scores_filename not in os.listdir(cache_data_dir)):
+    df_model_scores = evaluate_models(X, y, models)
+    df_model_scores.to_csv(f'{cache_data_dir}/{model_scores_filename}')
+else:
+    df_model_scores = pd.read_csv(f'{cache_data_dir}/{model_scores_filename}', index_col='metric')
+
+top_model = df_model_scores.T['rmse'].idxmin()
+df_pred = generate_kfold_preds(X, y, models[top_model])
+
+plt.scatter(df_pred['true'], df_pred['pred'], s=1)
+
+plt.xlabel('Obervation')
+plt.ylabel('Prediction')
+```
+
+
+
+
+    Text(0, 0.5, 'Prediction')
+
+
+
+
+![png](img/nbs/output_71_1.png)
+
+
+The above graph looks to be a cleaner with tolerance at 0.2. It looks like there might still be some which aren't though. Consider lowering the tolerance.
 
 ```python
 #exports

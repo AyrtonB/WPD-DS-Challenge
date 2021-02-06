@@ -26,6 +26,7 @@ from batopt import clean, utils
 
 import os
 import random
+import joblib
 from ipypb import track
 import FEAutils as hlp
 ```
@@ -38,6 +39,7 @@ import FEAutils as hlp
 raw_data_dir = '../data/raw'
 intermediate_data_dir = '../data/intermediate'
 cache_data_dir = '../data/nb-cache'
+discharge_opt_model_fp = '../models/discharge_opt.sav'
 ```
 
 <br>
@@ -49,21 +51,85 @@ We'll start by loading the datasets, we'll interpolate the weather data which is
 ```python
 df = clean.combine_training_datasets(intermediate_data_dir).interpolate(limit=1)
 
-df.head()
+df.tail()
 ```
 
 
 
 
-| ('Unnamed: 0_level_0', 'datetime')   |   ('demand_MW', 'Unnamed: 1_level_1') |   ('irradiance_Wm-2', 'Unnamed: 2_level_1') |   ('panel_temp_C', 'Unnamed: 3_level_1') |   ('pv_power_mw', 'Unnamed: 4_level_1') |   ('solar_location1', 'Unnamed: 5_level_1') |   ('solar_location2', 'Unnamed: 6_level_1') |   ('solar_location3', 'Unnamed: 7_level_1') |   ('solar_location4', 'Unnamed: 8_level_1') |   ('solar_location5', 'Unnamed: 9_level_1') |   ('solar_location6', 'Unnamed: 10_level_1') |   ('temp_location1', 'Unnamed: 11_level_1') |   ('temp_location2', 'Unnamed: 12_level_1') |   ('temp_location3', 'Unnamed: 13_level_1') |   ('temp_location4', 'Unnamed: 14_level_1') |   ('temp_location5', 'Unnamed: 15_level_1') |   ('temp_location6', 'Unnamed: 16_level_1') |
-|:-------------------------------------|--------------------------------------:|--------------------------------------------:|-----------------------------------------:|----------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|---------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|--------------------------------------------:|
-| 2017-11-03 00:00:00+00:00            |                                  2.19 |                                           0 |                                     7.05 |                                       0 |                                           0 |                                           0 |                                           0 |                                           0 |                                           0 |                                            0 |                                       8.56  |                                       9.64  |                                        7.46 |                                       6.68  |                                      13.09  |                                       13.2  |
-| 2017-11-03 00:30:00+00:00            |                                  2.14 |                                           0 |                                     7.38 |                                       0 |                                           0 |                                           0 |                                           0 |                                           0 |                                           0 |                                            0 |                                       8.625 |                                       9.675 |                                        7.3  |                                       6.475 |                                      13.15  |                                       13.26 |
-| 2017-11-03 01:00:00+00:00            |                                  2.01 |                                           0 |                                     7.7  |                                       0 |                                           0 |                                           0 |                                           0 |                                           0 |                                           0 |                                            0 |                                       8.69  |                                       9.71  |                                        7.14 |                                       6.27  |                                      13.21  |                                       13.32 |
-| 2017-11-03 01:30:00+00:00            |                                  1.87 |                                           0 |                                     7.48 |                                       0 |                                           0 |                                           0 |                                           0 |                                           0 |                                           0 |                                            0 |                                       8.715 |                                       9.72  |                                        7    |                                       6.09  |                                      13.255 |                                       13.34 |
-| 2017-11-03 02:00:00+00:00            |                                  1.86 |                                           0 |                                     7.2  |                                       0 |                                           0 |                                           0 |                                           0 |                                           0 |                                           0 |                                            0 |                                       8.74  |                                       9.73  |                                        6.86 |                                       5.91  |                                      13.3   |                                       13.36 |</div>
+|                           |   demand |   pv |   weather |   demand_MW |   irradiance_Wm-2 |   panel_temp_C |   pv_power_mw |   solar_location1 |   solar_location2 |   solar_location3 |   solar_location4 |   solar_location5 |   solar_location6 |   temp_location1 |   temp_location2 |   temp_location3 |   temp_location4 |   temp_location5 |   temp_location6 |
+|:--------------------------|---------:|-----:|----------:|------------:|------------------:|---------------:|--------------:|------------------:|------------------:|------------------:|------------------:|------------------:|------------------:|-----------------:|-----------------:|-----------------:|-----------------:|-----------------:|-----------------:|
+| 2018-07-29 21:30:00+00:00 |      nan |  nan |       nan |         nan |               nan |            nan |           nan |                 0 |                 0 |                 0 |                 0 |                 0 |                 0 |           16.125 |           16.37  |           15.485 |           16.285 |           17.625 |           17.415 |
+| 2018-07-29 22:00:00+00:00 |      nan |  nan |       nan |         nan |               nan |            nan |           nan |                 0 |                 0 |                 0 |                 0 |                 0 |                 0 |           16.04  |           16.3   |           15.31  |           16.03  |           17.58  |           17.39  |
+| 2018-07-29 22:30:00+00:00 |      nan |  nan |       nan |         nan |               nan |            nan |           nan |                 0 |                 0 |                 0 |                 0 |                 0 |                 0 |           15.98  |           16.255 |           15.215 |           15.835 |           17.57  |           17.38  |
+| 2018-07-29 23:00:00+00:00 |      nan |  nan |       nan |         nan |               nan |            nan |           nan |                 0 |                 0 |                 0 |                 0 |                 0 |                 0 |           15.92  |           16.21  |           15.12  |           15.64  |           17.56  |           17.37  |
+| 2018-07-29 23:30:00+00:00 |      nan |  nan |       nan |         nan |               nan |            nan |           nan |                 0 |                 0 |                 0 |                 0 |                 0 |                 0 |           15.92  |           16.21  |           15.12  |           15.64  |           17.56  |           17.37  |</div>
 
 
+
+<br>
+
+Next we'll construct our features dataframe
+
+```python
+#exports
+def construct_df_discharge_features(df, dt_rng=None):
+    if dt_rng is None:
+        dt_rng = pd.date_range(df.index.min(), df.index.max(), freq='30T')
+        
+    df_features = pd.DataFrame(index=dt_rng)
+    
+    # Filtering for the temperature weather data
+    temp_loc_cols = df.columns[df.columns.str.contains('temp_location')]
+    df_features.loc[df.index, temp_loc_cols] = df[temp_loc_cols].copy()
+    df_features = df_features.ffill(limit=1)
+    
+    # Adding lagged demand
+    df_features['demand_7d_lag'] = df['demand_MW'].shift(48*7)
+
+    # Adding datetime features
+    dts = df_features.index.tz_convert('Europe/London') # We want to use the 'behavioural' timezone
+
+    df_features['weekend'] = dts.dayofweek.isin([5, 6]).astype(int)
+    df_features['hour'] = dts.hour + dts.minute/60
+    df_features['doy'] = dts.dayofyear
+    df_features['dow'] = dts.dayofweek
+    
+    # Removing NaN values
+    df_features = df_features.dropna()
+    
+    return df_features
+```
+
+```python
+df_features = construct_df_discharge_features(df)
+
+df_features.tail()
+```
+
+
+
+
+|                           |   temp_location1 |   temp_location2 |   temp_location3 |   temp_location4 |   temp_location5 |   temp_location6 |   demand_7d_lag |   weekend |   hour |   doy |   dow |
+|:--------------------------|-----------------:|-----------------:|-----------------:|-----------------:|-----------------:|-----------------:|----------------:|----------:|-------:|------:|------:|
+| 2018-07-29 21:30:00+00:00 |           16.125 |           16.37  |           15.485 |           16.285 |           17.625 |           17.415 |            2.4  |         1 |   22.5 |   210 |     6 |
+| 2018-07-29 22:00:00+00:00 |           16.04  |           16.3   |           15.31  |           16.03  |           17.58  |           17.39  |            2.15 |         1 |   23   |   210 |     6 |
+| 2018-07-29 22:30:00+00:00 |           15.98  |           16.255 |           15.215 |           15.835 |           17.57  |           17.38  |            1.93 |         1 |   23.5 |   210 |     6 |
+| 2018-07-29 23:00:00+00:00 |           15.92  |           16.21  |           15.12  |           15.64  |           17.56  |           17.37  |            1.82 |         0 |    0   |   211 |     0 |
+| 2018-07-29 23:30:00+00:00 |           15.92  |           16.21  |           15.12  |           15.64  |           17.56  |           17.37  |            1.63 |         0 |    0.5 |   211 |     0 |</div>
+
+
+
+<br>
+
+We'll now create demand and features time-series with the same date indexes
+
+```python
+dt_idx = pd.date_range(df_features.index.min(), df['demand_MW'].dropna().index.max()-pd.Timedelta(minutes=30), freq='30T')
+
+s_demand = df.loc[dt_idx, 'demand_MW']
+df_features = df_features.loc[dt_idx]
+```
 
 <br>
 
@@ -140,7 +206,7 @@ fig.savefig('../img/daily_demand_profile.png')
 ```
 
 
-![png](img/nbs/output_9_0.png)
+![png](img/nbs/output_14_0.png)
 
 
 <br>
@@ -172,7 +238,6 @@ def sample_random_days(s, num_days=5):
 ```
 
 ```python
-s_demand = df['demand_MW']
 df_sample_dts = sample_random_days(s_demand)
     
 # Plotting
@@ -189,7 +254,7 @@ _ = plt.setp(ax.get_xmajorticklabels(), visible=False)
 ```
 
 
-![png](img/nbs/output_12_0.png)
+![png](img/nbs/output_17_0.png)
 
 
 <br>
@@ -216,12 +281,17 @@ hlp.hide_spines(ax)
 ```
 
 
-![png](img/nbs/output_14_0.png)
+![png](img/nbs/output_19_0.png)
 
 
 ```python
 # We cant yet do a seasonal decomposition using statsmodels (requires 2 years of data)
 # Once it is possible we should though
+```
+
+```python
+# could use public holiday data and see what influence that has
+# for the covid period may need to add a rolling covid factor as a feature (could be last_week_reduction_pct relative to previous year)
 ```
 
 <br>
@@ -278,7 +348,7 @@ fig.savefig('../img/temp_demand_profile.png')
 ```
 
 
-![png](img/nbs/output_19_0.png)
+![png](img/nbs/output_25_0.png)
 
 
 ```python
@@ -309,12 +379,12 @@ plt.plot(evening_demand_profile)
 
 
 
-    [<matplotlib.lines.Line2D at 0x280cdb32e80>]
+    [<matplotlib.lines.Line2D at 0x1ebb6df2940>]
 
 
 
 
-![png](img/nbs/output_23_1.png)
+![png](img/nbs/output_29_1.png)
 
 
 <br>
@@ -372,12 +442,12 @@ plt.plot(adj_evening_demand_profile)
 
 
 
-    [<matplotlib.lines.Line2D at 0x280cdbc07f0>]
+    [<matplotlib.lines.Line2D at 0x1ebb6d8fc70>]
 
 
 
 
-![png](img/nbs/output_26_1.png)
+![png](img/nbs/output_32_1.png)
 
 
 <br>
@@ -398,12 +468,12 @@ plt.plot(discharge_profile)
 
 
 
-    [<matplotlib.lines.Line2D at 0x280cdb56d30>]
+    [<matplotlib.lines.Line2D at 0x1ebb6594370>]
 
 
 
 
-![png](img/nbs/output_29_1.png)
+![png](img/nbs/output_35_1.png)
 
 
 <br>
@@ -434,12 +504,12 @@ s_discharge.iloc[:48*7].plot()
 
 
 
-    <AxesSubplot:xlabel='datetime'>
+    <AxesSubplot:>
 
 
 
 
-![png](img/nbs/output_32_1.png)
+![png](img/nbs/output_38_1.png)
 
 
 <br>
@@ -454,12 +524,12 @@ s_demand.iloc[:48*7].plot()
 
 
 
-    <AxesSubplot:xlabel='datetime'>
+    <AxesSubplot:>
 
 
 
 
-![png](img/nbs/output_34_1.png)
+![png](img/nbs/output_40_1.png)
 
 
 <br>
@@ -472,53 +542,7 @@ Our overall approach can be thought of as follows:
 2. Train a regression model to emulate the optimal discharge profile
 3. Clean profile to ensure that constraints aren't broken and the full 6 MWh is fully utilised
 
-We've generated our optimal discharge profile, now we're ready to train the model. We'll start by constructing our features dataframe.
-
-```python
-#exports
-def construct_df_discharge_features(df):
-    # Filtering for the temperature weather data
-    df_features = df[df.columns[df.columns.str.contains('temp_location')]].copy()
-    
-    # Adding lagged demand
-    df_features['demand_7d_lag'] = df['demand_MW'].shift(48*7)
-
-    # Adding datetime features
-    dts = df_features.index.tz_convert('Europe/London') # We want to use the 'behavioural' timezone
-
-    df_features['weekend'] = dts.dayofweek.isin([5, 6]).astype(int)
-    df_features['hour'] = dts.hour + dts.minute/60
-    df_features['doy'] = dts.dayofyear
-    df_features['dow'] = dts.dayofweek
-    
-    # Removing NaN values
-    df_features = df_features.dropna()
-    
-    return df_features
-```
-
-```python
-df_features = construct_df_discharge_features(df)
-
-df_features.head()
-```
-
-
-
-
-| ('Unnamed: 0_level_0', 'datetime')   |   ('temp_location1', 'Unnamed: 1_level_1') |   ('temp_location2', 'Unnamed: 2_level_1') |   ('temp_location3', 'Unnamed: 3_level_1') |   ('temp_location4', 'Unnamed: 4_level_1') |   ('temp_location5', 'Unnamed: 5_level_1') |   ('temp_location6', 'Unnamed: 6_level_1') |   ('demand_7d_lag', 'Unnamed: 7_level_1') |   ('weekend', 'Unnamed: 8_level_1') |   ('hour', 'Unnamed: 9_level_1') |   ('doy', 'Unnamed: 10_level_1') |   ('dow', 'Unnamed: 11_level_1') |
-|:-------------------------------------|-------------------------------------------:|-------------------------------------------:|-------------------------------------------:|-------------------------------------------:|-------------------------------------------:|-------------------------------------------:|------------------------------------------:|------------------------------------:|---------------------------------:|---------------------------------:|---------------------------------:|
-| 2017-11-10 00:00:00+00:00            |                                     10.66  |                                      9.48  |                                       9.68 |                                      7.5   |                                      12.75 |                                     12.25  |                                      2.19 |                                   0 |                              0   |                              314 |                                4 |
-| 2017-11-10 00:30:00+00:00            |                                     11     |                                      9.865 |                                       9.99 |                                      7.875 |                                      12.91 |                                     12.475 |                                      2.14 |                                   0 |                              0.5 |                              314 |                                4 |
-| 2017-11-10 01:00:00+00:00            |                                     11.34  |                                     10.25  |                                      10.3  |                                      8.25  |                                      13.07 |                                     12.7   |                                      2.01 |                                   0 |                              1   |                              314 |                                4 |
-| 2017-11-10 01:30:00+00:00            |                                     11.495 |                                     10.68  |                                      10.78 |                                      8.655 |                                      13.09 |                                     12.94  |                                      1.87 |                                   0 |                              1.5 |                              314 |                                4 |
-| 2017-11-10 02:00:00+00:00            |                                     11.65  |                                     11.11  |                                      11.26 |                                      9.06  |                                      13.11 |                                     13.18  |                                      1.86 |                                   0 |                              2   |                              314 |                                4 |</div>
-
-
-
-<br>
-
-We now need to split up our X and y values, filtering only for those that fall into the evening period
+We've generated our optimal discharge profile, now we're ready to train the model. We'll first split up our X and y values, filtering only for those that fall into the evening period
 
 ```python
 #exports
@@ -549,13 +573,13 @@ df_pred.head()
 
 
 
-| ('Unnamed: 0_level_0', 'datetime')   |   ('pred', 'Unnamed: 1_level_1') |   ('true', 'Unnamed: 2_level_1') |
-|:-------------------------------------|---------------------------------:|---------------------------------:|
-| 2017-11-10 15:30:00+00:00            |                        -0.696409 |                        -0.125455 |
-| 2017-11-10 16:00:00+00:00            |                        -0.780102 |                        -0.565455 |
-| 2017-11-10 16:30:00+00:00            |                        -0.944032 |                        -1.12546  |
-| 2017-11-10 17:00:00+00:00            |                        -1.12002  |                        -1.58546  |
-| 2017-11-10 17:30:00+00:00            |                        -1.17005  |                        -1.66545  |</div>
+|                           |      pred |      true |
+|:--------------------------|----------:|----------:|
+| 2017-11-10 15:30:00+00:00 | -0.704354 | -0.125455 |
+| 2017-11-10 16:00:00+00:00 | -0.778424 | -0.565455 |
+| 2017-11-10 16:30:00+00:00 | -0.935294 | -1.12546  |
+| 2017-11-10 17:00:00+00:00 | -1.12967  | -1.58546  |
+| 2017-11-10 17:30:00+00:00 | -1.16834  | -1.66545  |</div>
 
 
 
@@ -581,7 +605,7 @@ sns.distplot(s_daily_discharge)
 
 
 
-![png](img/nbs/output_44_2.png)
+![png](img/nbs/output_47_2.png)
 
 
 <br>
@@ -637,12 +661,11 @@ s_pred.head()
 
 
 
-    datetime
-    2017-11-10 15:30:00+00:00   -0.771329
-    2017-11-10 16:00:00+00:00   -0.864027
-    2017-11-10 16:30:00+00:00   -1.045592
-    2017-11-10 17:00:00+00:00   -1.240513
-    2017-11-10 17:30:00+00:00   -1.295929
+    2017-11-10 15:30:00+00:00   -0.784678
+    2017-11-10 16:00:00+00:00   -0.867195
+    2017-11-10 16:30:00+00:00   -1.041954
+    2017-11-10 17:00:00+00:00   -1.258496
+    2017-11-10 17:30:00+00:00   -1.301574
     Name: pred, dtype: object
 
 
@@ -651,13 +674,38 @@ s_pred.head()
 
 We'll now combine these post prediction processing steps into a single function, ready to use in our model evaluation
 
+**Note that the normalisation must come after the clipping. Otherwise the total charge constraint can be violated if the model predicts a discharge > 0**
+
 ```python
 #exports
+# post_pred_proc_func = lambda s_pred: (s_pred
+#                                       .pipe(normalise_total_discharge)
+#                                       .pipe(clip_discharge_rate)
+#                                      )
 post_pred_proc_func = lambda s_pred: (s_pred
-                                      .pipe(normalise_total_discharge)
                                       .pipe(clip_discharge_rate)
+                                      .pipe(normalise_total_discharge)
                                      )
 ```
+
+```python
+post_pred_proc_func(s_pred).groupby(s_pred.index.date).sum().value_counts()
+```
+
+
+
+
+    -12.0    156
+    -12.0     37
+    -12.0     25
+    -12.0     16
+    -12.0     14
+    -12.0      5
+    -12.0      1
+    -12.0      1
+    Name: pred, dtype: int64
+
+
 
 <br>
 
@@ -809,7 +857,7 @@ s_residuals.plot(linewidth=0.3)
 
 
 
-![png](img/nbs/output_59_1.png)
+![png](img/nbs/output_63_1.png)
 
 
 <br>
@@ -831,12 +879,20 @@ plt.ylabel('Prediction')
 
 
 
-![png](img/nbs/output_61_1.png)
+![png](img/nbs/output_65_1.png)
 
 
 <br>
 
-### Model Tuning
+### Feature Selection
+
+```python
+# use mlxtend to select the relevant features
+```
+
+<br>
+
+### Hyper-Parameter Tuning
 
 ```python
 evening_datetimes = extract_evening_datetimes(df_features)
@@ -866,14 +922,14 @@ search_spaces = {
 opt = utils.BayesSearchCV(
     pipeline,
     search_spaces,
-    n_iter=50,
-    verbose=0,
+    n_iter=20,
+    verbose=1,
     cv=8, # 8 works well for me as that's how many concurrent workers I can use
     scoring=peak_reduction_scorer,
     n_jobs=-1
 )
 
-fit_BayesSearchCV = True
+fit_BayesSearchCV = False
 
 if fit_BayesSearchCV == True:
     opt.fit(X, y, groups=groups)
@@ -886,57 +942,210 @@ if fit_BayesSearchCV == True:
     plt.show()
 ```
 
+```python
+# should save the best params in a JSON file and then load from then if not running the full optimisation
+```
 
-<div><span class="Text-label" style="display:inline-block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; min-width:0; max-width:15ex; vertical-align:middle; text-align:right"></span>
-<progress style="width:60ex" max="1" value="0" class="Progress-main"/></progress>
-<span class="Progress-label"><strong>0%</strong></span>
-<span class="Iteration-label">0/1</span>
-<span class="Time-label">[0<0, 0.00s/it]</span></div>
+```python
+%%time
 
+model_params = {
+    'criterion': 'mse',
+    'max_depth': 10,
+    'min_samples_leaf': 4,
+    'min_samples_split': 2,
+    'n_estimators': 100
+}
 
+model = RandomForestRegressor(**model_params)
 
-    ---------------------------------------------------------------------------
+df_pred = clean.generate_kfold_preds(X.values, y.values, model, index=evening_datetimes)
+peak_reduction_calc = construct_peak_reduction_calculator(s_demand=df['demand_MW'], evening_datetimes=evening_datetimes)
+pct_optimal_reduction = peak_reduction_calc(df_pred['true'], df_pred['pred'])
 
-    NameError                                 Traceback (most recent call last)
+pct_optimal_reduction
+```
 
-    <ipython-input-41-9df2567e55a1> in <module>
-         36 
-         37 if fit_BayesSearchCV == True:
-    ---> 38     opt.fit(X, y, groups=groups)
-         39 
-         40     print(f'validation score: {opt.best_score_}')
+    Wall time: 4.04 s
     
 
-    c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\utils.py in bayes_search_CV_fit(self, X, y, groups, callback)
-        267             n_iter -= n_points
-        268 
-    --> 269             if eval_callbacks(callbacks, optim_result):
-        270                 break
-        271         self._optim_results.append(optim_result)
+
+
+
+    87.43043348200621
+
+
+
+<br>
+
+### Pipeline Integration Helpers
+
+```python
+#exports
+def prepare_training_input_data(intermediate_data_dir):
+    # Loading input data
+    df = clean.combine_training_datasets(intermediate_data_dir).interpolate(limit=1)
+    df_features = construct_df_discharge_features(df)
+    
+    # Filtering for overlapping feature and target data
+    dt_idx = pd.date_range(df_features.index.min(), df['demand_MW'].dropna().index.max()-pd.Timedelta(minutes=30), freq='30T')
+
+    s_demand = df.loc[dt_idx, 'demand_MW']
+    df_features = df_features.loc[dt_idx]
+    
+    # Constructing the discharge series
+    s_discharge = construct_discharge_s(s_demand, start_time='15:30', end_time='20:30')
+    
+    # Filtering for evening datetimes
+    evening_datetimes = extract_evening_datetimes(df_features)
+
+    X = df_features.loc[evening_datetimes]
+    y = s_discharge.loc[evening_datetimes]
+    
+    return X, y
+```
+
+```python
+X, y = prepare_training_input_data(intermediate_data_dir)
+
+X.shape, y.shape
+```
+
+
+
+
+    ((2805, 11), (2805,))
+
+
+
+```python
+#exports
+def fit_and_save_model(X, y, discharge_opt_model_fp, model_class=RandomForestRegressor, **model_params):
+    model = model_class(**model_params)
+    model.fit(X, y)
+    
+    with open(discharge_opt_model_fp, 'wb') as fp:
+        joblib.dump(model, fp)
+        
+    return
+```
+
+```python
+%%time
+
+fit_and_save_model(X, y, discharge_opt_model_fp, **model_params)
+```
+
+    Wall time: 979 ms
     
 
-    NameError: name 'eval_callbacks' is not defined
-
-
 ```python
-# model = RandomForestRegressor()
-
-# df_pred = clean.generate_kfold_preds(X, y, model, index=evening_datetimes)
-# peak_reduction_calc = construct_peak_reduction_calculator(s_demand=df['demand_MW'], evening_datetimes=evening_datetimes)
-# pct_optimal_reduction = peak_reduction_calc(df_pred['true'], df_pred['pred'])
-
-# pct_optimal_reduction
+#exports
+def load_trained_model(discharge_opt_model_fp):
+    with open(discharge_opt_model_fp, 'rb') as fp:
+        model = joblib.load(fp)
+    
+    return model
 ```
 
 ```python
-# use TPOT or skopt to tune the model hyper-parameters
-# use mlxtend to select the relevant features
+%%time
+
+model = load_trained_model(discharge_opt_model_fp)
+
+model
+```
+
+    Wall time: 40 ms
+    
+
+
+
+
+    RandomForestRegressor(max_depth=10, min_samples_leaf=4)
+
+
+
+```python
+#exports
+def load_latest_submission_template(raw_data_dir, latest_submission_template_name=None):    
+    if latest_submission_template_name is None:
+        latest_submission_template_name = max([filename for filename in os.listdir(raw_data_dir) if 'teamname_set' in filename])
+    
+    df_submission_template = pd.read_csv(f'{raw_data_dir}/{latest_submission_template_name}')
+    
+    df_submission_template['datetime'] = pd.to_datetime(df_submission_template['datetime'], utc=True)
+    df_submission_template = df_submission_template.set_index('datetime')
+    
+    return df_submission_template
+
+def prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest_submission_template_name=None):
+    # Loading input data
+    df_features = (clean
+                   .combine_training_datasets(intermediate_data_dir)
+                   .interpolate(limit=1)
+                   .pipe(construct_df_discharge_features)
+                  )
+    
+    df_submission_template = load_latest_submission_template(raw_data_dir, latest_submission_template_name=latest_submission_template_name)
+    
+    # Filtering feature data on submission datetimes
+    df_features = df_features.loc[df_submission_template.index]
+    
+    return df_features
 ```
 
 ```python
-# could use public holiday data 
-# add the ability to use the discharge model in the final pipeline
+df_features = prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir)
+
+df_features.head()
 ```
+
+
+
+
+| ('Unnamed: 0_level_0', 'datetime')   |   ('temp_location1', 'Unnamed: 1_level_1') |   ('temp_location2', 'Unnamed: 2_level_1') |   ('temp_location3', 'Unnamed: 3_level_1') |   ('temp_location4', 'Unnamed: 4_level_1') |   ('temp_location5', 'Unnamed: 5_level_1') |   ('temp_location6', 'Unnamed: 6_level_1') |   ('demand_7d_lag', 'Unnamed: 7_level_1') |   ('weekend', 'Unnamed: 8_level_1') |   ('hour', 'Unnamed: 9_level_1') |   ('doy', 'Unnamed: 10_level_1') |   ('dow', 'Unnamed: 11_level_1') |
+|:-------------------------------------|-------------------------------------------:|-------------------------------------------:|-------------------------------------------:|-------------------------------------------:|-------------------------------------------:|-------------------------------------------:|------------------------------------------:|------------------------------------:|---------------------------------:|---------------------------------:|---------------------------------:|
+| 2018-07-23 00:00:00+00:00            |                                      16.74 |                                     17.05  |                                      15.67 |                                     17.86  |                                     18.74  |                                     18.5   |                                      1.73 |                                   0 |                              1   |                              204 |                                0 |
+| 2018-07-23 00:30:00+00:00            |                                      16.62 |                                     16.845 |                                      15.57 |                                     17.585 |                                     18.63  |                                     18.355 |                                      1.62 |                                   0 |                              1.5 |                              204 |                                0 |
+| 2018-07-23 01:00:00+00:00            |                                      16.5  |                                     16.64  |                                      15.47 |                                     17.31  |                                     18.52  |                                     18.21  |                                      1.56 |                                   0 |                              2   |                              204 |                                0 |
+| 2018-07-23 01:30:00+00:00            |                                      16.41 |                                     16.485 |                                      15.37 |                                     17.05  |                                     18.455 |                                     18.11  |                                      1.48 |                                   0 |                              2.5 |                              204 |                                0 |
+| 2018-07-23 02:00:00+00:00            |                                      16.32 |                                     16.33  |                                      15.27 |                                     16.79  |                                     18.39  |                                     18.01  |                                      1.48 |                                   0 |                              3   |                              204 |                                0 |</div>
+
+
+
+```python
+#exports
+def optimise_latest_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, latest_submission_template_name=None):
+    df_features = prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest_submission_template_name=latest_submission_template_name)
+    evening_datetimes = extract_evening_datetimes(df_features)
+    X_test = df_features.loc[evening_datetimes].values
+    
+    model = load_trained_model(discharge_opt_model_fp)
+    discharge_profile = model.predict(X_test)
+    
+    s_discharge_profile = pd.Series(discharge_profile, index=evening_datetimes)
+    s_discharge_profile = s_discharge_profile.reindex(df_features.index).fillna(0)
+    
+    return s_discharge_profile
+```
+
+```python
+s_discharge_profile = optimise_latest_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp)
+
+s_discharge_profile.plot()
+```
+
+
+
+
+    <AxesSubplot:xlabel='datetime'>
+
+
+
+
+![png](img/nbs/output_82_1.png)
+
 
 <br>
 
