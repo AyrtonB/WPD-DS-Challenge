@@ -9,7 +9,7 @@ import pandas as pd
 
 from dagster import execute_pipeline, pipeline, solid, Field
 
-from batopt import clean
+from batopt import clean, discharge
 ```
 
 <br>
@@ -42,13 +42,27 @@ def clean_data(_, loaded_data, intermediate_data_dir: str):
     cleaned_data['weather'] = clean.interpolate_missing_weather_solar(loaded_data['pv'], loaded_data['weather'])
     cleaned_data['demand'] = loaded_data['demand']
     
-    
     # Saving
     cleaned_data['pv'].to_csv(f'{intermediate_data_dir}/pv_cleaned.csv')
     cleaned_data['demand'].to_csv(f'{intermediate_data_dir}/demand_cleaned.csv')
     cleaned_data['weather'].to_csv(f'{intermediate_data_dir}/weather_cleaned.csv')
             
-    return cleaned_data
+    return intermediate_data_dir
+
+@solid()
+def fit_and_save_discharge_model(_, intermediate_data_dir: str, discharge_opt_model_fp: str, model_params: dict):
+    X, y = discharge.prepare_training_input_data(intermediate_data_dir)
+    discharge.fit_and_save_model(X, y, discharge_opt_model_fp, **model_params)
+    
+    return 
+
+@solid()
+def construct_battery_profile(_, cleaned_data_dir: str, raw_data_dir: str, discharge_opt_model_fp: str):
+    s_discharge_profile = discharge.optimise_latest_test_discharge_profile(raw_data_dir, cleaned_data_dir, discharge_opt_model_fp)
+    
+    s_battery_profile = s_discharge_profile
+    
+    return s_battery_profile
 ```
 
 <br>
@@ -59,7 +73,11 @@ Then we'll combine them in a pipeline
 @pipeline
 def end_to_end_pipeline(): 
     loaded_data = load_data()
-    cleaned_data = clean_data(loaded_data)
+    cleaned_data_dir = clean_data(loaded_data)
+    
+    fit_and_save_discharge_model(cleaned_data_dir)
+    s_battery_profile = construct_battery_profile(cleaned_data_dir)
+    # Should use `great expectations` to check that the battery profile doesnt break the constraints
 ```
 
 <br>
@@ -79,36 +97,70 @@ run_config = {
                 'intermediate_data_dir': '../data/intermediate',
             },
         },
+        'fit_and_save_discharge_model': {
+            'inputs': {
+                'discharge_opt_model_fp': '../models/discharge_opt.sav',
+                'model_params': {
+                    'criterion': 'mse',
+                    'max_depth': 10,
+                    'min_samples_leaf': 4,
+                    'min_samples_split': 2,
+                    'n_estimators': 100                    
+                }
+            },
+        },
+        'construct_battery_profile': {
+            'inputs': {
+                'raw_data_dir': '../data/raw',
+                'discharge_opt_model_fp': '../models/discharge_opt.sav',
+            },
+        },
     }
 }
 
 execute_pipeline(end_to_end_pipeline, run_config=run_config)
 ```
 
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - ENGINE_EVENT - Starting initialization of resources [asset_store].
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - ENGINE_EVENT - Finished initialization of resources [asset_store].
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - PIPELINE_START - Started execution of pipeline "end_to_end_pipeline".
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - ENGINE_EVENT - Executing steps in process (pid: 22680)
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - load_data.compute - STEP_START - Started execution of step "load_data.compute".
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - load_data.compute - STEP_INPUT - Got input "raw_data_dir" of type "String". (Type check passed).
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - load_data.compute - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - load_data.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - load_data.compute - STEP_SUCCESS - Finished execution of step "load_data.compute" in 155ms.
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - clean_data.compute - STEP_START - Started execution of step "clean_data.compute".
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - clean_data.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input loaded_data in memory object store using pickle.
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - clean_data.compute - STEP_INPUT - Got input "loaded_data" of type "Any". (Type check passed).
-    [32m2021-01-29 10:43:45[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - clean_data.compute - STEP_INPUT - Got input "intermediate_data_dir" of type "String". (Type check passed).
-    [32m2021-01-29 10:44:24[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - clean_data.compute - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
-    [32m2021-01-29 10:44:24[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - clean_data.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
-    [32m2021-01-29 10:44:24[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - clean_data.compute - STEP_SUCCESS - Finished execution of step "clean_data.compute" in 38.81s.
-    [32m2021-01-29 10:44:24[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - ENGINE_EVENT - Finished steps in process (pid: 22680) in 38.99s
-    [32m2021-01-29 10:44:24[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - bdac1336-c21b-46a1-af7e-f40d144fe459 - 22680 - PIPELINE_SUCCESS - Finished execution of pipeline "end_to_end_pipeline".
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - ENGINE_EVENT - Starting initialization of resources [asset_store].
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - ENGINE_EVENT - Finished initialization of resources [asset_store].
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - PIPELINE_START - Started execution of pipeline "end_to_end_pipeline".
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - ENGINE_EVENT - Executing steps in process (pid: 22040)
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - load_data.compute - STEP_START - Started execution of step "load_data.compute".
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - load_data.compute - STEP_INPUT - Got input "raw_data_dir" of type "String". (Type check passed).
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - load_data.compute - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - load_data.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - load_data.compute - STEP_SUCCESS - Finished execution of step "load_data.compute" in 124ms.
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - clean_data.compute - STEP_START - Started execution of step "clean_data.compute".
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - clean_data.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input loaded_data in memory object store using pickle.
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - clean_data.compute - STEP_INPUT - Got input "loaded_data" of type "Any". (Type check passed).
+    [32m2021-02-05 16:31:18[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - clean_data.compute - STEP_INPUT - Got input "intermediate_data_dir" of type "String". (Type check passed).
+    [32m2021-02-05 16:31:47[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - clean_data.compute - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+    [32m2021-02-05 16:31:47[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - clean_data.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
+    [32m2021-02-05 16:31:47[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - clean_data.compute - STEP_SUCCESS - Finished execution of step "clean_data.compute" in 29.07s.
+    [32m2021-02-05 16:31:47[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - construct_battery_profile.compute - STEP_START - Started execution of step "construct_battery_profile.compute".
+    [32m2021-02-05 16:31:47[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - construct_battery_profile.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input cleaned_data_dir in memory object store using pickle.
+    [32m2021-02-05 16:31:47[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - construct_battery_profile.compute - STEP_INPUT - Got input "cleaned_data_dir" of type "String". (Type check passed).
+    [32m2021-02-05 16:31:47[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - construct_battery_profile.compute - STEP_INPUT - Got input "raw_data_dir" of type "String". (Type check passed).
+    [32m2021-02-05 16:31:47[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - construct_battery_profile.compute - STEP_INPUT - Got input "discharge_opt_model_fp" of type "String". (Type check passed).
+    [32m2021-02-05 16:31:48[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - construct_battery_profile.compute - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+    [32m2021-02-05 16:31:48[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - construct_battery_profile.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
+    [32m2021-02-05 16:31:48[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - construct_battery_profile.compute - STEP_SUCCESS - Finished execution of step "construct_battery_profile.compute" in 660ms.
+    [32m2021-02-05 16:31:48[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - fit_and_save_discharge_model.compute - STEP_START - Started execution of step "fit_and_save_discharge_model.compute".
+    [32m2021-02-05 16:31:48[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - fit_and_save_discharge_model.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input intermediate_data_dir in memory object store using pickle.
+    [32m2021-02-05 16:31:48[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - fit_and_save_discharge_model.compute - STEP_INPUT - Got input "intermediate_data_dir" of type "String". (Type check passed).
+    [32m2021-02-05 16:31:48[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - fit_and_save_discharge_model.compute - STEP_INPUT - Got input "discharge_opt_model_fp" of type "String". (Type check passed).
+    [32m2021-02-05 16:31:48[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - fit_and_save_discharge_model.compute - STEP_INPUT - Got input "model_params" of type "dict". (Type check passed).
+    [32m2021-02-05 16:31:51[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - fit_and_save_discharge_model.compute - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+    [32m2021-02-05 16:31:51[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - fit_and_save_discharge_model.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
+    [32m2021-02-05 16:31:51[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - fit_and_save_discharge_model.compute - STEP_SUCCESS - Finished execution of step "fit_and_save_discharge_model.compute" in 2.72s.
+    [32m2021-02-05 16:31:51[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - ENGINE_EVENT - Finished steps in process (pid: 22040) in 32.61s
+    [32m2021-02-05 16:31:51[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 84fbd0bf-b030-4059-bd61-1023b3c6c933 - 22040 - PIPELINE_SUCCESS - Finished execution of pipeline "end_to_end_pipeline".
     
 
 
 
 
-    <dagster.core.execution.results.PipelineExecutionResult at 0x17f0e037c40>
+    <dagster.core.execution.results.PipelineExecutionResult at 0x1abe5f7cd90>
 
 
 
