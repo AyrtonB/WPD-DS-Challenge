@@ -9,4 +9,4 @@ import pandas as pd
 from dagster import execute_pipeline, pipeline, solid, Field
 
 import os
-from batopt import clean, discharge
+from batopt import clean, discharge, charge
