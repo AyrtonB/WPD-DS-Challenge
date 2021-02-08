@@ -2,10 +2,9 @@
 
 __all__ = ['estimate_daily_solar_quantiles', 'dts', 'x', 'y', 'rerun_daily_solar_model', 'daily_solar_filename',
            'extract_solar_profile', 'charge_profile_greedy', 'topup_charge_naive', 'optimal_charge_profile',
-           'random_solar_profile', 'x', 'construct_charge_profile', 'flatten_peak', 'random_solar_profile',
-           'adj_random_solar_profile', 'charge_profile', 'construct_charge_s', 'construct_df_charge_features',
-           'extract_charging_datetimes', 'prepare_training_input_data', 'normalise_total_charge', 'clip_charge_rate',
-           'post_pred_charge_proc_func']
+           'random_solar_profile', 'x', 'construct_charge_profile', 'construct_charge_s',
+           'construct_df_charge_features', 'extract_charging_datetimes', 'prepare_training_input_data',
+           'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func']
 
 # Cell
 import numpy as np
@@ -91,51 +90,6 @@ plt.plot(x)
 construct_charge_profile = lambda solar_profile, adj_solar_profile: solar_profile - adj_solar_profile
 
 # Cell
-def flatten_peak(evening_demand_profile, charge=6, max_charge_rate=2.5, time_unit=0.5):
-    peak = max(evening_demand_profile)
-    adj_evening_demand_profile = evening_demand_profile.copy()
-
-    while charge > 0:
-        num_periods_plateaued = (evening_demand_profile>=peak).sum()
-
-        # If the evening demand profile has been fully flattened
-        # then split up the remaining charge equally across all SPs
-        fully_flattened = len(set(adj_evening_demand_profile)) == 1
-
-        if fully_flattened == True:
-            remaining_discharge_rate_for_each_SP = (1/time_unit)*charge/len(adj_evening_demand_profile)
-            adj_evening_demand_profile -= remaining_discharge_rate_for_each_SP
-            charge = 0
-            break
-
-        # If there is still a peak then determine the next highest value
-        else:
-            peak = max(adj_evening_demand_profile)
-            highest_non_peak = max(adj_evening_demand_profile[peak>adj_evening_demand_profile])
-
-            proposed_additional_discharge = time_unit*(adj_evening_demand_profile.sum() - np.minimum(adj_evening_demand_profile, highest_non_peak).sum())
-
-        # if its possible to reduce the peak to the next highest value do so
-        if charge >= proposed_additional_discharge:
-            adj_evening_demand_profile = np.minimum(adj_evening_demand_profile, highest_non_peak)
-            charge -= proposed_additional_discharge
-
-        # If the capacity constraints are broken when reducing to the next
-        # highest value then just lower the current peak as far as possible
-        else:
-            new_peak = peak - ((1/time_unit)*charge/(num_periods_plateaued+1))
-            adj_evening_demand_profile = np.minimum(adj_evening_demand_profile, new_peak)
-            charge = 0
-
-    return adj_evening_demand_profile
-
-random_solar_profile = discharge.sample_random_day(s_pv).pipe(extract_solar_profile)
-adj_random_solar_profile = flatten_peak(random_solar_profile)
-charge_profile = construct_charge_profile(random_solar_profile, adj_random_solar_profile)
-print(np.max(charge_profile))
-
-
-# Cell
 def construct_charge_s(s_pv, start_time='00:00', end_time='15:00'):
     s_charge = pd.Series(index=s_pv.index, dtype=float).fillna(0)
 
@@ -144,6 +98,7 @@ def construct_charge_s(s_pv, start_time='00:00', end_time='15:00'):
         adj_solar_profile = discharge.flatten_peak(solar_profile)
 
         charge_profile = construct_charge_profile(solar_profile, adj_solar_profile)
+
         s_charge[f'{dt} {start_time}':f'{dt} {end_time}'] = charge_profile
 
     return s_charge
