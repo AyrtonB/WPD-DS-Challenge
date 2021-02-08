@@ -4,7 +4,7 @@ __all__ = ['estimate_daily_solar_quantiles', 'extract_solar_profile', 'charge_pr
            'optimal_charge_profile', 'construct_charge_profile', 'construct_charge_s', 'charge_is_valid',
            'construct_df_charge_features', 'extract_charging_datetimes', 'prepare_training_input_data',
            'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func', 'fit_and_save_charging_model',
-           'optimise_latest_test_charge_profile']
+           'load_trained_model', 'optimise_latest_test_charge_profile']
 
 # Cell
 import numpy as np
@@ -184,11 +184,18 @@ def fit_and_save_charging_model(X, y, charge_opt_model_fp, model_class=RandomFor
     return
 
 # Cell
-def optimise_latest_test_charge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, latest_submission_template_name=None):
+def load_trained_model(charge_opt_model_fp):
+    with open(charge_opt_model_fp, 'rb') as fp:
+        model = joblib.load(fp)
+
+    return model
+
+# Cell
+def optimise_latest_test_charge_profile(raw_data_dir, intermediate_data_dir, charge_opt_model_fp, latest_submission_template_name=None):
     df_features = discharge.prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest_submission_template_name=latest_submission_template_name)
     charging_datetimes = extract_charging_datetimes(df_features)
     X_test = df_features.loc[charging_datetimes].values
-    model = discharge.load_trained_model(charge_opt_model_fp)
+    model = load_trained_model(charge_opt_model_fp)
     charge_profile = model.predict(X_test)
     charge_profile = pd.Series(charge_profile, index=charging_datetimes)
     charge_profile = charge_profile.reindex(df_features.index).fillna(0)
