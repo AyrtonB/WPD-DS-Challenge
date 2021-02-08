@@ -161,7 +161,9 @@ def normalise_total_charge(s_pred, charge=6., time_unit=0.5):
     s_daily_charge = s_pred.groupby(s_pred.index.date).sum()
 
     for date, total_charge in s_daily_charge.items():
-        s_pred.loc[str(date)] *= (charge/(time_unit*total_charge))
+
+        with np.errstate(invalid='ignore'):
+            s_pred.loc[str(date)] *= (charge/(time_unit*total_charge))
 
     return s_pred
 
