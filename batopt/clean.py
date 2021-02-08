@@ -3,7 +3,7 @@
 __all__ = ['reindex_df_dt_idx', 'load_training_dataset', 'combine_training_datasets', 'identify_df_dt_entries',
            'construct_df_temp_features', 'split_X_y_data', 'split_X_y_data_with_index', 'generate_kfold_preds',
            'evaluate_models', 'interpolate_missing_panel_temps', 'construct_df_irradiance_features',
-           'interpolate_missing_site_irradiance', 'construct_df_power_features', 'pv_anomalies_to_nan', 'df_pv',
+           'interpolate_missing_site_irradiance', 'construct_df_power_features', 'pv_anomalies_to_nan',
            'interpolate_missing_site_power', 'interpolate_missing_weather_solar']
 
 # Cell
@@ -250,8 +250,6 @@ def pv_anomalies_to_nan(df_pv, model=GradientBoostingRegressor(), tolerance=0.1)
     anomalous_idx = df_pred[(df_pred.difference > tolerance) & (df_pred.true == 0)]
     df_pv.loc[df_pv.index.isin(anomalous_idx), 'pv_power_mw'] = np.nan
     return df_pv
-
-df_pv = pv_anomalies_to_nan(df_pv)
 
 # Cell
 def interpolate_missing_site_power(df_pv, model=RandomForestRegressor()):
