@@ -6,7 +6,7 @@ __all__ = []
 import numpy as np
 import pandas as pd
 
-from dagster import execute_pipeline, pipeline, solid, Field
-
 import os
+
+from dagster import execute_pipeline, pipeline, solid, Field
 from batopt import clean, discharge, charge
