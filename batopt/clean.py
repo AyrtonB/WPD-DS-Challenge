@@ -240,15 +240,21 @@ def construct_df_power_features(df_pv):
 def pv_anomalies_to_nan(df_pv, model=GradientBoostingRegressor(), tolerance=0.1):
     """
     Run this function to identify places where predicted values for pv_power_mw are much larger
-    than true values and where the true value is 0: we expect these are anomalies.
+    than true values and where the true value is 0 (we expect these are anomalies) and make these values nan.
 
-    Make these values nan
     """
-    X, y, dates = split_X_y_data_with_index(df_pv, 'pv_power_mw')
+    df_power_features = construct_df_power_features(df_pv)
+
+    X, y, dates = split_X_y_data_with_index(df_power_features, 'pv_power_mw')
     df_pred = generate_kfold_preds(X, y, model)
     df_pred['difference'] = df_pred.pred - df_pred.true
-    anomalous_idx = df_pred[(df_pred.difference > tolerance) & (df_pred.true == 0)]
+    df_pred['datetime'] = dates
+    df_pred = df_pred.set_index('datetime')
+
+    anomalous_idx = df_pred[(df_pred.difference > tolerance) & (df_pred.true == 0)].index
+
     df_pv.loc[df_pv.index.isin(anomalous_idx), 'pv_power_mw'] = np.nan
+
     return df_pv
 
 # Cell
