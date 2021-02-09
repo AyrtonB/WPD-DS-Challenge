@@ -162,8 +162,8 @@ def normalise_total_charge(s_pred, charge=6., time_unit=0.5):
 
     for date, total_charge in s_daily_charge.items():
 
-        with np.errstate(invalid='ignore'):
-            s_pred.loc[str(date)] *= (charge/(time_unit*total_charge))
+        with np.errstate(divide='ignore', invalid='ignore'):
+            s_pred.loc[str(date)] = s_pred.loc[str(date)].values*charge/(time_unit*total_charge)
 
     return s_pred
 
