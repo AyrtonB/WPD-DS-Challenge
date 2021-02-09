@@ -24,7 +24,27 @@ A recording of the kick-off meeting can also be found [here](https://www.youtube
 
 ##### Battery Charging
 
-***To be added***
+The aim of this compoennt is to maximise the proportion of the battery's charge that comes from solar PV. The total battery charge can be written as:
+
+<img src="https://render.githubusercontent.com/render/math?math=B_{d,k} = P_{d,k} %2B G_{d,k}">
+
+where <img src="https://render.githubusercontent.com/render/math?math=P_{d,k}"> is the power drawn to the battery from solar generation on day <img src="https://render.githubusercontent.com/render/math?math=d">, period <img src="https://render.githubusercontent.com/render/math?math=k"> , and <img src="https://render.githubusercontent.com/render/math?math=G_{d,k}"> is that drawn from the grid. 
+
+Whenever the battery is charging, it will draw from solar PV as much as possible, and take the remainder from the grid. We can therefore express that for a period <img src="https://render.githubusercontent.com/render/math?math=k">, the battery will draw from PV an amount:
+
+<img src="https://render.githubusercontent.com/render/math?math=P_k = \min(B_k, P_k^{Total})"> 
+
+The remainder is drawn from the grid: 
+
+<img src="https://render.githubusercontent.com/render/math?math=G_k = P_k - B_k">
+
+The proportion of energy stored in the battery from solar PV on day <img src="https://render.githubusercontent.com/render/math?math=d"> is expressed as: 
+
+<img src="https://render.githubusercontent.com/render/math?math=p_{d,1} = \frac{\sum_{k=1}^31 P_{d,k}}{\sum_{k=1}^31 B_{d,k}}">
+
+An equivalent expression gives the proportion of energy stored in the battery that was drawn from the grid, <img src="https://render.githubusercontent.com/render/math?math=p_{d,2}">.
+
+The scoring function is proportional to <img src="https://render.githubusercontent.com/render/math?math=3p_{d,1} %2B p_{d,2}">. We therefore want to maximise <img src="https://render.githubusercontent.com/render/math?math=p_{d,1}"> by coinciding our battery charging with the solar PV generation. Note that the minimum score that can be gained from this component is 1 (entirely charged from grid), and the maximum is 3 (entirely charged from solar PV).
 
 <br>
 
