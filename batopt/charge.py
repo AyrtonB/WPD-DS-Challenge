@@ -4,7 +4,7 @@ __all__ = ['estimate_daily_solar_quantiles', 'extract_solar_profile', 'charge_pr
            'optimal_charge_profile', 'construct_charge_profile', 'construct_charge_s', 'charge_is_valid',
            'construct_df_charge_features', 'extract_charging_datetimes', 'prepare_training_input_data',
            'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func', 'fit_and_save_charging_model',
-           'load_trained_model', 'optimise_latest_test_charge_profile']
+           'prepare_latest_test_feature_data', 'optimise_latest_test_charge_profile']
 
 # Cell
 import numpy as np
@@ -145,7 +145,7 @@ def prepare_training_input_data(intermediate_data_dir):
     s_pv = df.loc[dt_idx, 'pv_power_mw']
     df_features = df_features.loc[dt_idx]
 
-    # Constructing the discharge series
+    # Constructing the charge series
     s_charge = construct_charge_s(s_pv, start_time='00:00', end_time='15:00')
 
     # Filtering for evening datetimes
@@ -154,20 +154,19 @@ def prepare_training_input_data(intermediate_data_dir):
     X = df_features.loc[charging_datetimes]
     y = s_charge.loc[charging_datetimes]
 
-    return X, y, charging_datetimes
+    return X, y
 
 # Cell
 def normalise_total_charge(s_pred, charge=6., time_unit=0.5):
     s_daily_charge = s_pred.groupby(s_pred.index.date).sum()
 
     for date, total_charge in s_daily_charge.items():
-
         with np.errstate(divide='ignore', invalid='ignore'):
-            s_pred.loc[str(date)] = s_pred.loc[str(date)].values*charge/(time_unit*total_charge)
+            s_pred.loc[str(date)] *= charge/(time_unit*total_charge)
 
     return s_pred
 
-clip_charge_rate = lambda s_pred, max_rate=2.5, min_rate=0: s_pred.clip(lower=max_rate, upper=min_rate)
+clip_charge_rate = lambda s_pred, max_rate=2.5, min_rate=0: s_pred.clip(lower=min_rate, upper=max_rate)
 
 post_pred_charge_proc_func = lambda s_pred: (s_pred
                                       .pipe(clip_charge_rate)
@@ -186,23 +185,34 @@ def fit_and_save_charging_model(X, y, charge_opt_model_fp, model_class=RandomFor
     return
 
 # Cell
-def load_trained_model(charge_opt_model_fp):
-    with open(charge_opt_model_fp, 'rb') as fp:
-        model = joblib.load(fp)
+def prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest_submission_template_name=None):
+    # Loading input data
+    df_features = (clean
+                   .combine_training_datasets(intermediate_data_dir)
+                   .interpolate(limit=1)
+                   .pipe(construct_df_charge_features)
+                  )
 
-    return model
+    df_submission_template = discharge.load_latest_submission_template(raw_data_dir, latest_submission_template_name=latest_submission_template_name)
+
+    # Filtering feature data on submission datetimes
+    df_features = df_features.loc[df_submission_template.index]
+
+    return df_features
 
 # Cell
 def optimise_latest_test_charge_profile(raw_data_dir, intermediate_data_dir, charge_opt_model_fp, latest_submission_template_name=None):
-    df_features = discharge.prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest_submission_template_name=latest_submission_template_name)
+    df_features = prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest_submission_template_name=latest_submission_template_name)
     charging_datetimes = extract_charging_datetimes(df_features)
     X_test = df_features.loc[charging_datetimes].values
-    model = load_trained_model(charge_opt_model_fp)
+
+    model = discharge.load_trained_model(charge_opt_model_fp)
     charge_profile = model.predict(X_test)
-    charge_profile = pd.Series(charge_profile, index=charging_datetimes)
-    charge_profile = charge_profile.reindex(df_features.index).fillna(0)
-    charge_profile = post_pred_charge_proc_func(charge_profile)
 
-    assert charge_is_valid(charge_profile), "Charging profile is invalid"
+    s_charge_profile = pd.Series(charge_profile, index=charging_datetimes)
+    s_charge_profile = s_charge_profile.reindex(df_features.index).fillna(0)
+    s_charge_profile = post_pred_charge_proc_func(s_charge_profile)
 
-    return charge_profile
+    assert charge_is_valid(s_charge_profile), "Charging profile is invalid"
+
+    return s_charge_profile
