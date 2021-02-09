@@ -2,6 +2,10 @@
 
 This repository includes the workflow used by the UCL ESAIL team for submissions to the Western Power Distribition Data Science competition.
 
+An example charging profile from our latest submission can be seen below
+
+![submission_timeseries](img/latest_submission.png)
+
 <br>
 <br>
 
