@@ -71,13 +71,15 @@ index = {"bayes_search_CV_init": "00-utilities.ipynb",
          "clip_charge_rate": "03-battery-charge.ipynb",
          "post_pred_charge_proc_func": "03-battery-charge.ipynb",
          "fit_and_save_charging_model": "03-battery-charge.ipynb",
-         "optimise_latest_test_charge_profile": "03-battery-charge.ipynb"}
+         "optimise_latest_test_charge_profile": "03-battery-charge.ipynb",
+         "charge_to_capacity": "04-battery-constraints.ipynb",
+         "schedule_is_legal": "04-battery-constraints.ipynb"}
 
 modules = ["utils.py",
            "clean.py",
            "discharge.py",
            "charge.py",
-           "battery.py",
+           "constraints.py",
            "eval.py",
            "pipeline.py"]
 
