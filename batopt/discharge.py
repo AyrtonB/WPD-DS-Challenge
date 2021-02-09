@@ -3,7 +3,7 @@
 __all__ = ['construct_df_discharge_features', 'estimate_daily_demand_quantiles', 'sample_random_day',
            'sample_random_days', 'reset_idx_dt', 'extract_evening_demand_profile', 'flatten_peak',
            'construct_discharge_profile', 'construct_discharge_s', 'extract_evening_datetimes',
-           'normalise_total_discharge', 'clip_discharge_rate', 'post_pred_proc_func',
+           'normalise_total_discharge', 'clip_discharge_rate', 'post_pred_discharge_proc_func',
            'construct_peak_reduction_calculator', 'evaluate_discharge_models', 'prepare_training_input_data',
            'fit_and_save_model', 'load_trained_model', 'load_latest_submission_template',
            'prepare_latest_test_feature_data', 'optimise_latest_test_discharge_profile']
@@ -178,10 +178,10 @@ def normalise_total_discharge(s_pred, charge=6, time_unit=0.5):
 clip_discharge_rate = lambda s_pred, max_rate=-2.5, min_rate=0: s_pred.clip(lower=max_rate, upper=min_rate)
 
 # Cell
-post_pred_proc_func = lambda s_pred: (s_pred
-                                      .pipe(clip_discharge_rate)
-                                      .pipe(normalise_total_discharge)
-                                     )
+post_pred_discharge_proc_func = lambda s_pred: (s_pred
+                                                .pipe(clip_discharge_rate)
+                                                .pipe(normalise_total_discharge)
+                                               )
 
 # Cell
 def construct_peak_reduction_calculator(s_demand, evening_datetimes=None, scorer=False):
@@ -230,7 +230,7 @@ def evaluate_discharge_models(df, models, features_kwargs={}):
 
     for model_name, model in track(models.items()):
         df_pred = clean.generate_kfold_preds(X, y, model, index=evening_datetimes)
-        df_pred['pred'] = post_pred_proc_func(df_pred['pred'])
+        df_pred['pred'] = post_pred_discharge_proc_func(df_pred['pred'])
 
         model_scores[model_name] = {
             'pct_optimal_reduction': peak_reduction_calc(df_pred['true'], df_pred['pred']),
@@ -323,5 +323,6 @@ def optimise_latest_test_discharge_profile(raw_data_dir, intermediate_data_dir, 
 
     s_discharge_profile = pd.Series(discharge_profile, index=evening_datetimes)
     s_discharge_profile = s_discharge_profile.reindex(df_features.index).fillna(0)
+    s_discharge_profile = post_pred_discharge_proc_func(s_discharge_profile)
 
     return s_discharge_profile
