@@ -178,10 +178,6 @@ def normalise_total_discharge(s_pred, charge=6, time_unit=0.5):
 clip_discharge_rate = lambda s_pred, max_rate=-2.5, min_rate=0: s_pred.clip(lower=max_rate, upper=min_rate)
 
 # Cell
-# post_pred_proc_func = lambda s_pred: (s_pred
-#                                       .pipe(normalise_total_discharge)
-#                                       .pipe(clip_discharge_rate)
-#                                      )
 post_pred_proc_func = lambda s_pred: (s_pred
                                       .pipe(clip_discharge_rate)
                                       .pipe(normalise_total_discharge)
