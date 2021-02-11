@@ -3,8 +3,9 @@
 __all__ = ['estimate_daily_solar_quantiles', 'extract_solar_profile', 'charge_profile_greedy', 'topup_charge_naive',
            'optimal_charge_profile', 'construct_charge_profile', 'construct_charge_s', 'charge_is_valid',
            'construct_df_charge_features', 'extract_charging_datetimes', 'prepare_training_input_data',
-           'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func', 'fit_and_save_charging_model',
-           'prepare_latest_test_feature_data', 'optimise_latest_test_charge_profile']
+           'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func', 'prop_max_solar',
+           'construct_solar_exploit_calculator', 'fit_and_save_charging_model', 'prepare_latest_test_feature_data',
+           'optimise_latest_test_charge_profile']
 
 # Cell
 import numpy as np
@@ -15,11 +16,16 @@ import seaborn as sns
 import joblib
 
 from moepy.lowess import quantile_model
+
+from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import make_scorer, r2_score, mean_absolute_error, mean_squared_error
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 
-from batopt import clean
-from batopt import discharge
+from skopt.plots import plot_objective
+from skopt.space import Real, Categorical, Integer
+
+from batopt import clean, discharge, utils
 
 import FEAutils as hlp
 
@@ -77,7 +83,7 @@ def construct_charge_s(s_pv, start_time='00:00', end_time='15:00'):
     s_charge = pd.Series(index=s_pv.index, dtype=float).fillna(0)
 
     for dt in s_pv.index.strftime('%Y-%m-%d').unique():
-        solar_profile = s_pv[dt].pipe(extract_solar_profile)
+        solar_profile = s_pv[dt].pipe(extract_solar_profile, start_time=start_time, end_time=end_time)
         adj_solar_profile = discharge.flatten_peak(solar_profile)
 
         charge_profile = construct_charge_profile(solar_profile, adj_solar_profile)
@@ -127,7 +133,7 @@ def construct_df_charge_features(df, dt_rng=None):
     return df_features
 
 #exports
-def extract_charging_datetimes(df, start_hour=0, end_hour=15):
+def extract_charging_datetimes(df, start_hour=4, end_hour=15):
     hour = df.index.hour + df.index.minute/60
     charging_datetimes = df.index[(hour>=start_hour) & (hour<=end_hour)]
 
@@ -173,6 +179,35 @@ post_pred_charge_proc_func = lambda s_pred: (s_pred
                                       .pipe(normalise_total_charge)
                                      )
 
+
+# Cell
+def prop_max_solar(schedule, solar_profile, time_unit=0.5):
+    """
+    Get the proportion of maximum solar exploitation for charging schedule, given a solar PV profile
+    """
+    actual_pv_charge = np.sum(np.minimum(schedule, solar_profile)*time_unit)
+    max_pv_charge = max_available_solar(solar_profile)
+    return actual_pv_charge/max_pv_charge
+
+def construct_solar_exploit_calculator(solar_profile, charging_datetimes=None, scorer=False):
+    if charging_datetimes is None:
+        charging_datetimes = extract_charging_datetimes(solar_profile)
+
+    def calc_solar_exploitation(y, y_pred):
+        # Checking evening datetimes
+        if hasattr(y_pred, 'index') == True:
+            charging_datetimes = extract_charging_datetimes(y_pred)
+
+        assert y_pred.shape[0] == solar_profile.loc[charging_datetimes].shape[0], f'The prediction series must be the same length as the number of evening datetimes in the main dataframe, {y_pred.shape[0]} {s_demand.loc[evening_datetimes].shape[0]}'
+
+        exploitation_pct = 100 * prop_max_solar(y_pred, solar_profile.loc[charging_datetimes])
+
+        return exploitation_pct
+
+    if scorer == True:
+        return make_scorer(calc_solar_exploitation)
+    else:
+        return calc_solar_exploitation
 
 # Cell
 def fit_and_save_charging_model(X, y, charge_opt_model_fp, model_class=RandomForestRegressor, **model_params):
