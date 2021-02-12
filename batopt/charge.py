@@ -133,7 +133,7 @@ def construct_df_charge_features(df, dt_rng=None):
     return df_features
 
 #exports
-def extract_charging_datetimes(df, start_hour=4, end_hour=15):
+def extract_charging_datetimes(df, start_hour=0, end_hour=15):
     hour = df.index.hour + df.index.minute/60
     charging_datetimes = df.index[(hour>=start_hour) & (hour<=end_hour)]
 
@@ -146,16 +146,16 @@ def prepare_training_input_data(intermediate_data_dir):
     df_features = construct_df_charge_features(df)
 
     # Filtering for overlapping feature and target data
-    dt_idx = pd.date_range(df_features.index.min(), df['demand_MW'].dropna().index.max()-pd.Timedelta(minutes=30), freq='30T')
+    dt_idx = pd.date_range(df_features.index.min(), df['pv_power_mw'].dropna().index.max()-pd.Timedelta(minutes=30), freq='30T')
 
     s_pv = df.loc[dt_idx, 'pv_power_mw']
     df_features = df_features.loc[dt_idx]
 
     # Constructing the charge series
-    s_charge = construct_charge_s(s_pv, start_time='00:00', end_time='15:00')
+    s_charge = construct_charge_s(s_pv, start_time='04:00', end_time='15:00')
 
     # Filtering for evening datetimes
-    charging_datetimes = extract_charging_datetimes(df_features)
+    charging_datetimes = extract_charging_datetimes(df_features, start_hour=4)
 
     X = df_features.loc[charging_datetimes]
     y = s_charge.loc[charging_datetimes]
