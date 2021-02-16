@@ -99,6 +99,7 @@ modules = ["utils.py",
            "discharge.py",
            "charge.py",
            "constraints.py",
+           "tuning.py",
            "pipeline.py"]
 
 doc_url = "https://AyrtonB.github.io/WPD-DS-Challenge/"
