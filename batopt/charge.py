@@ -117,7 +117,12 @@ def construct_df_charge_features(df, dt_rng=None):
     df_features = df_features.ffill(limit=1)
 
     # Adding lagged demand
-    df_features['demand_7d_lag'] = df['demand_MW'].shift(48*7)
+    df_features['solar_7d_lag'] = df['pv_power_mw'].shift(48*7)
+
+    # Adding solar irradiance data
+    solar_loc_cols = df.columns[df.columns.str.contains('solar_location')]
+    df_features.loc[df.index, solar_loc_cols] = df[solar_loc_cols].copy()
+    df_features = df_features.ffill(limit=1)
 
     # Adding datetime features
     dts = df_features.index.tz_convert('Europe/London') # We want to use the 'behavioural' timezone
@@ -133,14 +138,14 @@ def construct_df_charge_features(df, dt_rng=None):
     return df_features
 
 #exports
-def extract_charging_datetimes(df, start_hour=0, end_hour=15):
+def extract_charging_datetimes(df, start_hour=4, end_hour=15):
     hour = df.index.hour + df.index.minute/60
     charging_datetimes = df.index[(hour>=start_hour) & (hour<=end_hour)]
 
     return charging_datetimes
 
 # Cell
-def prepare_training_input_data(intermediate_data_dir):
+def prepare_training_input_data(intermediate_data_dir, start_hour=5):
     # Loading input data
     df = clean.combine_training_datasets(intermediate_data_dir).interpolate(limit=1)
     df_features = construct_df_charge_features(df)
@@ -152,10 +157,10 @@ def prepare_training_input_data(intermediate_data_dir):
     df_features = df_features.loc[dt_idx]
 
     # Constructing the charge series
-    s_charge = construct_charge_s(s_pv, start_time='04:00', end_time='15:00')
+    s_charge = construct_charge_s(s_pv, start_time=f'0{start_hour}:00', end_time='15:00')
 
     # Filtering for evening datetimes
-    charging_datetimes = extract_charging_datetimes(df_features, start_hour=4)
+    charging_datetimes = extract_charging_datetimes(df_features, start_hour=start_hour)
 
     X = df_features.loc[charging_datetimes]
     y = s_charge.loc[charging_datetimes]
