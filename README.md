@@ -138,3 +138,11 @@ from nbdev.export import notebook2script
     
 notebook2script()
 ```
+
+<br>
+<br>
+
+### Potential Research Questions
+
+* How does the relative importance of the discharge and charge models change seasonally?
+* How much harder is it to optimise when the real-time grid carbon intensity is used?
