@@ -21,9 +21,6 @@ from sklearn.metrics import make_scorer, r2_score, mean_absolute_error, mean_squ
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 
-from skopt.plots import plot_objective
-from skopt.space import Real, Categorical, Integer
-
 from statsmodels.tsa.stattools import acf
 from moepy.lowess import Lowess, quantile_model
 
@@ -194,6 +191,9 @@ def construct_peak_reduction_calculator(s_demand, evening_datetimes=None, scorer
             evening_datetimes = extract_evening_datetimes(y_pred)
 
         assert y_pred.shape[0] == s_demand.loc[evening_datetimes].shape[0], f'The prediction series must be the same length as the number of evening datetimes in the main dataframe, {y_pred.shape[0]} {s_demand.loc[evening_datetimes].shape[0]}'
+
+        # Post-processing the discharge profile to handle constraints
+        y_pred = post_pred_discharge_proc_func(y_pred)
 
         # Identifying daily peaks
         s_old_peaks = s_demand.loc[evening_datetimes].groupby(evening_datetimes.date).max()
