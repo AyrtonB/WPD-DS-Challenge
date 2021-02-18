@@ -44,8 +44,17 @@ def construct_df_discharge_features(df, dt_rng=None):
     df_features.loc[df.index, temp_loc_cols] = df[temp_loc_cols].copy()
     df_features = df_features.ffill(limit=1)
 
+    df_features['spatial_avg_temp'] = df_features.mean(axis=1)
+    df_features['daily_avg_temp'] = pd.Series(df_features.index.date, index=df_features.index).map(df_features['spatial_avg_temp'].groupby(df_features.index.date).mean().to_dict())
+
     # Adding lagged demand
-    df_features['demand_7d_lag'] = df['demand_MW'].shift(48*7)
+    df_features['SP_demand_7d_lag'] = df['demand_MW'].shift(48*7)
+
+    s_evening_demand = df['demand_MW'].between_time('15:30', '21:00')
+    dt_to_lagged_evening_avg = s_evening_demand.groupby(s_evening_demand.index.date).mean().shift(7).to_dict()
+    dt_to_lagged_evening_max = s_evening_demand.groupby(s_evening_demand.index.date).max().shift(7).to_dict()
+    df_features['evening_demand_avg_7d_lag'] = pd.Series(df_features.index.date, index=df_features.index).map(dt_to_lagged_evening_avg)
+    df_features['evening_demand_max_7d_lag'] = pd.Series(df_features.index.date, index=df_features.index).map(dt_to_lagged_evening_max)
 
     # Adding datetime features
     dts = df_features.index.tz_convert('Europe/London') # We want to use the 'behavioural' timezone
