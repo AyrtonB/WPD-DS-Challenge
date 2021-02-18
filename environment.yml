@@ -16,7 +16,8 @@ dependencies:
   - dagster
   - lxml
   - scikit-learn
-  - scikit-optimize
+#   - scikit-optimize # currently installing from Git due to old plotting error in the conda install
+  - mlxtend
   - typer
   - pip
   
@@ -30,3 +31,4 @@ dependencies:
       - mkdocstrings
       - configparser
       - junix
+      - git+https://github.com/scikit-optimize/scikit-optimize.git
