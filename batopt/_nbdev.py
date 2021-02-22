@@ -52,7 +52,7 @@ index = {"bayes_search_CV_init": "00-utilities.ipynb",
          "post_pred_discharge_proc_func": "02-discharging.ipynb",
          "construct_peak_reduction_calculator": "02-discharging.ipynb",
          "evaluate_discharge_models": "02-discharging.ipynb",
-         "prepare_training_input_data": "03-charging.ipynb",
+         "prepare_training_input_data": "08-pv-forecast.ipynb",
          "fit_and_save_model": "02-discharging.ipynb",
          "load_trained_model": "02-discharging.ipynb",
          "load_latest_submission_template": "02-discharging.ipynb",
@@ -71,6 +71,8 @@ index = {"bayes_search_CV_init": "00-utilities.ipynb",
          "normalise_total_charge": "03-charging.ipynb",
          "clip_charge_rate": "03-charging.ipynb",
          "post_pred_charge_proc_func": "03-charging.ipynb",
+         "score_charging": "03-charging.ipynb",
+         "max_available_solar": "03-charging.ipynb",
          "prop_max_solar": "03-charging.ipynb",
          "construct_solar_exploit_calculator": "03-charging.ipynb",
          "fit_and_save_charging_model": "03-charging.ipynb",
@@ -94,7 +96,10 @@ index = {"bayes_search_CV_init": "00-utilities.ipynb",
          "all_inactive_periods_do_nothing": "04-constraints.ipynb",
          "schedule_is_legal": "04-constraints.ipynb",
          "calculate_pct_peak_reduction_s": "05-tuning.ipynb",
-         "calculate_emissions_factor_s": "05-tuning.ipynb"}
+         "calculate_emissions_factor_s": "05-tuning.ipynb",
+         "plot_random_day": "08-pv-forecast.ipynb",
+         "generate_kfold_charge_preds": "08-pv-forecast.ipynb",
+         "predict_charge": "08-pv-forecast.ipynb"}
 
 modules = ["utils.py",
            "clean.py",
@@ -102,7 +107,8 @@ modules = ["utils.py",
            "charge.py",
            "constraints.py",
            "tuning.py",
-           "pipeline.py"]
+           "pipeline.py",
+           "pv_forecast.py"]
 
 doc_url = "https://AyrtonB.github.io/WPD-DS-Challenge/"
 
