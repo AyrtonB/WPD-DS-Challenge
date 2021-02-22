@@ -92,7 +92,9 @@ index = {"bayes_search_CV_init": "00-utilities.ipynb",
          "all_charge_periods_charge": "04-constraints.ipynb",
          "all_discharge_periods_discharge": "04-constraints.ipynb",
          "all_inactive_periods_do_nothing": "04-constraints.ipynb",
-         "schedule_is_legal": "04-constraints.ipynb"}
+         "schedule_is_legal": "04-constraints.ipynb",
+         "calculate_pct_peak_reduction_s": "05-tuning.ipynb",
+         "calculate_emissions_factor_s": "05-tuning.ipynb"}
 
 modules = ["utils.py",
            "clean.py",
