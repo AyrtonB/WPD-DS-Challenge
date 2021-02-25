@@ -3,9 +3,9 @@
 __all__ = ['estimate_daily_solar_quantiles', 'extract_solar_profile', 'charge_profile_greedy', 'topup_charge_naive',
            'optimal_charge_profile', 'construct_charge_profile', 'construct_charge_s', 'charge_is_valid',
            'construct_df_charge_features', 'extract_charging_datetimes', 'prepare_training_input_data',
-           'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func', 'prop_max_solar',
-           'construct_solar_exploit_calculator', 'fit_and_save_charging_model', 'prepare_latest_test_feature_data',
-           'optimise_latest_test_charge_profile']
+           'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func', 'score_charging',
+           'max_available_solar', 'prop_max_solar', 'construct_solar_exploit_calculator', 'fit_and_save_charging_model',
+           'prepare_latest_test_feature_data', 'optimise_latest_test_charge_profile']
 
 # Cell
 import numpy as np
@@ -184,6 +184,25 @@ post_pred_charge_proc_func = lambda s_pred: (s_pred
                                       .pipe(normalise_total_charge)
                                      )
 
+
+# Cell
+def score_charging(schedule, solar_profile):
+    # The actual pv charge is the minimum of the scheduled charge and the actual solar availability
+    actual_pv_charge = np.minimum(schedule, solar_profile)
+    score = np.sum(actual_pv_charge)/np.sum(schedule)
+    return score
+
+# Cell
+def max_available_solar(solar_profile, max_charge_rate=2.5, capacity_mwh=6, time_unit=0.5):
+    """
+    Return the solar PV potential available to the battery.
+
+    That is, the total PV potential with a daily cap of 6 MWh.
+    """
+    available = solar_profile.clip(0,2.5).groupby(solar_profile.index.date).sum() * time_unit
+    clipped = np.clip(available.values, 0, capacity_mwh)
+    total = np.sum(clipped)
+    return total
 
 # Cell
 def prop_max_solar(schedule, solar_profile, time_unit=0.5):
