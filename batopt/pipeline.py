@@ -9,4 +9,13 @@ import pandas as pd
 import os
 
 from dagster import execute_pipeline, pipeline, solid, Field
-from batopt import clean, discharge, charge, constraints
+from batopt import clean, discharge, charge, constraints, pv
+
+# Cell
+import numpy as np
+import pandas as pd
+
+import os
+
+from dagster import execute_pipeline, pipeline, solid, Field
+from batopt import clean, discharge, charge, constraints, pv
