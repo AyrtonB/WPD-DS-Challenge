@@ -76,7 +76,7 @@ index = {"bayes_search_CV_init": "00-utilities.ipynb",
          "prop_max_solar": "03-charging.ipynb",
          "construct_solar_exploit_calculator": "03-charging.ipynb",
          "fit_and_save_charging_model": "03-charging.ipynb",
-         "optimise_latest_test_charge_profile": "03-charging.ipynb",
+         "optimise_latest_test_charge_profile": "08-pv-forecast.ipynb",
          "check_for_nulls": "04-constraints.ipynb",
          "construct_charge_state_s": "04-constraints.ipynb",
          "check_capacity_constraints": "04-constraints.ipynb",
@@ -98,8 +98,10 @@ index = {"bayes_search_CV_init": "00-utilities.ipynb",
          "calculate_pct_peak_reduction_s": "05-tuning.ipynb",
          "calculate_emissions_factor_s": "05-tuning.ipynb",
          "plot_random_day": "08-pv-forecast.ipynb",
+         "generate_kfold_preds_weeks": "08-pv-forecast.ipynb",
          "generate_kfold_charge_preds": "08-pv-forecast.ipynb",
-         "predict_charge": "08-pv-forecast.ipynb"}
+         "predict_charge": "08-pv-forecast.ipynb",
+         "fit_and_save_pv_model": "08-pv-forecast.ipynb"}
 
 modules = ["utils.py",
            "clean.py",
@@ -108,7 +110,7 @@ modules = ["utils.py",
            "constraints.py",
            "tuning.py",
            "pipeline.py",
-           "pv_forecast.py"]
+           "pv.py"]
 
 doc_url = "https://AyrtonB.github.io/WPD-DS-Challenge/"
 
