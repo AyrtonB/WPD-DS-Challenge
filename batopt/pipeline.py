@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 import os
+from sklearn.ensemble import RandomForestRegressor
 
 from dagster import execute_pipeline, pipeline, solid, Field
 from batopt import clean, discharge, charge, constraints, pv
