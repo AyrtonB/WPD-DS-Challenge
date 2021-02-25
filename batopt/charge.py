@@ -116,8 +116,8 @@ def construct_df_charge_features(df, dt_rng=None):
     df_features.loc[df.index, temp_loc_cols] = df[temp_loc_cols].copy()
     df_features = df_features.ffill(limit=1)
 
-    # Adding lagged demand
-    df_features['solar_7d_lag'] = df['pv_power_mw'].shift(48*7)
+    # Adding lagged solar
+    df_features['pv_7d_lag'] = df['pv_power_mw'].shift(48*7)
 
     # Adding solar irradiance data
     solar_loc_cols = df.columns[df.columns.str.contains('solar_location')]
@@ -127,13 +127,24 @@ def construct_df_charge_features(df, dt_rng=None):
     # Adding datetime features
     dts = df_features.index.tz_convert('Europe/London') # We want to use the 'behavioural' timezone
 
-    df_features['weekend'] = dts.dayofweek.isin([5, 6]).astype(int)
-    df_features['hour'] = dts.hour + dts.minute/60
-    df_features['doy'] = dts.dayofyear
-    df_features['dow'] = dts.dayofweek
+#     df_features['weekend'] = dts.dayofweek.isin([5, 6]).astype(int)
+#     df_features['hour'] = dts.hour + dts.minute/60
+#     df_features['doy'] = dts.dayofyear
+#     df_features['dow'] = dts.dayofweek
+
+    hour = dts.hour + dts.minute/60
+    df_features['sin_hour'] = np.sin(2*np.pi*hour/24)
+    df_features['cos_hour'] = np.cos(2*np.pi*hour/24)
+
+    df_features['sin_doy'] = np.sin(2*np.pi*dts.dayofyear/365)
+    df_features['cos_doy'] = np.cos(2*np.pi*dts.dayofyear/365)
 
     # Removing NaN values
     df_features = df_features.dropna()
+
+    # Removing some extraneous features
+    cols = [c for c in df_features.columns if 'solar_location4' not in c and 'solar_location1' not in c]
+    df_features = df_features.filter(cols)
 
     return df_features
 
