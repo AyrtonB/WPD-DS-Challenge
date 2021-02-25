@@ -9,6 +9,18 @@ An example charging profile from our latest submission can be seen below
 <br>
 <br>
 
+### To Do
+
+- [ ] One more check for dodgy data in inputs (will probs have to do each week)
+- [x] Download holiday dates
+- [ ] Add holiday dates as features
+- [ ] Add in later oversampling
+- [ ] Looked at lagged variables for charge model
+- [ ] Tune the charge model
+
+<br>
+<br>
+
 ### Challenge Details
 
 ##### High-level Overview
