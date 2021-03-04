@@ -5,7 +5,7 @@ __all__ = ['estimate_daily_solar_quantiles', 'extract_solar_profile', 'charge_pr
            'construct_df_charge_features', 'extract_charging_datetimes', 'prepare_training_input_data',
            'normalise_total_charge', 'clip_charge_rate', 'post_pred_charge_proc_func', 'score_charging',
            'max_available_solar', 'prop_max_solar', 'construct_solar_exploit_calculator', 'fit_and_save_charging_model',
-           'prepare_latest_test_feature_data', 'optimise_latest_test_charge_profile']
+           'prepare_test_feature_data', 'optimise_test_charge_profile']
 
 # Cell
 import numpy as np
@@ -264,7 +264,7 @@ def fit_and_save_charging_model(X, y, charge_opt_model_fp, model_class=RandomFor
     return
 
 # Cell
-def prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest_submission_template_name=None):
+def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=None):
     # Loading input data
     df_features = (clean
                    .combine_training_datasets(intermediate_data_dir)
@@ -272,16 +272,18 @@ def prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest
                    .pipe(construct_df_charge_features)
                   )
 
-    df_submission_template = discharge.load_latest_submission_template(raw_data_dir, latest_submission_template_name=latest_submission_template_name)
+    # Loading default index (latest submission)
+    if index is None:
+        index = discharge.load_latest_submission_template(raw_data_dir).index
 
     # Filtering feature data on submission datetimes
-    df_features = df_features.loc[df_submission_template.index]
+    df_features = df_features.loc[index]
 
     return df_features
 
 # Cell
-def optimise_latest_test_charge_profile(raw_data_dir, intermediate_data_dir, charge_opt_model_fp, latest_submission_template_name=None):
-    df_features = prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, latest_submission_template_name=latest_submission_template_name)
+def optimise_test_charge_profile(raw_data_dir, intermediate_data_dir, charge_opt_model_fp, index=None):
+    df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=index)
     charging_datetimes = extract_charging_datetimes(df_features)
     X_test = df_features.loc[charging_datetimes].values
 
