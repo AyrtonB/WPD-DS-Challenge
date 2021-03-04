@@ -139,12 +139,20 @@ def construct_df_charge_features(df, dt_rng=None):
     df_features['sin_doy'] = np.sin(2*np.pi*dts.dayofyear/365)
     df_features['cos_doy'] = np.cos(2*np.pi*dts.dayofyear/365)
 
-    # Removing NaN values
-    df_features = df_features.dropna()
-
     # Removing some extraneous features
     cols = [c for c in df_features.columns if 'solar_location4' not in c and 'solar_location1' not in c]
     df_features = df_features.filter(cols)
+
+    # Add rolling solar
+    solar_cols = [c for c in df_features.columns if 'solar_location' in c]
+    df_features[[col+'_rolling' for col in solar_cols]] = df_features.rolling(3).mean()[solar_cols]
+
+    # Add rolling temp
+    temp_cols = [c for c in df_features.columns if 'temp_location' in c]
+    df_features[[col+'_rolling' for col in temp_cols]] = df_features.rolling(3).mean()[temp_cols]
+
+    # Removing NaN values
+    df_features = df_features.dropna()
 
     return df_features
 
@@ -156,7 +164,7 @@ def extract_charging_datetimes(df, start_hour=4, end_hour=15):
     return charging_datetimes
 
 # Cell
-def prepare_training_input_data(intermediate_data_dir, start_hour=5):
+def prepare_training_input_data(intermediate_data_dir, start_hour=4):
     # Loading input data
     df = clean.combine_training_datasets(intermediate_data_dir).interpolate(limit=1)
     df_features = construct_df_charge_features(df)
@@ -165,6 +173,7 @@ def prepare_training_input_data(intermediate_data_dir, start_hour=5):
     dt_idx = pd.date_range(df_features.index.min(), df['pv_power_mw'].dropna().index.max()-pd.Timedelta(minutes=30), freq='30T')
 
     s_pv = df.loc[dt_idx, 'pv_power_mw']
+    print(s_pv)
     df_features = df_features.loc[dt_idx]
 
     # Constructing the charge series
