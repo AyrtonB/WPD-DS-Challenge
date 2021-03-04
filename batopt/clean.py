@@ -4,7 +4,8 @@ __all__ = ['identify_latest_set_num', 'reindex_df_dt_idx', 'load_training_datase
            'identify_df_dt_entries', 'construct_df_temp_features', 'split_X_y_data', 'split_X_y_data_with_index',
            'generate_kfold_preds', 'evaluate_models', 'interpolate_missing_panel_temps',
            'construct_df_irradiance_features', 'interpolate_missing_site_irradiance', 'construct_df_power_features',
-           'pv_anomalies_to_nan', 'interpolate_missing_site_power', 'interpolate_missing_weather_solar']
+           'pv_anomalies_to_nan', 'interpolate_missing_site_power', 'interpolate_missing_weather_solar',
+           'interpolate_missing_temps']
 
 # Cell
 import numpy as np
@@ -315,5 +316,33 @@ def interpolate_missing_weather_solar(df_pv, df_weather, weather_col='solar_loca
     df_weather.loc[missing_weather_solar_dts, weather_col] = model.predict(missing_dt_X)
 
     assert df_weather[weather_col].isnull().sum() == 0, 'There are still null values for the weather dataset solar observations'
+
+    return df_weather
+
+# Cell
+def interpolate_missing_temps(df_weather, temp_variable, model=RandomForestRegressor()):
+    """
+    Use the other temperature locations to predict missing values of `temp_variable`.
+
+    For test_2: a full day is missing for temp_location4 on 2018-11-18
+    """
+    missing_temp_dts = df_weather.index[df_weather[temp_variable].isnull()]
+
+    if len(missing_temp_dts) == 0: # i.e. no missing values
+        return df_weather
+
+    temp_loc_cols = df_weather.columns[df_weather.columns.str.contains('temp')]
+
+    df_temp_features = df_weather.filter(temp_loc_cols)
+    missing_dt_X = df_temp_features.loc[missing_temp_dts].drop(temp_variable, axis=1).values
+
+    X, y = split_X_y_data(df_temp_features, temp_variable)
+
+    model.fit(X, y)
+
+    df_weather.loc[missing_temp_dts, temp_variable] = model.predict(missing_dt_X)
+    df_weather = df_weather.ffill(limit=1)
+
+    assert df_weather[temp_variable].isnull().sum() == 0, 'There are still null values for the PV panel temperature'
 
     return df_weather
