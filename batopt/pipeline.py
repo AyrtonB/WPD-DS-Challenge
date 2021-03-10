@@ -8,6 +8,7 @@ import pandas as pd
 
 import os
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 
 from dagster import execute_pipeline, pipeline, solid, Field
 from batopt import clean, discharge, charge, constraints, pv
