@@ -5,8 +5,8 @@ __all__ = ['construct_df_discharge_features', 'estimate_daily_demand_quantiles',
            'construct_discharge_profile', 'construct_discharge_s', 'extract_evening_datetimes',
            'normalise_total_discharge', 'clip_discharge_rate', 'post_pred_discharge_proc_func',
            'construct_peak_reduction_calculator', 'evaluate_discharge_models', 'prepare_training_input_data',
-           'fit_and_save_model', 'load_trained_model', 'load_latest_submission_template', 'prepare_test_feature_data',
-           'optimise_test_discharge_profile']
+           'fit_and_save_model', 'load_trained_model', 'load_latest_submission_template',
+           'prepare_latest_test_feature_data', 'optimise_latest_test_discharge_profile']
 
 # Cell
 import numpy as np
@@ -63,6 +63,9 @@ def construct_df_discharge_features(df, dt_rng=None):
     df_features['hour'] = dts.hour + dts.minute/60
     df_features['doy'] = dts.dayofyear
     df_features['dow'] = dts.dayofweek
+
+    # Add holidays
+    df_features['holidays'] = df.holidays
 
     # Removing NaN values
     df_features = df_features.dropna()
@@ -306,7 +309,7 @@ def load_latest_submission_template(raw_data_dir, latest_submission_template_nam
 
     return df_submission_template
 
-def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=None):
+def prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, index=None):
     # Loading input data
     df_features = (clean
                    .combine_training_datasets(intermediate_data_dir)
@@ -324,8 +327,8 @@ def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=None):
     return df_features
 
 # Cell
-def optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, index=None):
-    df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=index)
+def optimise_latest_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, index=None):
+    df_features = prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir, index=index)
     evening_datetimes = extract_evening_datetimes(df_features)
     X_test = df_features.loc[evening_datetimes].values
 
