@@ -140,9 +140,9 @@ def fit_and_save_pv_model(X, y, pv_model_fp, model_class=LinearRegression, **mod
     return
 
 # Cell
-def optimise_latest_test_charge_profile(raw_data_dir, intermediate_data_dir, pv_model_fp, start_hour=5):
+def optimise_latest_test_charge_profile(raw_data_dir, intermediate_data_dir, pv_model_fp):
     df_features = charge.prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir)
-    charging_datetimes = charge.extract_charging_datetimes(df_features, start_hour=start_hour)
+    charging_datetimes = charge.extract_charging_datetimes(df_features)
     X_test = df_features.loc[charging_datetimes]
 
     model = discharge.load_trained_model(pv_model_fp)
