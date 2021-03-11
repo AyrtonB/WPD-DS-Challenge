@@ -264,7 +264,7 @@ def fit_and_save_charging_model(X, y, charge_opt_model_fp, model_class=RandomFor
     return
 
 # Cell
-def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=None):
+def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=None, test_end_date=None, start_time='08:00', end_time='23:59'):
     # Loading input data
     df_features = (clean
                    .combine_training_datasets(intermediate_data_dir)
@@ -273,17 +273,19 @@ def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=None):
                   )
 
     # Loading default index (latest submission)
-    if index is None:
+    if test_end_date is None or test_start_date is None:
         index = discharge.load_latest_submission_template(raw_data_dir).index
+    else:
+        index = df_features[test_start_date:test_end_date].index
 
     # Filtering feature data on submission datetimes
-    df_features = df_features.loc[index]
+    df_features = df_features.loc[index].between_time(start_time, end_time)
 
     return df_features
 
 # Cell
-def optimise_test_charge_profile(raw_data_dir, intermediate_data_dir, charge_opt_model_fp, index=None):
-    df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=index)
+def optimise_test_charge_profile(raw_data_dir, intermediate_data_dir, charge_opt_model_fp, test_start_date=None, test_end_date=None, start_time='08:00', end_time='23:59'):
+    df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=test_start_date, test_end_date=test_end_date, start_time=start_time, end_time=end_time)
     charging_datetimes = extract_charging_datetimes(df_features)
     X_test = df_features.loc[charging_datetimes].values
 
