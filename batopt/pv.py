@@ -2,7 +2,7 @@
 
 __all__ = ['prepare_training_input_data', 'plot_random_day', 'generate_kfold_preds_weeks',
            'generate_kfold_charge_preds', 'predict_charge', 'predict_charge', 'fit_and_save_pv_model',
-           'optimise_latest_test_charge_profile']
+           'optimise_test_charge_profile']
 
 # Cell
 import numpy as np
@@ -140,8 +140,8 @@ def fit_and_save_pv_model(X, y, pv_model_fp, model_class=LinearRegression, **mod
     return
 
 # Cell
-def optimise_latest_test_charge_profile(raw_data_dir, intermediate_data_dir, pv_model_fp):
-    df_features = charge.prepare_latest_test_feature_data(raw_data_dir, intermediate_data_dir)
+def optimise_test_charge_profile(raw_data_dir, intermediate_data_dir, pv_model_fp, index=None):
+    df_features = charge.prepare_test_feature_data(raw_data_dir, intermediate_data_dir, index=index)
     charging_datetimes = charge.extract_charging_datetimes(df_features)
     X_test = df_features.loc[charging_datetimes]
 
@@ -155,4 +155,3 @@ def optimise_latest_test_charge_profile(raw_data_dir, intermediate_data_dir, pv_
     assert charge.charge_is_valid(s_charge_profile), "Charging profile is invalid"
 
     return s_charge_profile
-
