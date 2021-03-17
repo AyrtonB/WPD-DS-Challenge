@@ -33,7 +33,7 @@ from ipypb import track
 import FEAutils as hlp
 
 # Cell
-def construct_df_discharge_features(df, dt_rng=None):
+def construct_df_discharge_features(df, dt_rng=None, covid=False):
     if dt_rng is None:
         dt_rng = pd.date_range(df.index.min(), df.index.max(), freq='30T')
 
@@ -63,6 +63,15 @@ def construct_df_discharge_features(df, dt_rng=None):
     df_features['hour'] = dts.hour + dts.minute/60
     df_features['doy'] = dts.dayofyear
     df_features['dow'] = dts.dayofweek
+
+    # Add covid features
+    if covid:
+        covid_start_date = '2020-03-26'
+        df_features['covid_days'] = (pd.to_datetime(df.index.date) - pd.to_datetime(covid_start_date)).days
+        df_features.loc[df_features.covid_days <= 0, 'covid_days'] = 0
+        df_features['is_covid'] = df_features.covid_days > 0
+
+        df_features.drop('covid_days', axis=1)
 
     # Removing NaN values
     df_features = df_features.dropna()
@@ -255,10 +264,10 @@ def evaluate_discharge_models(df, models, features_kwargs={}):
     return df_model_scores
 
 # Cell
-def prepare_training_input_data(intermediate_data_dir):
+def prepare_training_input_data(intermediate_data_dir, covid=False):
     # Loading input data
     df = clean.combine_training_datasets(intermediate_data_dir).interpolate(limit=1)
-    df_features = construct_df_discharge_features(df)
+    df_features = construct_df_discharge_features(df, covid=covid)
 
     # Filtering for overlapping feature and target data
     dt_idx = pd.date_range(df_features.index.min(), df['demand_MW'].dropna().index.max()-pd.Timedelta(minutes=30), freq='30T')

@@ -100,6 +100,7 @@ index = {"bayes_search_CV_init": "00-utilities.ipynb",
          "all_discharge_periods_discharge": "05-constraints.ipynb",
          "all_inactive_periods_do_nothing": "05-constraints.ipynb",
          "schedule_is_legal": "05-constraints.ipynb",
+         "get_train_test": "06-tuning.ipynb",
          "calculate_pct_peak_reduction_s": "06-tuning.ipynb",
          "calculate_emissions_factor_s": "06-tuning.ipynb",
          "calculate_score_s": "06-tuning.ipynb",
@@ -124,7 +125,8 @@ modules = ["utils.py",
            "tuning.py",
            "pv.py",
            "christmas.py",
-           "pipeline.py"]
+           "pipeline.py",
+           "covid.py"]
 
 doc_url = "https://AyrtonB.github.io/WPD-DS-Challenge/"
 
