@@ -95,6 +95,12 @@ def combine_training_datasets(raw_data_dir, set_num=None):
 
     df_combined.loc[s_cropped_holidays.index, 'holidays'] = s_cropped_holidays
 
+    # Adding COVID features
+    covid_start_date = '2020-03-26' # Start of first lockdown
+    df_combined['covid_days'] = (pd.to_datetime(df_combined.index.date) - pd.to_datetime(covid_start_date)).days
+    df_combined.loc[df_combined.covid_days <= 0, 'covid_days'] = 0
+    df_combined['is_covid'] = df_combined.covid_days > 0
+
     return df_combined
 
 # Cell

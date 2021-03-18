@@ -66,12 +66,8 @@ def construct_df_discharge_features(df, dt_rng=None, covid=False):
 
     # Add covid features
     if covid:
-        covid_start_date = '2020-03-26'
-        df_features['covid_days'] = (pd.to_datetime(df.index.date) - pd.to_datetime(covid_start_date)).days
-        df_features.loc[df_features.covid_days <= 0, 'covid_days'] = 0
-        df_features['is_covid'] = df_features.covid_days > 0
-
-        df_features.drop('covid_days', axis=1)
+        covid_cols = df.columns[df.columns.str.contains('covid')]
+        df_features.loc[df.index, covid_cols] = df[covid_cols].copy()
 
     # Removing NaN values
     df_features = df_features.dropna()
@@ -315,12 +311,12 @@ def load_latest_submission_template(raw_data_dir, latest_submission_template_nam
 
     return df_submission_template
 
-def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=None, test_end_date=None):
+def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=None, test_end_date=None, covid=False):
     # Loading input data
     df_features = (clean
                    .combine_training_datasets(intermediate_data_dir)
                    .interpolate(limit=1)
-                   .pipe(construct_df_discharge_features)
+                   .pipe(construct_df_discharge_features, covid=covid)
                   )
 
     # Loading default index (latest submission)
@@ -335,8 +331,8 @@ def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_da
     return df_features
 
 # Cell
-def optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, test_start_date=None, test_end_date=None):
-    df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=test_start_date, test_end_date=test_end_date)
+def optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, test_start_date=None, test_end_date=None, covid=False):
+    df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=test_start_date, test_end_date=test_end_date, covid=covid)
     evening_datetimes = extract_evening_datetimes(df_features)
     X_test = df_features.loc[evening_datetimes].values
 
