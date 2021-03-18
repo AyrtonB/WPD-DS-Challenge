@@ -69,6 +69,10 @@ def construct_df_discharge_features(df, dt_rng=None, covid=False):
         covid_cols = df.columns[df.columns.str.contains('covid')]
         df_features.loc[df.index, covid_cols] = df[covid_cols].copy()
 
+        # Only train on covid data?
+        covid_start_date = '2020-03-26'
+        df_features = df_features[df_features.index.date >= pd.to_datetime(covid_start_date)]
+
     # Removing NaN values
     df_features = df_features.dropna()
 

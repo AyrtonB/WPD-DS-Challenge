@@ -97,9 +97,11 @@ def combine_training_datasets(raw_data_dir, set_num=None):
 
     # Adding COVID features
     covid_start_date = '2020-03-26' # Start of first lockdown
-    df_combined['covid_days'] = (pd.to_datetime(df_combined.index.date) - pd.to_datetime(covid_start_date)).days
-    df_combined.loc[df_combined.covid_days <= 0, 'covid_days'] = 0
-    df_combined['is_covid'] = df_combined.covid_days > 0
+    covid_easing_date = '2020-06-15' # Date of major lockdown easing
+    max_covid_days = (pd.to_datetime(covid_easing_date) - pd.to_datetime(covid_start_date)).days
+    df_combined['covid_days'] = (pd.to_datetime(df_combined.index.date) - pd.to_datetime(covid_start_date)).days + 1 # number ofdays since start of lockdown
+    df_combined['covid_days'] = df_combined['covid_days'].clip(0, max_covid_days) # Clipped to max out at the date of first major lockdown easing
+    df_combined['is_covid'] = df_combined.covid_days > 0 # pre or post covid indicator
 
     return df_combined
 
