@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AyrtonB/WPD-DS-Challenge/main?urlpath=lab) [![PyPI version](https://badge.fury.io/py/batopt.svg)](https://badge.fury.io/py/batopt) [![DOI](https://zenodo.org/badge/333805281.svg)](https://zenodo.org/badge/latestdoi/333805281)
+
 # WPD-DS-Challenge
 
 This repository includes the workflow used by the UCL ESAIL team for submissions to the Western Power Distribition Data Science competition.
