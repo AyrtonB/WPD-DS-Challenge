@@ -633,192 +633,13 @@
 
 <span class="n">charge_x</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>2017-11-10 00:00:00+00:00    0.0
-2017-11-10 00:30:00+00:00    0.0
-2017-11-10 01:00:00+00:00    0.0
-2017-11-10 01:30:00+00:00    0.0
-2017-11-10 02:00:00+00:00    0.0
-                            ... 
-2020-07-02 21:30:00+00:00    0.0
-2020-07-02 22:00:00+00:00    0.0
-2020-07-02 22:30:00+00:00    0.0
-2020-07-02 23:00:00+00:00    0.0
-2020-07-02 23:30:00+00:00    0.0
-Freq: 30T, Name: pv_power_mw, Length: 46368, dtype: float64
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="right">temp_location1</th>
-<th align="right">temp_location2</th>
-<th align="right">temp_location3</th>
-<th align="right">temp_location4</th>
-<th align="right">temp_location5</th>
-<th align="right">temp_location6</th>
-<th align="right">pv_7d_lag</th>
-<th align="right">solar_location2</th>
-<th align="right">solar_location3</th>
-<th align="right">solar_location5</th>
-<th align="left">...</th>
-<th align="right">solar_location2_rolling</th>
-<th align="right">solar_location3_rolling</th>
-<th align="right">solar_location5_rolling</th>
-<th align="right">solar_location6_rolling</th>
-<th align="right">temp_location1_rolling</th>
-<th align="right">temp_location2_rolling</th>
-<th align="right">temp_location3_rolling</th>
-<th align="right">temp_location4_rolling</th>
-<th align="right">temp_location5_rolling</th>
-<th align="right">temp_location6_rolling</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">2017-11-10 04:00:00+00:00</td>
-<td align="right">11.93</td>
-<td align="right">11.71</td>
-<td align="right">11.73</td>
-<td align="right">11.3</td>
-<td align="right">13.15</td>
-<td align="right">13.22</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">...</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">1.89478e-13</td>
-<td align="right">3.31587e-13</td>
-<td align="right">11.805</td>
-<td align="right">11.56</td>
-<td align="right">11.6</td>
-<td align="right">10.65</td>
-<td align="right">13.085</td>
-<td align="right">13.215</td>
-</tr>
-<tr>
-<td align="left">2017-11-10 04:30:00+00:00</td>
-<td align="right">12.06</td>
-<td align="right">11.89</td>
-<td align="right">11.805</td>
-<td align="right">11.295</td>
-<td align="right">13.26</td>
-<td align="right">13.325</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">...</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">1.89478e-13</td>
-<td align="right">3.31587e-13</td>
-<td align="right">11.9317</td>
-<td align="right">11.72</td>
-<td align="right">11.7117</td>
-<td align="right">11.0817</td>
-<td align="right">13.165</td>
-<td align="right">13.2533</td>
-</tr>
-<tr>
-<td align="left">2017-11-10 05:00:00+00:00</td>
-<td align="right">12.19</td>
-<td align="right">12.07</td>
-<td align="right">11.88</td>
-<td align="right">11.29</td>
-<td align="right">13.37</td>
-<td align="right">13.43</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">...</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">1.89478e-13</td>
-<td align="right">3.31587e-13</td>
-<td align="right">12.06</td>
-<td align="right">11.89</td>
-<td align="right">11.805</td>
-<td align="right">11.295</td>
-<td align="right">13.26</td>
-<td align="right">13.325</td>
-</tr>
-<tr>
-<td align="left">2017-11-10 05:30:00+00:00</td>
-<td align="right">12.145</td>
-<td align="right">12.13</td>
-<td align="right">11.745</td>
-<td align="right">11.2</td>
-<td align="right">13.44</td>
-<td align="right">13.52</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">...</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">1.89478e-13</td>
-<td align="right">3.31587e-13</td>
-<td align="right">12.1317</td>
-<td align="right">12.03</td>
-<td align="right">11.81</td>
-<td align="right">11.2617</td>
-<td align="right">13.3567</td>
-<td align="right">13.425</td>
-</tr>
-<tr>
-<td align="left">2017-11-10 06:00:00+00:00</td>
-<td align="right">12.1</td>
-<td align="right">12.19</td>
-<td align="right">11.61</td>
-<td align="right">11.11</td>
-<td align="right">13.51</td>
-<td align="right">13.61</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">...</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">1.89478e-13</td>
-<td align="right">3.31587e-13</td>
-<td align="right">12.145</td>
-<td align="right">12.13</td>
-<td align="right">11.745</td>
-<td align="right">11.2</td>
-<td align="right">13.44</td>
-<td align="right">13.52</td>
-</tr>
-</tbody>
-</table>
 <div class="highlight"><pre><span></span><code><span class="n">s_demand</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">load_training_dataset</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="s1">&#39;demand&#39;</span><span class="p">)[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span>
 
 <span class="n">s_demand</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>datetime
-2017-11-03 00:00:00+00:00    2.19
-2017-11-03 00:30:00+00:00    2.14
-2017-11-03 01:00:00+00:00    2.01
-2017-11-03 01:30:00+00:00    1.87
-2017-11-03 02:00:00+00:00    1.86
-Freq: 30T, Name: demand_MW, dtype: float64
-</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">s_pv</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">load_training_dataset</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="s1">&#39;pv&#39;</span><span class="p">)[</span><span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span>
 
 <span class="n">s_pv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>datetime
-2017-11-03 00:00:00+00:00    0.0
-2017-11-03 00:30:00+00:00    0.0
-2017-11-03 01:00:00+00:00    0.0
-2017-11-03 01:30:00+00:00    0.0
-2017-11-03 02:00:00+00:00    0.0
-Freq: 30T, Name: pv_power_mw, dtype: float64
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
 <span class="k">def</span> <span class="nf">get_train_test_arr</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">start_of_test_period</span><span class="p">):</span> 
@@ -848,9 +669,6 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 
 <span class="n">discharge_y_pred</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
-</code></pre></div>
-<p><img alt="png" src="../img/nbs/output_11_1.png" /></p>
 <p><br></p>
 <p>We'll then create a time-series of the percentage peak reduction for each day</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
@@ -871,15 +689,6 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 
 <span class="n">s_pct_peak_reduction</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>The average peak reduction was 62.71%
-
-
-
-
-
-&lt;AxesSubplot:&gt;
-</code></pre></div>
-<p><img alt="png" src="../img/nbs/output_14_2.png" /></p>
 <p><br></p>
 <p>We'll then repeat this with the charging model</p>
 <div class="highlight"><pre><span></span><code><span class="n">charge_rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
@@ -889,9 +698,6 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 
 <span class="n">charge_y_pred</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
-</code></pre></div>
-<p><img alt="png" src="../img/nbs/output_16_1.png" /></p>
 <p><br></p>
 <p>For which we'll calculate the emissions factor series</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
@@ -908,9 +714,6 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 
 <span class="n">s_emissions_factor</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
-</code></pre></div>
-<p><img alt="png" src="../img/nbs/output_19_1.png" /></p>
 <p><br></p>
 <p>We can then combine these two steps to determine our final score for each day</p>
 <div class="highlight"><pre><span></span><code><span class="n">s_score</span> <span class="o">=</span> <span class="n">calculate_score_s</span><span class="p">(</span><span class="n">discharge_y_pred</span><span class="p">,</span> <span class="n">charge_y_pred</span><span class="p">,</span> <span class="n">s_demand</span><span class="p">,</span> <span class="n">s_pv</span><span class="p">)</span>
@@ -919,15 +722,6 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 
 <span class="n">s_score</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>The average score was: 68.20
-
-
-
-
-
-&lt;AxesSubplot:&gt;
-</code></pre></div>
-<p><img alt="png" src="../img/nbs/output_22_2.png" /></p>
 <p><br></p>
 <p>For the charging we can also look at how much was sourced from PV relative to the potential maximum (capped at 6 MWh per day).</p>
 <div class="highlight"><pre><span></span><code><span class="n">solar_charge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">charge_y_pred</span><span class="p">,</span> <span class="n">s_pv</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">charge_y_pred</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
@@ -941,16 +735,10 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 <span class="n">day_solar_charge</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">day_solar_potential</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
-</code></pre></div>
-<p><img alt="png" src="../img/nbs/output_24_1.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="n">pct_exploit</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">day_solar_charge</span><span class="o">/</span><span class="n">day_solar_potential</span>
 <span class="n">pct_exploit</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">% e</span><span class="s1">xploited&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Text(0, 0.5, &#39;% exploited&#39;)
-</code></pre></div>
-<p><img alt="png" src="../img/nbs/output_25_1.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
 <span class="k">def</span> <span class="nf">score_charge</span><span class="p">(</span><span class="n">schedule</span><span class="p">,</span> <span class="n">solar_profile</span><span class="p">,</span> <span class="n">solar_factor</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">grid_factor</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="c1"># The actual pv charge is the minimum of the scheduled charge and the actual solar availability </span>
@@ -1029,73 +817,9 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 
 <span class="n">df_results</span>
 </code></pre></div>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="right">total_score</th>
-<th align="right">charge_score</th>
-<th align="right">discharge_score</th>
-<th align="right">max_charge_score</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">2018-10-16</td>
-<td align="right">73.6073</td>
-<td align="right">2.23315</td>
-<td align="right">32.9612</td>
-<td align="right">2.53667</td>
-</tr>
-<tr>
-<td align="left">2018-10-17</td>
-<td align="right">72.2532</td>
-<td align="right">2.23691</td>
-<td align="right">32.3005</td>
-<td align="right">2.29833</td>
-</tr>
-<tr>
-<td align="left">2018-10-18</td>
-<td align="right">96.7906</td>
-<td align="right">2.90866</td>
-<td align="right">33.2766</td>
-<td align="right">3</td>
-</tr>
-<tr>
-<td align="left">2018-10-19</td>
-<td align="right">87.3398</td>
-<td align="right">2.69343</td>
-<td align="right">32.4269</td>
-<td align="right">3</td>
-</tr>
-<tr>
-<td align="left">2018-10-20</td>
-<td align="right">108.923</td>
-<td align="right">3</td>
-<td align="right">36.3077</td>
-<td align="right">3</td>
-</tr>
-<tr>
-<td align="left">2018-10-21</td>
-<td align="right">103.236</td>
-<td align="right">3</td>
-<td align="right">34.4118</td>
-<td align="right">3</td>
-</tr>
-<tr>
-<td align="left">2018-10-22</td>
-<td align="right">99.6116</td>
-<td align="right">3</td>
-<td align="right">33.2039</td>
-<td align="right">3</td>
-</tr>
-</tbody>
-</table>
 <p><br></p>
 <p>We can then calculate our average score over this period</p>
 <div class="highlight"><pre><span></span><code><span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;total_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>91.68013793678124
 </code></pre></div>
 <p><br></p>
 <h3 id="discharge-model-tuning">Discharge Model Tuning<a class="headerlink" href="#discharge-model-tuning" title="Permanent link">&para;</a></h3>
@@ -1125,7 +849,7 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 <div class="highlight"><pre><span></span><code><span class="n">peak_reduction_scorer</span> <span class="o">=</span> <span class="n">discharge</span><span class="o">.</span><span class="n">construct_peak_reduction_calculator</span><span class="p">(</span><span class="n">s_demand</span><span class="o">=</span><span class="n">s_demand</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">discharge_x_train</span><span class="o">.</span><span class="n">index</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">week_groups</span> <span class="o">=</span> <span class="n">discharge_x_train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="n">discharge_x_train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="o">/</span><span class="mi">52</span>
 
-<span class="n">rerun_feature_selection</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">rerun_feature_selection</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">feature_selection_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;feature_selection.json&#39;</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">rerun_feature_selection</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">feature_selection_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
@@ -1139,14 +863,6 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
         <span class="n">results</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 
     <span class="n">result_features</span><span class="p">,</span> <span class="n">result_scores</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">],</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;scores&#39;</span><span class="p">]</span>
-</code></pre></div>
-<div><span class="Text-label" style="display:inline-block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; min-width:0; max-width:15ex; vertical-align:middle; text-align:right"></span>
-<progress style="width:60ex" max="15" value="12" class="Progress-main"/></progress>
-<span class="Progress-label"><strong>80%</strong></span>
-<span class="Iteration-label">12/15</span>
-<span class="Time-label">[54:55<10:19, 274.62s/it]</span></div>
-
-<div class="highlight"><pre><span></span><code>STOPPING EARLY DUE TO KEYBOARD INTERRUPT...
 </code></pre></div>
 <p><br></p>
 <p>We can visualise how the model accuracy changes with the number of features included</p>
@@ -1193,7 +909,7 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
     <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
 <span class="p">)</span>
 
-<span class="n">fit_BayesSearchCV</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">fit_BayesSearchCV</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="k">if</span> <span class="n">fit_BayesSearchCV</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">opt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">discharge_x_train</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">discharge_y_train</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">evening_datetimes</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
@@ -1201,22 +917,6 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cross-validation score: </span><span class="si">{</span><span class="n">opt</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hold-out score: </span><span class="si">{</span><span class="n">opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">discharge_x_test</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">discharge_y_test</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Best params: </span><span class="se">\n</span><span class="si">{</span><span class="n">opt</span><span class="o">.</span><span class="n">best_params_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Cross-validation score: 91.20</span>
-<span class="c1"># Hold-out score: 80.95</span>
-
-<span class="c1"># Cross-validation score: 91.94</span>
-<span class="c1"># Hold-out score: 80.49</span>
-
-<span class="c1"># [&#39;hour&#39;, &#39;doy&#39;, &#39;temp_location4&#39;, &#39;weekend&#39;, &#39;evening_demand_max_7d_lag&#39;, &#39;daily_avg_temp&#39;, &#39;SP_demand_7d_lag&#39;, &#39;evening_demand_avg_7d_lag&#39;, &#39;temp_location1&#39;]</span>
-<span class="c1"># 2 iters</span>
-<span class="c1"># Cross-validation score: 92.75 </span>
-<span class="c1"># Hold-out score: 81.64</span>
-
-<span class="c1"># </span>
-<span class="c1"># 15 iters</span>
-<span class="c1"># Cross-validation score:  </span>
-<span class="c1"># Hold-out score: </span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># want to be saving model runs</span>
 <span class="c1"># could include as part of a callback?</span>
@@ -1289,9 +989,6 @@ Freq: 30T, Name: pv_power_mw, dtype: float64
 <span class="n">df_results</span> <span class="o">=</span> <span class="n">evaluate_submission</span><span class="p">(</span><span class="n">submission</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">)</span>
 
 <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;total_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># compare performance of RF v linear</span>
-<span class="c1"># as well as PV v charging</span>
 </code></pre></div>
 <p><br></p>
 <p>Finally we'll export the relevant code to our <code>batopt</code> module</p>

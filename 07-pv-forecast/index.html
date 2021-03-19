@@ -1253,8 +1253,25 @@ Held out solar exploit (std): 8.19
     <span class="k">return</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">prepare_test_feature_data</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="s1">&#39;08:00&#39;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="s1">&#39;23:59&#39;</span><span class="p">):</span>
+    <span class="c1"># Loading input data</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">combine_training_datasets</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">construct_df_charge_features</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="c1"># Loading default index (latest submission)</span>
+    <span class="k">if</span> <span class="n">test_end_date</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">test_start_date</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">discharge</span><span class="o">.</span><span class="n">load_latest_submission_template</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">df_features</span><span class="p">[</span><span class="n">test_start_date</span><span class="p">:</span><span class="n">test_end_date</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="c1"># Filtering feature data on submission datetimes</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">between_time</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_features</span>
+
 <span class="k">def</span> <span class="nf">optimise_test_charge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="s1">&#39;08:00&#39;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="s1">&#39;23:59&#39;</span><span class="p">):</span>
-    <span class="n">df_features</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">prepare_test_feature_data</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="n">test_start_date</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="n">test_end_date</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">)</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">prepare_test_feature_data</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="n">test_start_date</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="n">test_end_date</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">)</span>
     <span class="n">charging_datetimes</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">extract_charging_datetimes</span><span class="p">(</span><span class="n">df_features</span><span class="p">)</span>
     <span class="n">X_test</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">charging_datetimes</span><span class="p">]</span>
 
@@ -1270,13 +1287,23 @@ Held out solar exploit (std): 8.19
     <span class="k">return</span> <span class="n">s_charge_profile</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">pv_model_fp</span> <span class="o">=</span> <span class="s1">&#39;../models/pv_model.sav&#39;</span>
-<span class="n">s_charge_profile</span> <span class="o">=</span> <span class="n">optimise_latest_test_charge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">)</span>
+<span class="n">s_charge_profile</span> <span class="o">=</span> <span class="n">optimise_test_charge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">)</span>
 
 <span class="n">s_charge_profile</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;datetime&#39;&gt;
+<div class="highlight"><pre><span></span><code>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-6-8db658a0274e&gt; in &lt;module&gt;
+      1 pv_model_fp = &#39;../models/pv_model.sav&#39;
+----&gt; 2 s_charge_profile = optimise_test_charge_profile(intermediate_data_dir, pv_model_fp)
+      3 
+      4 s_charge_profile.plot()
+
+
+NameError: name &#39;intermediate_data_dir&#39; is not defined
 </code></pre></div>
-<p><img alt="png" src="../img/nbs/output_44_1.png" /></p>
 <p><br></p>
 <p>Finally we'll export the relevant code to our <code>batopt</code> module</p>
                 
