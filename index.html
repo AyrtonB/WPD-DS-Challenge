@@ -1,0 +1,902 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.1, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>WPD-DS-Challenge</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wpd-ds-challenge" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="." title="WPD-DS-Challenge" class="md-header-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WPD-DS-Challenge
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="." class="md-tabs__link md-tabs__link--active">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="methodology/" class="md-tabs__link">
+      Methodology
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="notes/00-brief/" class="md-tabs__link">
+      Challenge
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="00-utilities/" class="md-tabs__link">
+        Development
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="WPD-DS-Challenge" class="md-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WPD-DS-Challenge
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Home
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge-details" class="md-nav__link">
+    Challenge Details
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-level-overview" class="md-nav__link">
+    High-level Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battery-charging" class="md-nav__link">
+    Battery Charging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battery-discharging" class="md-nav__link">
+    Battery Discharging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#literature" class="md-nav__link">
+    Literature
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-set-up" class="md-nav__link">
+    Environment Set-Up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nb-dev-design-approach" class="md-nav__link">
+    Nb-Dev Design Approach
+  </a>
+  
+    <nav class="md-nav" aria-label="Nb-Dev Design Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-nb-dev" class="md-nav__link">
+    What is Nb-Dev?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-nb-dev" class="md-nav__link">
+    Why use Nb-Dev?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-nb-dev" class="md-nav__link">
+    How to use Nb-Dev?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potential-further-research-questions" class="md-nav__link">
+    Potential Further Research Questions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="methodology/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notes/00-brief/" class="md-nav__link">
+        Challenge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00-utilities/" class="md-nav__link">
+        Utilities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-retrieval/" class="md-nav__link">
+        Retrieval
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-cleaning/" class="md-nav__link">
+        Cleaning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-charging/" class="md-nav__link">
+        Charging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-discharging/" class="md-nav__link">
+        Discharging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-tuning/" class="md-nav__link">
+        Tuning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-pv-forecast/" class="md-nav__link">
+        PV
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-christmas/" class="md-nav__link">
+        Christmas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-pipeline/" class="md-nav__link">
+        Pipeline
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge-details" class="md-nav__link">
+    Challenge Details
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-level-overview" class="md-nav__link">
+    High-level Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battery-charging" class="md-nav__link">
+    Battery Charging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battery-discharging" class="md-nav__link">
+    Battery Discharging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#literature" class="md-nav__link">
+    Literature
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-set-up" class="md-nav__link">
+    Environment Set-Up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nb-dev-design-approach" class="md-nav__link">
+    Nb-Dev Design Approach
+  </a>
+  
+    <nav class="md-nav" aria-label="Nb-Dev Design Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-nb-dev" class="md-nav__link">
+    What is Nb-Dev?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-nb-dev" class="md-nav__link">
+    Why use Nb-Dev?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-nb-dev" class="md-nav__link">
+    How to use Nb-Dev?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potential-further-research-questions" class="md-nav__link">
+    Potential Further Research Questions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/AyrtonB/WPD-DS-Challenge/edit/main/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="wpd-ds-challenge">WPD-DS-Challenge<a class="headerlink" href="#wpd-ds-challenge" title="Permanent link">&para;</a></h1>
+<p>This repository includes the workflow used by the UCL ESAIL team for submissions to the Western Power Distribition Data Science competition.</p>
+<p>An example charging profile from our latest submission can be seen below</p>
+<p><img alt="submission_timeseries" src="img/latest_submission.png" /></p>
+<p><br>
+<br></p>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<p>You can install the battery optimisation library using:</p>
+<div class="highlight"><pre><span></span><code>pip install batopt
+</code></pre></div>
+<p><br>
+<br></p>
+<h3 id="challenge-details">Challenge Details<a class="headerlink" href="#challenge-details" title="Permanent link">&para;</a></h3>
+<h5 id="high-level-overview">High-level Overview<a class="headerlink" href="#high-level-overview" title="Permanent link">&para;</a></h5>
+<ul>
+<li>A 6MWh/2.5MW battery is connected to a primary distribution substation and a 5MW
+solar farm in Devon, southwest England.</li>
+<li>Design the control of a storage device to support the distribution network to:<ul>
+<li>Maximise the daily evening peak reduction.</li>
+<li>Using as much solar photovoltaic energy as possible.</li>
+</ul>
+</li>
+<li>This will be done for each day for the week following the current challenge date.</li>
+<li>In other words it is a constrained optimisation/control problem under uncertainty.</li>
+<li>There will be four assessed weeks as part of this challenge.</li>
+</ul>
+<p>A recording of the kick-off meeting can also be found <a href="https://www.youtube.com/watch?t=1&amp;v=Tu1bLROBNbo&amp;feature=youtu.be&amp;ab_channel=EnergySystemsCatapult">here</a>.</p>
+<p><br></p>
+<h5 id="battery-charging">Battery Charging<a class="headerlink" href="#battery-charging" title="Permanent link">&para;</a></h5>
+<p>The aim of this compoennt is to maximise the proportion of the battery's charge that comes from solar PV. The total battery charge can be written as:</p>
+<p><img src="https://render.githubusercontent.com/render/math?math=B_{d,k} = P_{d,k} %2B G_{d,k}"></p>
+<p>where <img src="https://render.githubusercontent.com/render/math?math=P_{d,k}"> is the power drawn to the battery from solar generation on day <img src="https://render.githubusercontent.com/render/math?math=d">, period <img src="https://render.githubusercontent.com/render/math?math=k"> , and <img src="https://render.githubusercontent.com/render/math?math=G_{d,k}"> is that drawn from the grid. </p>
+<p>Whenever the battery is charging, it will draw from solar PV as much as possible, and take the remainder from the grid. We can therefore express that for a period <img src="https://render.githubusercontent.com/render/math?math=k">, the battery will draw from PV an amount:</p>
+<p><img src="https://render.githubusercontent.com/render/math?math=P_k = \min(B_k, P_k^{Total})"> </p>
+<p>The remainder is drawn from the grid: </p>
+<p><img src="https://render.githubusercontent.com/render/math?math=G_k = P_k - B_k"></p>
+<p>The proportion of energy stored in the battery from solar PV on day <img src="https://render.githubusercontent.com/render/math?math=d"> is expressed as: </p>
+<p><img src="https://render.githubusercontent.com/render/math?math=p_{d,1} = \frac{\sum_{k=1}^31 P_{d,k}}{\sum_{k=1}^31 B_{d,k}}"></p>
+<p>An equivalent expression gives the proportion of energy stored in the battery that was drawn from the grid, <img src="https://render.githubusercontent.com/render/math?math=p_{d,2}">.</p>
+<p>The scoring function is proportional to <img src="https://render.githubusercontent.com/render/math?math=3p_{d,1} %2B p_{d,2}">. We therefore want to maximise <img src="https://render.githubusercontent.com/render/math?math=p_{d,1}"> by coinciding our battery charging with the solar PV generation. Note that the minimum score that can be gained from this component is 1 (entirely charged from grid), and the maximum is 3 (entirely charged from solar PV).</p>
+<p><br></p>
+<h5 id="battery-discharging">Battery Discharging<a class="headerlink" href="#battery-discharging" title="Permanent link">&para;</a></h5>
+<p>We'll start by defining the cost function for the demand forecasting component of the battery discharge optimisation.</p>
+<p>For each day (
+<img src="https://render.githubusercontent.com/render/math?math=d"> = 1, … , 7) the peak percentage reduction is calculated using:</p>
+<p><img src="https://render.githubusercontent.com/render/math?math=R_{d, peak} = 100\left(\frac{\max_{k\in\{32,...,42\}}\left(L_{d, k}\right) - \max_{k\in\{32,...,42\}}\left(L_{d, k}+B_{d, k}\right)}{\max_{k\in\{32,...,42\}}\left(L_{d, k}\right)}\right)"></p>
+<p>Where:
+* <img src="https://render.githubusercontent.com/render/math?math=L_{d, k}"> is the average power (in MW) over the <img src="https://render.githubusercontent.com/render/math?math=k^{th}"> half hour of day <img src="https://render.githubusercontent.com/render/math?math=d">, where <img src="https://render.githubusercontent.com/render/math?math=k = 1"> would mean the period from midnight to 00:30 AM on the current day,  <img src="https://render.githubusercontent.com/render/math?math=d">. 
+* <img src="https://render.githubusercontent.com/render/math?math=B_{d, k}"> is the average power (in MW) over the <img src="https://render.githubusercontent.com/render/math?math=k^{th}"> half hour of day <img src="https://render.githubusercontent.com/render/math?math=d">, to minimise the peak demand over the evening period (the half hours <img src="https://render.githubusercontent.com/render/math?math=k"> = 32 to 42)</p>
+<p>Our goal is to maximise the peak percentage reduction from 3.30PM to 9PM.</p>
+<p><br></p>
+<h5 id="constraints">Constraints<a class="headerlink" href="#constraints" title="Permanent link">&para;</a></h5>
+<p>We also have a number of constraints. The first constraint is on the maximum import and export of energy, in this case:</p>
+<p><img src="https://render.githubusercontent.com/render/math?math=-2.5MW = B_{min} \leq B_{d, k} \leq B_{max} = 2.5MW"></p>
+<p>Secondly the battery cannot charge beyond its capacity, <img src="https://render.githubusercontent.com/render/math?math=C_{d, k}">, (in MWh):</p>
+<p><img src="https://render.githubusercontent.com/render/math?math=0 \leq C_{d, k} \leq C_{max} = 6MWh"></p>
+<p>The total charge in the battery at the next time step <img src="https://render.githubusercontent.com/render/math?math=C_{d, k+1}"> is related to how much is currently in the battery and how much charged within the battery at time <img src="https://render.githubusercontent.com/render/math?math=k">, i.e.</p>
+<p><img src="https://render.githubusercontent.com/render/math?math=C_{d, k+1} = C_{d, k} + 0.5B_{d, k}"></p>
+<p>Finally, the battery must start empty at the start of each day in the test week. I.e. <img src="https://render.githubusercontent.com/render/math?math=C_{d,1} = 0"> for <img src="https://render.githubusercontent.com/render/math?math=d = 1,...,7">.</p>
+<p><br>
+<br></p>
+<h3 id="literature">Literature<a class="headerlink" href="#literature" title="Permanent link">&para;</a></h3>
+<p>The literature used in this work is being tracked using Zotero within the <a href="https://www.zotero.org/groups/2739875/esail/library">ESAIL group</a>, please add new papers and comment on existing ones. These should hopefully make it a lot easier down the line if we turn the work into a paper.</p>
+<p><br>
+<br></p>
+<h3 id="environment-set-up">Environment Set-Up<a class="headerlink" href="#environment-set-up" title="Permanent link">&para;</a></h3>
+<p>The easiest way to set-up your <code>conda</code> environment is with the <code>setup_env.bat</code> script for Windows. Alternatively you can carry out these manual steps from the terminal:</p>
+<div class="highlight"><pre><span></span><code>&gt; conda env create -f environment.yml
+&gt; conda activate batopt
+&gt; ipython kernel install --user --name<span class="o">=</span>batopt
+</code></pre></div>
+<p><br>
+<br></p>
+<h3 id="nb-dev-design-approach">Nb-Dev Design Approach<a class="headerlink" href="#nb-dev-design-approach" title="Permanent link">&para;</a></h3>
+<h5 id="what-is-nb-dev">What is Nb-Dev?<a class="headerlink" href="#what-is-nb-dev" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><code>nbdev</code> is a library that allows you to develop a python library in Jupyter Notebooks, putting all your code, tests and documentation in one place. That is: you now have a true literate programming environment, as envisioned by Donald Knuth back in 1983!"</p>
+</blockquote>
+<p><br></p>
+<h5 id="why-use-nb-dev">Why use Nb-Dev?<a class="headerlink" href="#why-use-nb-dev" title="Permanent link">&para;</a></h5>
+<p>It enables notebooks to be used as the origin of both the documentation and the code-base, improving code-readability and fitting more nicely within the standard data-science workflow. The library also provides a <a href="https://nbdev.fast.ai/merge.html">several tools</a> to handle common problems such as merge issues with notebooks.</p>
+<p><br></p>
+<h5 id="how-to-use-nb-dev">How to use Nb-Dev?<a class="headerlink" href="#how-to-use-nb-dev" title="Permanent link">&para;</a></h5>
+<p>Most of the complexity around <code>nbdev</code> is in the initial set-up which has already been carried out for this repository, leaving the main learning curve as the special commands used in notebooks for exporting code. The special commands all have a <code>#</code> prefix and are used at the top of a cell.</p>
+<ul>
+<li><code>#default_exp &lt;sub-module-name&gt;</code> - the name of the sub-module that the notebook will be outputted to (put in the first cell)</li>
+<li><code>#exports</code> - to export all contents in the cell</li>
+<li><code>#hide</code> - to remove the cell from the documentation</li>
+</ul>
+<p>These just describe what to do with the cells though, we have to run another function to carry out this conversion (which is normally added at the end of each notebook):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nbdev.export</span> <span class="kn">import</span> <span class="n">notebook2script</span>
+
+<span class="n">notebook2script</span><span class="p">()</span>
+</code></pre></div>
+<p><br>
+<br></p>
+<h3 id="potential-further-research-questions">Potential Further Research Questions<a class="headerlink" href="#potential-further-research-questions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>How does the relative importance of the discharge and charge models change seasonally?</li>
+<li>How much harder is it to optimise when the real-time grid carbon intensity is used?</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="methodology/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Methodology
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ['header.autohide', 'navigation.tabs', 'navigation.instant', 'search.suggest'],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

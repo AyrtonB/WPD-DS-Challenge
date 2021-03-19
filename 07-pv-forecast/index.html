@@ -1,0 +1,1363 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.1, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>PV - WPD-DS-Challenge</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#charging-with-pv-forecast" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="WPD-DS-Challenge" class="md-header-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WPD-DS-Challenge
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              PV
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../methodology/" class="md-tabs__link">
+      Methodology
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../notes/00-brief/" class="md-tabs__link">
+      Challenge
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../00-utilities/" class="md-tabs__link md-tabs__link--active">
+        Development
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="WPD-DS-Challenge" class="md-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WPD-DS-Challenge
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methodology/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notes/00-brief/" class="md-nav__link">
+        Challenge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-utilities/" class="md-nav__link">
+        Utilities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-retrieval/" class="md-nav__link">
+        Retrieval
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-cleaning/" class="md-nav__link">
+        Cleaning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-charging/" class="md-nav__link">
+        Charging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-discharging/" class="md-nav__link">
+        Discharging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-tuning/" class="md-nav__link">
+        Tuning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        PV
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#imports" class="md-nav__link">
+    Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-inputs" class="md-nav__link">
+    User inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitting-forecast-model" class="md-nav__link">
+    Fitting forecast model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predicting-charge-based-on-pv-forecast" class="md-nav__link">
+    Predicting charge based on PV forecast
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuned-rf-model" class="md-nav__link">
+    Tuned RF model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-selection" class="md-nav__link">
+    Feature Selection
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-christmas/" class="md-nav__link">
+        Christmas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-pipeline/" class="md-nav__link">
+        Pipeline
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#imports" class="md-nav__link">
+    Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-inputs" class="md-nav__link">
+    User inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitting-forecast-model" class="md-nav__link">
+    Fitting forecast model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predicting-charge-based-on-pv-forecast" class="md-nav__link">
+    Predicting charge based on PV forecast
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuned-rf-model" class="md-nav__link">
+    Tuned RF model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-selection" class="md-nav__link">
+    Feature Selection
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/AyrtonB/WPD-DS-Challenge/edit/main/docs/07-pv-forecast.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="charging-with-pv-forecast">Charging with PV Forecast<a class="headerlink" href="#charging-with-pv-forecast" title="Permanent link">&para;</a></h1>
+<h3 id="imports">Imports<a class="headerlink" href="#imports" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+
+<span class="kn">from</span> <span class="nn">moepy.lowess</span> <span class="kn">import</span> <span class="n">quantile_model</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GroupKFold</span>
+
+
+<span class="kn">from</span> <span class="nn">mlxtend.feature_selection</span> <span class="kn">import</span> <span class="n">SequentialFeatureSelector</span> <span class="k">as</span> <span class="n">SFS</span>
+
+<span class="kn">from</span> <span class="nn">skopt.plots</span> <span class="kn">import</span> <span class="n">plot_objective</span>
+<span class="kn">from</span> <span class="nn">skopt.space</span> <span class="kn">import</span> <span class="n">Real</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">,</span> <span class="n">Integer</span>
+
+<span class="kn">from</span> <span class="nn">batopt</span> <span class="kn">import</span> <span class="n">clean</span><span class="p">,</span> <span class="n">discharge</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">charge</span>
+
+<span class="kn">import</span> <span class="nn">FEAutils</span> <span class="k">as</span> <span class="nn">hlp</span>
+
+<span class="kn">from</span> <span class="nn">ipypb</span> <span class="kn">import</span> <span class="n">track</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="user-inputs">User inputs<a class="headerlink" href="#user-inputs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">raw_data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/raw&#39;</span>
+<span class="n">intermediate_data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/intermediate&#39;</span>
+<span class="n">cache_data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/nb-cache&#39;</span>
+<span class="n">charge_opt_model_fp</span> <span class="o">=</span> <span class="s1">&#39;../models/charge_opt.sav&#39;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="fitting-forecast-model">Fitting forecast model<a class="headerlink" href="#fitting-forecast-model" title="Permanent link">&para;</a></h3>
+<p>We'll first load the input data</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">construct_df_charge_features</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dt_rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">dt_rng</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dt_rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">)</span>
+
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dt_rng</span><span class="p">)</span>
+
+    <span class="c1"># Adding temperature data</span>
+    <span class="n">temp_loc_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;temp_location&#39;</span><span class="p">)]</span>
+    <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">temp_loc_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">temp_loc_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">ffill</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Adding solar irradiance data</span>
+    <span class="n">solar_loc_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;solar_location&#39;</span><span class="p">)]</span>
+    <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">solar_loc_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">solar_loc_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">ffill</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Adding avg solar from previous week</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;pv_7d_lag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">48</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">48</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="c1"># Adding datetime features</span>
+    <span class="n">dts</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dts</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">dts</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;doy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dts</span><span class="o">.</span><span class="n">dayofyear</span>
+
+    <span class="c1"># Removing some extraneous features - found not be particularly useful</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df_features</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;solar_location4&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c</span> <span class="ow">and</span> <span class="s1">&#39;solar_location1&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+
+    <span class="c1"># Removing NaN values</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df_features</span>
+
+<span class="k">def</span> <span class="nf">prepare_training_input_data</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">start_hour</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Loading input data</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">combine_training_datasets</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">construct_df_charge_features</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="c1"># Filtering for overlapping feature and target data</span>
+    <span class="n">dt_idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">)</span>
+
+    <span class="n">s_pv</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt_idx</span><span class="p">,</span> <span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt_idx</span><span class="p">]</span>
+
+    <span class="c1"># Filtering for evening datetimes</span>
+    <span class="n">charging_datetimes</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">extract_charging_datetimes</span><span class="p">(</span><span class="n">df_features</span><span class="p">,</span> <span class="n">start_hour</span><span class="o">=</span><span class="n">start_hour</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">charging_datetimes</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">s_pv</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">charging_datetimes</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_training_input_data</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span>
+
+<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right">temp_location1</th>
+<th align="right">temp_location2</th>
+<th align="right">temp_location3</th>
+<th align="right">temp_location4</th>
+<th align="right">temp_location5</th>
+<th align="right">temp_location6</th>
+<th align="right">solar_location2</th>
+<th align="right">solar_location3</th>
+<th align="right">solar_location5</th>
+<th align="right">solar_location6</th>
+<th align="right">pv_7d_lag</th>
+<th align="right">weekend</th>
+<th align="right">dow</th>
+<th align="right">hour</th>
+<th align="right">doy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2017-11-17 05:00:00+00:00</td>
+<td align="right">3.79</td>
+<td align="right">4.28</td>
+<td align="right">2.97</td>
+<td align="right">1.25</td>
+<td align="right">9.3</td>
+<td align="right">9.77</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.334792</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">321</td>
+</tr>
+<tr>
+<td align="left">2017-11-17 05:30:00+00:00</td>
+<td align="right">3.555</td>
+<td align="right">3.95</td>
+<td align="right">2.82</td>
+<td align="right">0.98</td>
+<td align="right">9.31</td>
+<td align="right">9.755</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.334792</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">5.5</td>
+<td align="right">321</td>
+</tr>
+<tr>
+<td align="left">2017-11-17 06:00:00+00:00</td>
+<td align="right">3.32</td>
+<td align="right">3.62</td>
+<td align="right">2.67</td>
+<td align="right">0.71</td>
+<td align="right">9.32</td>
+<td align="right">9.74</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.334792</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">321</td>
+</tr>
+<tr>
+<td align="left">2017-11-17 06:30:00+00:00</td>
+<td align="right">3.255</td>
+<td align="right">3.535</td>
+<td align="right">2.675</td>
+<td align="right">0.78</td>
+<td align="right">9.34</td>
+<td align="right">9.74</td>
+<td align="right">0.155</td>
+<td align="right">0.075</td>
+<td align="right">0.12</td>
+<td align="right">0.255</td>
+<td align="right">0.334792</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">6.5</td>
+<td align="right">321</td>
+</tr>
+<tr>
+<td align="left">2017-11-17 07:00:00+00:00</td>
+<td align="right">3.19</td>
+<td align="right">3.45</td>
+<td align="right">2.68</td>
+<td align="right">0.85</td>
+<td align="right">9.36</td>
+<td align="right">9.74</td>
+<td align="right">0.31</td>
+<td align="right">0.15</td>
+<td align="right">0.24</td>
+<td align="right">0.51</td>
+<td align="right">0.334732</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">7</td>
+<td align="right">321</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>We'll create a quick baseline PV forecast</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_pred_LR</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">df_pred_LR</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right">pred</th>
+<th align="right">true</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2017-11-17 05:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-17 05:30:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-17 06:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-17 06:30:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-17 07:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Analysing the predictions</p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_pred</span><span class="o">.</span><span class="n">true</span><span class="p">,</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">pred</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Observation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Text(0, 0.5, &#39;Prediction&#39;)
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_10_1.png" /></p>
+<p><br></p>
+<p>We'll also visualise what the prediction looks like for randomly selected days</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">plot_random_day</span><span class="p">(</span><span class="n">df_pred</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    View predicted and observed PV profiles</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="n">random_day_idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">df_pred</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">))</span>
+    <span class="n">df_random_day</span> <span class="o">=</span> <span class="n">df_pred</span><span class="p">[</span><span class="n">df_pred</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="o">==</span><span class="n">random_day_idx</span><span class="p">]</span>
+
+    <span class="n">df_random_day</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">df_random_day</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">plot_random_day</span><span class="p">(</span><span class="n">df_pred</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;matplotlib.legend.Legend at 0x2c0e0225730&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_13_1.png" /></p>
+<p><br></p>
+<p>We'll then carry out the second-stage for our model, the solar peak flattening</p>
+<div class="highlight"><pre><span></span><code><span class="n">random_solar_profile</span> <span class="o">=</span> <span class="n">discharge</span><span class="o">.</span><span class="n">sample_random_day</span><span class="p">(</span><span class="n">df_pred</span><span class="o">.</span><span class="n">pred</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">charge</span><span class="o">.</span><span class="n">extract_solar_profile</span><span class="p">)</span>
+<span class="n">adj_random_solar_profile</span> <span class="o">=</span> <span class="n">discharge</span><span class="o">.</span><span class="n">flatten_peak</span><span class="p">(</span><span class="n">random_solar_profile</span><span class="p">)</span>
+<span class="n">charge_profile</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">construct_charge_profile</span><span class="p">(</span><span class="n">random_solar_profile</span><span class="p">,</span> <span class="n">adj_random_solar_profile</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">charge_profile</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&lt;matplotlib.lines.Line2D at 0x1227af520&gt;]
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_15_1.png" /></p>
+<p><br></p>
+<h3 id="predicting-charge-based-on-pv-forecast">Predicting charge based on PV forecast<a class="headerlink" href="#predicting-charge-based-on-pv-forecast" title="Permanent link">&para;</a></h3>
+<p>Now we will begin developing a unified approach for predicting PV and then optimising the battery charge schedule. </p>
+<p>We will also group by week. This should make the problem a bit harder, and help encourage the final model to generalise to lengthy unseen periods.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">generate_kfold_preds_weeks</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">kfold_kwargs</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate kfold preds, grouping by week</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">group_kfold</span> <span class="o">=</span> <span class="n">GroupKFold</span><span class="p">(</span><span class="o">**</span><span class="n">kfold_kwargs</span><span class="p">)</span>
+
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">group_kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">):</span>
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+        <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+        <span class="n">df_pred</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test_index</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_test</span>
+        <span class="n">df_pred</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test_index</span><span class="p">,</span> <span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="n">df_pred</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;The passed index must be the same length as X and y&#39;</span>
+        <span class="n">df_pred</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+
+    <span class="k">return</span> <span class="n">df_pred</span>
+
+<span class="k">def</span> <span class="nf">generate_kfold_charge_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">kfold_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;n_splits&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit the PV forecasting model and calculate the optimal charge profile for predictions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">generate_kfold_preds_weeks</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">kfold_kwargs</span><span class="o">=</span><span class="n">kfold_kwargs</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="n">charge_pred</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">construct_charge_s</span><span class="p">(</span><span class="n">df_pred</span><span class="o">.</span><span class="n">pred</span><span class="p">)</span>
+    <span class="n">charge_pred</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">post_pred_charge_proc_func</span><span class="p">(</span><span class="n">charge_pred</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;charge_pred&#39;</span><span class="p">:</span> <span class="n">charge_pred</span><span class="p">,</span> 
+                         <span class="s1">&#39;pv_actual&#39;</span><span class="p">:</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">true</span><span class="p">,</span>
+                         <span class="s1">&#39;pv_pred&#39;</span><span class="p">:</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">pred</span><span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">predict_charge</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given a fitted PV forecast model and feature array X, get the optimal charge profile. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pv_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">charge_pred</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">construct_charge_s</span><span class="p">(</span><span class="n">pv_pred</span><span class="p">)</span>
+    <span class="n">charge_pred</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">post_pred_charge_proc_func</span><span class="p">(</span><span class="n">charge_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<p>We'll also create a helper function for our test/train split based on time</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">get_train_test_arr</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">start_of_test_period</span><span class="p">):</span> 
+    <span class="n">train_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">start_of_test_period</span><span class="p">,</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+    <span class="n">test_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">start_of_test_period</span><span class="p">,</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">):]</span>
+
+    <span class="k">return</span> <span class="n">train_arr</span><span class="p">,</span> <span class="n">test_arr</span>
+
+<span class="k">def</span> <span class="nf">get_train_test_Xy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">start_of_test_period</span><span class="p">):</span> 
+    <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">get_train_test_arr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">start_of_test_period</span><span class="p">)</span>
+    <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">get_train_test_arr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">start_of_test_period</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">start_of_test_period</span> <span class="o">=</span> <span class="s1">&#39;2019-02-04&#39;</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">get_train_test_Xy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">start_of_test_period</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<p>Now let's try executing this unified approach using k-fold CV, for 3 default models on the training data:</p>
+<div class="highlight"><pre><span></span><code><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;std_linear&#39;</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="s1">&#39;lasso&#39;</span><span class="p">:</span> <span class="n">Lasso</span><span class="p">(),</span>
+    <span class="s1">&#39;ridge&#39;</span><span class="p">:</span> <span class="n">Ridge</span><span class="p">(),</span>
+    <span class="s1">&#39;boosted&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
+    <span class="s1">&#39;random_forest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(),</span>
+<span class="p">}</span>
+
+<span class="c1"># Define the week groups</span>
+<span class="n">week_groups</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="n">X_train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="o">/</span><span class="mi">52</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="n">charge_pred_df</span> <span class="o">=</span> <span class="n">generate_kfold_charge_preds</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">models</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">week_groups</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">score_charging</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span><span class="p">)</span>
+    <span class="n">pv_mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span> <span class="o">-</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_pred</span><span class="p">))</span>
+    <span class="n">solar_exploit_pct</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">charge</span><span class="o">.</span><span class="n">prop_max_solar</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: PV MSE: </span><span class="si">{:.2f}</span><span class="s2">, score: </span><span class="si">{:.2f}</span><span class="s2">, solar exploit: </span><span class="si">{:.2f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">pv_mse</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">solar_exploit_pct</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>std_linear: PV MSE: 0.35, score: 0.77, solar exploit: 94.86%
+lasso: PV MSE: 0.39, score: 0.76, solar exploit: 93.87%
+ridge: PV MSE: 0.35, score: 0.77, solar exploit: 94.86%
+boosted: PV MSE: 0.36, score: 0.77, solar exploit: 94.48%
+random_forest: PV MSE: 0.35, score: 0.76, solar exploit: 94.35%
+</code></pre></div>
+<p><br></p>
+<p>Interestingly, there is little difference between the models in terms of solar exploit, even though there are some differences in the MSE of the PV forecasts. For our previous attempt at the charging task, the linear model was much worse than the boosted model and RF in terms of solar exploit. This suggests that a weak (or under-fitted) estimator of solar PV actually performs quite well when it comes to </p>
+<div class="highlight"><pre><span></span><code><span class="n">best_model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
+<span class="n">best_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">predict_charge</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">best_model</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="mi">100</span><span class="o">*</span><span class="n">charge</span><span class="o">.</span><span class="n">prop_max_solar</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>95.64718850989254
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">)))</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>solar_location2    0.656734
+solar_location6    0.057420
+solar_location5    0.048603
+hour               0.036628
+pv_7d_lag          0.031805
+solar_location3    0.031244
+doy                0.030441
+temp_location4     0.019506
+temp_location6     0.018710
+temp_location5     0.016729
+temp_location1     0.014523
+temp_location3     0.013219
+dow                0.012169
+temp_location2     0.011155
+weekend            0.001112
+dtype: float64
+</code></pre></div>
+<p>Running the above analysis it seems like solar_locations 1 and 4 do not contribute much at all to the regression models: both are over an order of magnitude smaller than the others. Best to remove these when processing the data (for the moment this is <code>charge.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;solar_location4&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c</span> <span class="ow">and</span> <span class="s1">&#39;solar_location1&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>
+<span class="n">X_train_reduced</span><span class="p">,</span> <span class="n">X_test_reduced</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">features</span><span class="p">),</span> <span class="n">X_test</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="n">charge_pred_df</span> <span class="o">=</span> <span class="n">generate_kfold_charge_preds</span><span class="p">(</span><span class="n">X_train_reduced</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">(),</span> <span class="n">week_groups</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">score_charging</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span><span class="p">)</span>
+<span class="n">pv_mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span> <span class="o">-</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_pred</span><span class="p">))</span>
+<span class="n">solar_exploit_pct</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">charge</span><span class="o">.</span><span class="n">prop_max_solar</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PV MSE: </span><span class="si">{:.2f}</span><span class="s2">, score: </span><span class="si">{:.2f}</span><span class="s2">, solar exploit: </span><span class="si">{:.2f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pv_mse</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">solar_exploit_pct</span><span class="p">))</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="tuned-rf-model">Tuned RF model<a class="headerlink" href="#tuned-rf-model" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">rf_params</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;mae&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span>
+                    <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">150</span>                    
+                <span class="p">}</span>
+
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">rf_params</span><span class="p">)</span>
+<span class="n">best_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">predict_charge</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">best_model</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="mi">100</span><span class="o">*</span><span class="n">charge</span><span class="o">.</span><span class="n">prop_max_solar</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">construct_solar_exploit_calculator</span><span class="p">(</span><span class="n">solar_profile</span><span class="p">,</span> <span class="n">charging_datetimes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">charging_datetimes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">charging_datetimes</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">extract_charging_datetimes</span><span class="p">(</span><span class="n">solar_profile</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">calc_solar_exploitation</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+        <span class="c1"># Checking evening datetimes</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">charging_datetimes</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">extract_charging_datetimes</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">solar_profile</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">charging_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;The prediction series must be the same length as the number of charging datetimes in the main dataframe, </span><span class="si">{</span><span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">s_demand</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+
+        <span class="n">charge_pred</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">construct_charge_s</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">charge_pred</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">post_pred_charge_proc_func</span><span class="p">(</span><span class="n">charge_pred</span><span class="p">)</span>
+
+        <span class="n">exploitation_pct</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">charge</span><span class="o">.</span><span class="n">prop_max_solar</span><span class="p">(</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">solar_profile</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">charging_datetimes</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">exploitation_pct</span>
+
+    <span class="k">if</span> <span class="n">scorer</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">calc_solar_exploitation</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">calc_solar_exploitation</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="feature-selection">Feature Selection<a class="headerlink" href="#feature-selection" title="Permanent link">&para;</a></h3>
+<p>It seems like overfitting could be a substantial issue for charging. Trying some feature selection: </p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">coefs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+              <span class="s1">&#39;coefs&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">})</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">coefs_df</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">coefs_df</span><span class="o">.</span><span class="n">coefs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">feature</span>
+<span class="n">features</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>9             solar_location5
+15    solar_location2_rolling
+16    solar_location3_rolling
+17    solar_location5_rolling
+18    solar_location6_rolling
+22     temp_location4_rolling
+Name: feature, dtype: object
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># features = [f for f in X_train.columns if &#39;temp&#39; not in f]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">prop_max_solar_df</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">charge</span><span class="o">.</span><span class="n">prop_max_solar</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span><span class="p">)</span>
+
+<span class="n">X_train_reduced</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;std_linear&#39;</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="s1">&#39;lasso&#39;</span><span class="p">:</span> <span class="n">Lasso</span><span class="p">(),</span>
+    <span class="s1">&#39;boosted&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
+    <span class="s1">&#39;random_forest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(),</span>
+<span class="p">}</span>
+
+<span class="c1"># Define the week groups</span>
+<span class="n">week_groups</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="n">X_train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="o">/</span><span class="mi">52</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="n">charge_pred_df</span> <span class="o">=</span> <span class="n">generate_kfold_charge_preds</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">models</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">week_groups</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">score_charging</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span><span class="p">)</span>
+    <span class="n">pv_mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_actual</span> <span class="o">-</span> <span class="n">charge_pred_df</span><span class="o">.</span><span class="n">pv_pred</span><span class="p">))</span>    
+    <span class="n">solar_exploit_pct</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">prop_max_solar_df</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: PV MSE: </span><span class="si">{:.2f}</span><span class="s2">, score: </span><span class="si">{:.2f}</span><span class="s2">, solar exploit: </span><span class="si">{:.2f}</span><span class="s2">%, std. solar exploit: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> 
+                                                                                                         <span class="n">pv_mse</span><span class="p">,</span> 
+                                                                                                         <span class="n">score</span><span class="p">,</span> 
+                                                                                                         <span class="n">solar_exploit_pct</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+                                                                                                         <span class="n">solar_exploit_pct</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>std_linear: PV MSE: 0.34, score: 0.77, solar exploit: 94.98%, std. solar exploit: 7.88
+lasso: PV MSE: 0.37, score: 0.76, solar exploit: 94.52%, std. solar exploit: 8.43
+boosted: PV MSE: 0.35, score: 0.77, solar exploit: 94.85%, std. solar exploit: 8.26
+random_forest: PV MSE: 0.35, score: 0.76, solar exploit: 94.74%, std. solar exploit: 8.35
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">charge_pred_df</span> <span class="o">=</span> <span class="n">generate_kfold_charge_preds</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">week_groups</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">random_day</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">))</span>
+    <span class="n">random_df</span> <span class="o">=</span> <span class="n">charge_pred_df</span><span class="p">[</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span> <span class="o">==</span> <span class="n">random_day</span><span class="p">]</span>
+    <span class="n">random_df</span><span class="p">[</span><span class="s1">&#39;pv_actual&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">random_df</span><span class="p">[</span><span class="s1">&#39;charge_pred&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_37_0.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">predict_charge</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given a fitted PV forecast model and feature array X, get the optimal charge profile. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pv_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>    
+    <span class="n">charge_pred</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">construct_charge_s</span><span class="p">(</span><span class="n">pv_pred</span><span class="p">)</span>
+    <span class="n">charge_pred</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">post_pred_charge_proc_func</span><span class="p">(</span><span class="n">charge_pred</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pv_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">charge_pred</span> <span class="o">=</span> <span class="n">predict_charge</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<span class="n">charge_pred_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;charge_pred&#39;</span><span class="p">:</span> <span class="n">charge_pred</span><span class="p">,</span>
+              <span class="s1">&#39;pv_pred&#39;</span><span class="p">:</span> <span class="n">pv_pred</span><span class="p">,</span>
+              <span class="s1">&#39;pv_actual&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">})</span>
+
+<span class="n">solar_exploit_pct</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">prop_max_solar_df</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Held out solar exploit: </span><span class="si">{:.2f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">solar_exploit_pct</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Held out solar exploit (std): </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">solar_exploit_pct</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span> <span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Held out solar exploit: 93.98%
+Held out solar exploit (std): 8.19
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">N</span><span class="o">=</span><span class="mi">8</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">random_day</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">random_df</span> <span class="o">=</span> <span class="n">charge_pred_df</span><span class="p">[</span><span class="n">charge_pred_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span> <span class="o">==</span> <span class="n">random_day</span><span class="p">]</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">random_df</span><span class="o">.</span><span class="n">pv_actual</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">random_df</span><span class="o">.</span><span class="n">pv_pred</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">random_df</span><span class="o">.</span><span class="n">charge_pred</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_40_0.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1">## X, y = prepare_training_input_data(intermediate_data_dir)</span>
+
+<span class="n">start_of_test_period</span> <span class="o">=</span> <span class="s1">&#39;2019-02-04&#39;</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">get_train_test</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">start_of_test_period</span><span class="p">)</span>
+<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">get_train_test</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">start_of_test_period</span><span class="p">)</span>
+
+<span class="n">charging_datetimes</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">extract_charging_datetimes</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">solar_exploit_scorer</span> <span class="o">=</span> <span class="n">construct_solar_exploit_calculator</span><span class="p">(</span><span class="n">solar_profile</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> 
+                                                            <span class="n">charging_datetimes</span><span class="o">=</span><span class="n">charging_datetimes</span><span class="p">,</span> 
+                                                            <span class="n">scorer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="n">charging_datetimes</span><span class="o">.</span><span class="n">date</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;pandas_RF&#39;</span><span class="p">,</span> <span class="n">utils</span><span class="o">.</span><span class="n">PandasRandomForestRegressor</span><span class="p">())</span>
+<span class="p">])</span>
+
+<span class="n">search_spaces</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;pandas_RF__min_samples_leaf&#39;</span><span class="p">:</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;pandas_RF__criterion&#39;</span><span class="p">:</span> <span class="n">Categorical</span><span class="p">([</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="s1">&#39;mae&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;pandas_RF__n_estimators&#39;</span><span class="p">:</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;pandas_RF__max_features&#39;</span><span class="p">:</span> <span class="n">Categorical</span><span class="p">([</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;pandas_RF__max_depth&#39;</span><span class="p">:</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;pandas_RF__min_samples_split&#39;</span><span class="p">:</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;pandas_RF__min_samples_leaf&#39;</span><span class="p">:</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;pandas_RF__bootstrap&#39;</span><span class="p">:</span> <span class="n">Categorical</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="n">opt</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">BayesSearchCV</span><span class="p">(</span>
+    <span class="n">pipeline</span><span class="p">,</span>
+    <span class="n">search_spaces</span><span class="p">,</span>
+    <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
+    <span class="n">scoring</span><span class="o">=</span><span class="n">solar_exploit_scorer</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">fit_BayesSearchCV</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="n">fit_BayesSearchCV</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">opt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;validation score: </span><span class="si">{</span><span class="n">opt</span><span class="o">.</span><span class="n">best_score_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;held out score: </span><span class="si">{</span><span class="n">opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;best params: </span><span class="si">{</span><span class="n">opt</span><span class="o">.</span><span class="n">best_params_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">_</span> <span class="o">=</span> <span class="n">plot_objective</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">optimizer_results_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">fit_and_save_pv_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">,</span> <span class="o">**</span><span class="n">model_params</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model_class</span><span class="p">(</span><span class="o">**</span><span class="n">model_params</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pv_model_fp</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+    <span class="k">return</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">optimise_test_charge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="s1">&#39;08:00&#39;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="s1">&#39;23:59&#39;</span><span class="p">):</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">prepare_test_feature_data</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="n">test_start_date</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="n">test_end_date</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">)</span>
+    <span class="n">charging_datetimes</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">extract_charging_datetimes</span><span class="p">(</span><span class="n">df_features</span><span class="p">)</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">charging_datetimes</span><span class="p">]</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">discharge</span><span class="o">.</span><span class="n">load_trained_model</span><span class="p">(</span><span class="n">pv_model_fp</span><span class="p">)</span>
+    <span class="n">charge_profile</span> <span class="o">=</span> <span class="n">predict_charge</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+    <span class="n">s_charge_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">charge_profile</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">charging_datetimes</span><span class="p">)</span>
+    <span class="n">s_charge_profile</span> <span class="o">=</span> <span class="n">s_charge_profile</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">s_charge_profile</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">post_pred_charge_proc_func</span><span class="p">(</span><span class="n">s_charge_profile</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">charge</span><span class="o">.</span><span class="n">charge_is_valid</span><span class="p">(</span><span class="n">s_charge_profile</span><span class="p">),</span> <span class="s2">&quot;Charging profile is invalid&quot;</span>
+
+    <span class="k">return</span> <span class="n">s_charge_profile</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">pv_model_fp</span> <span class="o">=</span> <span class="s1">&#39;../models/pv_model.sav&#39;</span>
+<span class="n">s_charge_profile</span> <span class="o">=</span> <span class="n">optimise_latest_test_charge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">)</span>
+
+<span class="n">s_charge_profile</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;datetime&#39;&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_44_1.png" /></p>
+<p><br></p>
+<p>Finally we'll export the relevant code to our <code>batopt</code> module</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../06-tuning/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Tuning
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../08-christmas/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Christmas
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['header.autohide', 'navigation.tabs', 'navigation.instant', 'search.suggest'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

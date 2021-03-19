@@ -1,0 +1,2247 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.1, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Cleaning - WPD-DS-Challenge</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-cleaning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="WPD-DS-Challenge" class="md-header-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WPD-DS-Challenge
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Cleaning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../methodology/" class="md-tabs__link">
+      Methodology
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../notes/00-brief/" class="md-tabs__link">
+      Challenge
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../00-utilities/" class="md-tabs__link md-tabs__link--active">
+        Development
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="WPD-DS-Challenge" class="md-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WPD-DS-Challenge
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methodology/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notes/00-brief/" class="md-nav__link">
+        Challenge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-utilities/" class="md-nav__link">
+        Utilities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-retrieval/" class="md-nav__link">
+        Retrieval
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cleaning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Cleaning
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-inputs" class="md-nav__link">
+    User Inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-raw-data" class="md-nav__link">
+    Loading the Raw Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifying-missing-values" class="md-nav__link">
+    Identifying Missing Values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-missing-values" class="md-nav__link">
+    Handling Missing Values
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Missing Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anomalous-data-points-in-pv-data" class="md-nav__link">
+    Anomalous data points in PV data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpolate-missing-temp-data" class="md-nav__link">
+    Interpolate Missing Temp Data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-charging/" class="md-nav__link">
+        Charging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-discharging/" class="md-nav__link">
+        Discharging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-tuning/" class="md-nav__link">
+        Tuning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-pv-forecast/" class="md-nav__link">
+        PV
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-christmas/" class="md-nav__link">
+        Christmas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-pipeline/" class="md-nav__link">
+        Pipeline
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-inputs" class="md-nav__link">
+    User Inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-raw-data" class="md-nav__link">
+    Loading the Raw Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifying-missing-values" class="md-nav__link">
+    Identifying Missing Values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-missing-values" class="md-nav__link">
+    Handling Missing Values
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Missing Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anomalous-data-points-in-pv-data" class="md-nav__link">
+    Anomalous data points in PV data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpolate-missing-temp-data" class="md-nav__link">
+    Interpolate Missing Temp Data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/AyrtonB/WPD-DS-Challenge/edit/main/docs/02-cleaning.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="data-cleaning">Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">ipypb</span> <span class="kn">import</span> <span class="n">track</span>
+
+<span class="kn">from</span> <span class="nn">batopt</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">retrieval</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">JSON</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="user-inputs">User Inputs<a class="headerlink" href="#user-inputs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">raw_data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/raw&#39;</span>
+<span class="n">cache_data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/nb-cache&#39;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="loading-the-raw-data">Loading the Raw Data<a class="headerlink" href="#loading-the-raw-data" title="Permanent link">&para;</a></h3>
+<p>We'll start by loading in the demand data, first we have to determine the latest training set that is available for us to work with</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">identify_latest_set_num</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
+    <span class="n">set_num</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span>
+        <span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_set&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> 
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="s1">&#39;set&#39;</span> <span class="ow">in</span> <span class="n">f</span>
+    <span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">set_num</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">set_num</span> <span class="o">=</span> <span class="n">identify_latest_set_num</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">)</span>
+
+<span class="n">set_num</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>4
+</code></pre></div>
+<p><br></p>
+<p>We'll then load in and clean the datetime index of the dataset</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">reindex_df_dt_idx</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">):</span>
+    <span class="n">full_dt_idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">full_dt_idx</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">load_training_dataset</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;demand&#39;</span><span class="p">,</span> <span class="n">set_num</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parse_dt_idx</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dt_idx_freq</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">set_num</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">set_num</span> <span class="o">=</span> <span class="n">identify_latest_set_num</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">)</span>
+
+    <span class="n">allowed_datasets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">,</span> <span class="s1">&#39;pv&#39;</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="n">allowed_datasets</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;`dataset_name` must be one of: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">allowed_datasets</span><span class="p">)</span><span class="si">}</span><span class="s2"> - not </span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">raw_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s1">*set</span><span class="si">{</span><span class="n">set_num</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">parse_dt_idx</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="s1">&#39;datetime&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;if `parse_dt_idx` is True then `datetime` must be a column in the dataset&#39;</span>
+
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">reindex_df_dt_idx</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">dt_idx_freq</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;datetime&#39;</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_demand</span> <span class="o">=</span> <span class="n">load_training_dataset</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="s1">&#39;demand&#39;</span><span class="p">)</span>
+
+<span class="n">df_demand</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'datetime')</th>
+<th align="right">('demand_MW', 'Unnamed: 1_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2017-11-03 00:00:00+00:00</td>
+<td align="right">2.19</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 00:30:00+00:00</td>
+<td align="right">2.14</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 01:00:00+00:00</td>
+<td align="right">2.01</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 01:30:00+00:00</td>
+<td align="right">1.87</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 02:00:00+00:00</td>
+<td align="right">1.86</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Then the pv</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_pv</span> <span class="o">=</span> <span class="n">load_training_dataset</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="s1">&#39;pv&#39;</span><span class="p">)</span>
+
+<span class="n">df_pv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'datetime')</th>
+<th align="right">('irradiance_Wm-2', 'Unnamed: 1_level_1')</th>
+<th align="right">('panel_temp_C', 'Unnamed: 2_level_1')</th>
+<th align="right">('pv_power_mw', 'Unnamed: 3_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2017-11-03 00:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">7.05</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 00:30:00+00:00</td>
+<td align="right">0</td>
+<td align="right">7.38</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 01:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">7.7</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 01:30:00+00:00</td>
+<td align="right">0</td>
+<td align="right">7.48</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 02:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">7.2</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>And finally the weather</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_weather</span> <span class="o">=</span> <span class="n">load_training_dataset</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">,</span> <span class="n">dt_idx_freq</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
+
+<span class="n">df_weather</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'datetime')</th>
+<th align="right">('solar_location1', 'Unnamed: 1_level_1')</th>
+<th align="right">('solar_location2', 'Unnamed: 2_level_1')</th>
+<th align="right">('solar_location3', 'Unnamed: 3_level_1')</th>
+<th align="right">('solar_location4', 'Unnamed: 4_level_1')</th>
+<th align="right">('solar_location5', 'Unnamed: 5_level_1')</th>
+<th align="right">('solar_location6', 'Unnamed: 6_level_1')</th>
+<th align="right">('temp_location1', 'Unnamed: 7_level_1')</th>
+<th align="right">('temp_location2', 'Unnamed: 8_level_1')</th>
+<th align="right">('temp_location3', 'Unnamed: 9_level_1')</th>
+<th align="right">('temp_location4', 'Unnamed: 10_level_1')</th>
+<th align="right">('temp_location5', 'Unnamed: 11_level_1')</th>
+<th align="right">('temp_location6', 'Unnamed: 12_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2015-01-01 00:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">9.75</td>
+<td align="right">9.65</td>
+<td align="right">8.83</td>
+<td align="right">7.58</td>
+<td align="right">11.62</td>
+<td align="right">11.22</td>
+</tr>
+<tr>
+<td align="left">2015-01-01 01:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">9.91</td>
+<td align="right">9.76</td>
+<td align="right">8.9</td>
+<td align="right">7.62</td>
+<td align="right">11.65</td>
+<td align="right">11.32</td>
+</tr>
+<tr>
+<td align="left">2015-01-01 02:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">9.99</td>
+<td align="right">9.8</td>
+<td align="right">9.1</td>
+<td align="right">7.61</td>
+<td align="right">11.65</td>
+<td align="right">11.3</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>We'll also create a function that reads all of the datasets in at once and then combines them</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">combine_training_datasets</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">set_num</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># Loading provided training datasets</span>
+    <span class="n">single_datasets</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">dataset_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">,</span> <span class="s1">&#39;pv&#39;</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="n">dataset_names</span><span class="p">:</span>
+        <span class="n">single_datasets</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">load_training_dataset</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">set_num</span><span class="o">=</span><span class="n">set_num</span><span class="p">)</span>
+
+    <span class="c1"># Constructing date range</span>
+    <span class="n">min_dt</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">single_datasets</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+    <span class="n">max_dt</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">single_datasets</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+    <span class="n">dt_rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">min_dt</span><span class="p">,</span> <span class="n">max_dt</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Constructing combined dataframe</span>
+    <span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dt_rng</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">dataset_names</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="n">dataset_names</span><span class="p">:</span>
+        <span class="n">df_single_dataset</span> <span class="o">=</span> <span class="n">single_datasets</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span>
+        <span class="n">cols_to_be_overwritten</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_combined</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df_combined</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_single_dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols_to_be_overwritten</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;The following columns exist in multiple datasets meaning data would be overwritten: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cols_to_be_overwritten</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">df_combined</span><span class="p">[</span><span class="n">df_single_dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_single_dataset</span>
+
+    <span class="n">df_combined</span> <span class="o">=</span> <span class="n">df_combined</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+    <span class="c1"># Adding holiday dates</span>
+    <span class="n">s_holidays</span> <span class="o">=</span> <span class="n">retrieval</span><span class="o">.</span><span class="n">load_holidays_s</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">)</span>
+
+    <span class="n">s_cropped_holidays</span> <span class="o">=</span> <span class="n">s_holidays</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">df_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">s_holidays</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()):</span>
+                                    <span class="nb">min</span><span class="p">(</span><span class="n">df_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">s_holidays</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+
+    <span class="n">df_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s_cropped_holidays</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;holidays&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_cropped_holidays</span>
+
+    <span class="k">return</span> <span class="n">df_combined</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_combined</span> <span class="o">=</span> <span class="n">combine_training_datasets</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">)</span>
+
+<span class="n">df_combined</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right">demand</th>
+<th align="right">pv</th>
+<th align="right">weather</th>
+<th align="right">demand_MW</th>
+<th align="right">irradiance_Wm-2</th>
+<th align="right">panel_temp_C</th>
+<th align="right">pv_power_mw</th>
+<th align="right">solar_location1</th>
+<th align="right">solar_location2</th>
+<th align="right">solar_location3</th>
+<th align="right">solar_location4</th>
+<th align="right">solar_location5</th>
+<th align="right">solar_location6</th>
+<th align="right">temp_location1</th>
+<th align="right">temp_location2</th>
+<th align="right">temp_location3</th>
+<th align="right">temp_location4</th>
+<th align="right">temp_location5</th>
+<th align="right">temp_location6</th>
+<th align="right">holidays</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2015-01-01 00:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">9.75</td>
+<td align="right">9.65</td>
+<td align="right">8.83</td>
+<td align="right">7.58</td>
+<td align="right">11.62</td>
+<td align="right">11.22</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2015-01-01 00:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2015-01-01 01:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">9.91</td>
+<td align="right">9.76</td>
+<td align="right">8.9</td>
+<td align="right">7.62</td>
+<td align="right">11.65</td>
+<td align="right">11.32</td>
+<td align="right">nan</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="identifying-missing-values">Identifying Missing Values<a class="headerlink" href="#identifying-missing-values" title="Permanent link">&para;</a></h3>
+<p>We'll quickly inspect the datasets and check their coverage over the full date range when aggregated by dataset</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">identify_df_dt_entries</span><span class="p">(</span><span class="n">df_demand</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">,</span> <span class="n">df_weather</span><span class="p">):</span>
+    <span class="n">min_dt</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">df_demand</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df_pv</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    <span class="n">max_dt</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">df_demand</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">df_pv</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+    <span class="n">dt_rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">min_dt</span><span class="p">,</span> <span class="n">max_dt</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">)</span>
+    <span class="n">df_nulls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dt_rng</span><span class="p">)</span>
+
+    <span class="n">df_nulls</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_demand</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">dt_rng</span><span class="p">)</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">df_nulls</span><span class="p">[</span><span class="s1">&#39;pv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pv</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">dt_rng</span><span class="p">)</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">df_nulls</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">dt_rng</span><span class="p">)</span><span class="o">.</span><span class="n">ffill</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="n">df_entries</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">df_nulls</span>
+
+    <span class="k">return</span> <span class="n">df_entries</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_entries</span> <span class="o">=</span> <span class="n">identify_df_dt_entries</span><span class="p">(</span><span class="n">df_demand</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">,</span> <span class="n">df_weather</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_entries</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+
+<span class="n">utils</span><span class="o">.</span><span class="n">set_date_ticks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">df_entries</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">df_entries</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;Qs&#39;</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s1">&#39;%b %y&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_19_1.png" /></p>
+<p><br></p>
+<p>We'll also determine the null percentage in each individual column</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_demand</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>demand_MW    0.0
+dtype: float64
+</code></pre></div>
+<p><br></p>
+<p>We can see that all of the PV data columns are missing some data</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_pv</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>irradiance_Wm-2    0.001863
+panel_temp_C       0.001991
+pv_power_mw        0.000771
+dtype: float64
+</code></pre></div>
+<p><br></p>
+<p>Locations 1 and 2 are also missing some solar data, with 4 missing temperature data</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_weather</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>solar_location1    0.001487
+solar_location2    0.000992
+solar_location3    0.000000
+solar_location4    0.000000
+solar_location5    0.000000
+solar_location6    0.000000
+temp_location1     0.000000
+temp_location2     0.000000
+temp_location3     0.000000
+temp_location4     0.000992
+temp_location5     0.000000
+temp_location6     0.000000
+dtype: float64
+</code></pre></div>
+<p><br></p>
+<h3 id="handling-missing-values">Handling Missing Values<a class="headerlink" href="#handling-missing-values" title="Permanent link">&para;</a></h3>
+<p>We'll start by interpolating the missing PV data, first checking the number of variables that have null values for each time period</p>
+<div class="highlight"><pre><span></span><code><span class="n">s_pv_num_null_vals</span> <span class="o">=</span> <span class="n">df_pv</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">s_pv_num_null_vals</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>1    103
+3     24
+dtype: int64
+</code></pre></div>
+<p><br></p>
+<p><code>pv_power_mw</code> and <code>irradiance_Wm-2</code> have the same average number of null values, there are also no time-periods where only 2 variables have null values - it's therefore likely that power and irradiance always have null periods at the same time which makes it harder to interpolate their values. We'll quickly check this hypothesis:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">==</span> <span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;irradiance_Wm-2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>False
+</code></pre></div>
+<p><br></p>
+<p>It appears as though the <code>pv_power_mw</code> and <code>irradiance_Wm-2</code> missing values are a single time-block that coincides with a larger set of missing values within <code>panel_temp_C</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_pv</span><span class="p">[</span><span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'datetime')</th>
+<th align="right">('irradiance_Wm-2', 'Unnamed: 1_level_1')</th>
+<th align="right">('panel_temp_C', 'Unnamed: 2_level_1')</th>
+<th align="right">('pv_power_mw', 'Unnamed: 3_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2018-03-04 07:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 07:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 08:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 08:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 09:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 09:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 10:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 10:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 11:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 11:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 12:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 12:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 13:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 13:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 14:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 15:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 15:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 16:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 16:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2018-03-04 17:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2019-07-19 14:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2019-07-19 14:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2019-07-19 15:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr>
+<td align="left">2019-07-19 15:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Looking at the <code>panel_temp_C</code> data we can see there are 3 time-blocks where obervations are missing </p>
+<div class="highlight"><pre><span></span><code><span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;panel_temp_C&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;datetime&#39;&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_33_1.png" /></p>
+<p><br></p>
+<p>One option might to be replace the missing temperature values with the temperatures observed at the surrounding weather grid locations, we'll start by constructing a dataframe that includes all of the temperature data as well as the average rolling temperature for each weather data location.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">construct_df_temp_features</span><span class="p">(</span><span class="n">df_weather</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">):</span>
+    <span class="n">df_weather</span> <span class="o">=</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df_weather</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">ffill</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">temp_loc_cols</span> <span class="o">=</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df_weather</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)]</span>
+
+    <span class="n">df_temp_features</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_weather</span>
+                        <span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                        <span class="p">[</span><span class="n">temp_loc_cols</span><span class="p">]</span>
+                        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">site_temp</span><span class="o">=</span><span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;panel_temp_C&#39;</span><span class="p">])</span>
+                       <span class="p">)</span>
+
+    <span class="n">df_temp_features</span><span class="p">[[</span><span class="n">col</span><span class="o">+</span><span class="s1">&#39;_rolling&#39;</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">temp_loc_cols</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df_temp_features</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="n">temp_loc_cols</span><span class="p">]</span>
+
+    <span class="n">df_temp_features</span> <span class="o">=</span> <span class="n">df_temp_features</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_temp_features</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_temp_features</span> <span class="o">=</span> <span class="n">construct_df_temp_features</span><span class="p">(</span><span class="n">df_weather</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">df_temp_features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right">site_temp</th>
+<th align="right">temp_location1</th>
+<th align="right">temp_location1_rolling</th>
+<th align="right">temp_location2</th>
+<th align="right">temp_location2_rolling</th>
+<th align="right">temp_location3</th>
+<th align="right">temp_location3_rolling</th>
+<th align="right">temp_location4</th>
+<th align="right">temp_location4_rolling</th>
+<th align="right">temp_location5</th>
+<th align="right">temp_location5_rolling</th>
+<th align="right">temp_location6</th>
+<th align="right">temp_location6_rolling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2017-11-03 00:00:00+00:00</td>
+<td align="right">7.05</td>
+<td align="right">8.56</td>
+<td align="right">8.62667</td>
+<td align="right">9.64</td>
+<td align="right">9.66</td>
+<td align="right">7.46</td>
+<td align="right">7.78667</td>
+<td align="right">6.68</td>
+<td align="right">6.93333</td>
+<td align="right">13.09</td>
+<td align="right">13.0233</td>
+<td align="right">13.2</td>
+<td align="right">13.1133</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 00:30:00+00:00</td>
+<td align="right">7.38</td>
+<td align="right">8.56</td>
+<td align="right">8.59333</td>
+<td align="right">9.64</td>
+<td align="right">9.65</td>
+<td align="right">7.46</td>
+<td align="right">7.62333</td>
+<td align="right">6.68</td>
+<td align="right">6.80667</td>
+<td align="right">13.09</td>
+<td align="right">13.0567</td>
+<td align="right">13.2</td>
+<td align="right">13.1567</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 01:00:00+00:00</td>
+<td align="right">7.7</td>
+<td align="right">8.69</td>
+<td align="right">8.60333</td>
+<td align="right">9.71</td>
+<td align="right">9.66333</td>
+<td align="right">7.14</td>
+<td align="right">7.35333</td>
+<td align="right">6.27</td>
+<td align="right">6.54333</td>
+<td align="right">13.21</td>
+<td align="right">13.13</td>
+<td align="right">13.32</td>
+<td align="right">13.24</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 01:30:00+00:00</td>
+<td align="right">7.48</td>
+<td align="right">8.69</td>
+<td align="right">8.64667</td>
+<td align="right">9.71</td>
+<td align="right">9.68667</td>
+<td align="right">7.14</td>
+<td align="right">7.24667</td>
+<td align="right">6.27</td>
+<td align="right">6.40667</td>
+<td align="right">13.21</td>
+<td align="right">13.17</td>
+<td align="right">13.32</td>
+<td align="right">13.28</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 02:00:00+00:00</td>
+<td align="right">7.2</td>
+<td align="right">8.74</td>
+<td align="right">8.70667</td>
+<td align="right">9.73</td>
+<td align="right">9.71667</td>
+<td align="right">6.86</td>
+<td align="right">7.04667</td>
+<td align="right">5.91</td>
+<td align="right">6.15</td>
+<td align="right">13.3</td>
+<td align="right">13.24</td>
+<td align="right">13.36</td>
+<td align="right">13.3333</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>We'll now check the correlation</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_temp_features</span><span class="o">.</span><span class="n">corr</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_38_1.png" /></p>
+<p><br></p>
+<p>The correlation drops off quickly when it gets to the site temperature, looking at the full distributions we can see that the site measurements get far higher. This is because the panel is absorbing heat that raises its temperature above that of the surrounding area, again making it more difficult to simply fill in with the nearby temperature measurements.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_temp_features</span><span class="p">[</span><span class="s1">&#39;site_temp&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Panel&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_temp_features</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;site_temp&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MERRA Min&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_temp_features</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;site_temp&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MERRA Max&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+
+
+
+
+
+&lt;matplotlib.legend.Legend at 0x1fa8d979310&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_40_2.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Could use an RF to estimate the panel temp based on the weather grid temps?</span>
+<span class="c1"># Potential features: current average surrounding temp, average surrounding temp over the last 3 hours</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">split_X_y_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s1">&#39;site_temp&#39;</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">X_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">target_col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">X_cols</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">split_X_y_data_with_index</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s1">&#39;site_temp&#39;</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">X_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">target_col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">X_cols</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">index</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_X_y_data</span><span class="p">(</span><span class="n">df_temp_features</span><span class="p">)</span>
+
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>((37024, 12), (37024,))
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">generate_kfold_preds</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> 
+    <span class="n">y</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">(),</span> 
+    <span class="n">kfold_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;n_splits&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;shuffle&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+
+    <span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="o">**</span><span class="n">kfold_kwargs</span><span class="p">)</span>
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">for</span> <span class="n">train_idxs</span><span class="p">,</span> <span class="n">test_idxs</span> <span class="ow">in</span> <span class="n">kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idxs</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idxs</span><span class="p">]</span>
+        <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test_idxs</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idxs</span><span class="p">]</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+        <span class="n">df_pred</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test_idxs</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_test</span>
+        <span class="n">df_pred</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test_idxs</span><span class="p">,</span> <span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;The passed index must be the same length as X and y&#39;</span>
+        <span class="n">df_pred</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+
+    <span class="k">return</span> <span class="n">df_pred</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_pred</span> <span class="o">=</span> <span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">df_pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">pred</th>
+<th align="right">true</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">4.75986</td>
+<td align="right">7.05</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">5.00606</td>
+<td align="right">7.38</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">5.40829</td>
+<td align="right">7.7</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">5.49439</td>
+<td align="right">7.48</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">5.27108</td>
+<td align="right">7.2</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">evaluate_models</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">post_pred_proc_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">model_scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">track</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="n">df_pred</span> <span class="o">=</span> <span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">post_pred_proc_func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_pred_proc_func</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">])</span>
+
+        <span class="n">model_scores</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;mae&#39;</span><span class="p">:</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;rmse&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]))</span>
+        <span class="p">}</span>
+
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_scores</span><span class="p">)</span>
+
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;metric&#39;</span>
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;model&#39;</span>
+
+    <span class="k">return</span> <span class="n">df_model_scores</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;std_linear&#39;</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="s1">&#39;random_forest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(),</span>
+    <span class="s1">&#39;boosted&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">rerun_panel_temp_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">model_scores_filename</span> <span class="o">=</span> <span class="s1">&#39;panel_temp_interp_model_results.csv&#39;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">rerun_panel_temp_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">model_scores_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">evaluate_models</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">)</span>
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">model_scores_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">model_scores_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;metric&#39;</span><span class="p">)</span>
+
+<span class="n">df_model_scores</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'metric')</th>
+<th align="right">('std_linear', 'Unnamed: 1_level_1')</th>
+<th align="right">('random_forest', 'Unnamed: 2_level_1')</th>
+<th align="right">('boosted', 'Unnamed: 3_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">mae</td>
+<td align="right">2.81922</td>
+<td align="right">1.68451</td>
+<td align="right">2.58143</td>
+</tr>
+<tr>
+<td align="left">rmse</td>
+<td align="right">3.78674</td>
+<td align="right">2.69334</td>
+<td align="right">3.73415</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">top_model</span> <span class="o">=</span> <span class="n">df_model_scores</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+<span class="n">df_pred</span> <span class="o">=</span> <span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">[</span><span class="n">top_model</span><span class="p">])</span>
+
+<span class="n">df_pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">pred</th>
+<th align="right">true</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">6.0645</td>
+<td align="right">7.05</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">6.1691</td>
+<td align="right">7.38</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">7.5151</td>
+<td align="right">7.7</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">7.7232</td>
+<td align="right">7.48</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">7.1748</td>
+<td align="right">7.2</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">s_residuals</span> <span class="o">=</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">s_residuals</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_49_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Obervation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Text(0, 0.5, &#39;Prediction&#39;)
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_50_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">interpolate_missing_panel_temps</span><span class="p">(</span><span class="n">df_pv</span><span class="p">,</span> <span class="n">df_weather</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">()):</span>
+    <span class="n">missing_panel_temp_dts</span> <span class="o">=</span> <span class="n">df_pv</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;panel_temp_C&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing_panel_temp_dts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># i.e. no missing values</span>
+        <span class="k">return</span> <span class="n">df_pv</span>
+
+    <span class="n">df_temp_features</span> <span class="o">=</span> <span class="n">construct_df_temp_features</span><span class="p">(</span><span class="n">df_weather</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">)</span>
+    <span class="n">missing_dt_X</span> <span class="o">=</span> <span class="n">df_temp_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_panel_temp_dts</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;site_temp&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_X_y_data</span><span class="p">(</span><span class="n">df_temp_features</span><span class="p">,</span> <span class="s1">&#39;site_temp&#39;</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">df_pv</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_panel_temp_dts</span><span class="p">,</span> <span class="s1">&#39;panel_temp_C&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">missing_dt_X</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;panel_temp_C&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;There are still null values for the PV panel temperature&#39;</span>
+
+    <span class="k">return</span> <span class="n">df_pv</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_pv</span> <span class="o">=</span> <span class="n">interpolate_missing_panel_temps</span><span class="p">(</span><span class="n">df_pv</span><span class="p">,</span> <span class="n">df_weather</span><span class="p">)</span>
+
+<span class="n">df_pv</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>irradiance_Wm-2    0.002016
+panel_temp_C       0.000000
+pv_power_mw        0.000645
+dtype: float64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">construct_df_irradiance_features</span><span class="p">(</span><span class="n">df_weather</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">):</span>
+    <span class="n">df_weather</span> <span class="o">=</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df_weather</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">ffill</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">temp_loc_cols</span> <span class="o">=</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df_weather</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;solar&#39;</span><span class="p">)]</span>
+
+    <span class="n">df_irradiance_features</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_weather</span>
+                              <span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                              <span class="p">[</span><span class="n">temp_loc_cols</span><span class="p">]</span>
+                              <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">site_solar</span><span class="o">=</span><span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;irradiance_Wm-2&#39;</span><span class="p">])</span>
+                              <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span><span class="p">))</span>
+                             <span class="p">)</span>
+
+    <span class="n">df_irradiance_features</span> <span class="o">=</span> <span class="n">df_irradiance_features</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_irradiance_features</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_irradiance_features</span> <span class="o">=</span> <span class="n">construct_df_irradiance_features</span><span class="p">(</span><span class="n">df_weather</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">)</span>
+
+<span class="n">df_irradiance_features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right">hour</th>
+<th align="right">site_solar</th>
+<th align="right">solar_location1</th>
+<th align="right">solar_location2</th>
+<th align="right">solar_location3</th>
+<th align="right">solar_location4</th>
+<th align="right">solar_location5</th>
+<th align="right">solar_location6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2015-01-01 00:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2015-01-01 00:30:00+00:00</td>
+<td align="right">0.5</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2015-01-01 01:00:00+00:00</td>
+<td align="right">1</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2015-01-01 01:30:00+00:00</td>
+<td align="right">1.5</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2015-01-01 02:00:00+00:00</td>
+<td align="right">2</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;std_linear&#39;</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="s1">&#39;random_forest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(),</span>
+    <span class="s1">&#39;boosted&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">rerun_site_irradiance_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">model_scores_filename</span> <span class="o">=</span> <span class="s1">&#39;site_irradiance_interp_model_results.csv&#39;</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_X_y_data</span><span class="p">(</span><span class="n">df_irradiance_features</span><span class="p">,</span> <span class="s1">&#39;site_solar&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">rerun_site_irradiance_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">model_scores_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">evaluate_models</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">)</span>
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">model_scores_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">model_scores_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;metric&#39;</span><span class="p">)</span>
+
+<span class="n">df_model_scores</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'metric')</th>
+<th align="right">('std_linear', 'Unnamed: 1_level_1')</th>
+<th align="right">('random_forest', 'Unnamed: 2_level_1')</th>
+<th align="right">('boosted', 'Unnamed: 3_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">mae</td>
+<td align="right">57.4977</td>
+<td align="right">37.5087</td>
+<td align="right">49.6956</td>
+</tr>
+<tr>
+<td align="left">rmse</td>
+<td align="right">110.546</td>
+<td align="right">78.8525</td>
+<td align="right">99.1964</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">top_model</span> <span class="o">=</span> <span class="n">df_model_scores</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+<span class="n">df_pred</span> <span class="o">=</span> <span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">[</span><span class="n">top_model</span><span class="p">])</span>
+
+<span class="n">df_pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">pred</th>
+<th align="right">true</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">0.000657</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">0.00044</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">0.000239</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">0.001181</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">0.001369</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Obervation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Text(0, 0.5, &#39;Prediction&#39;)
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_57_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">interpolate_missing_site_irradiance</span><span class="p">(</span><span class="n">df_pv</span><span class="p">,</span> <span class="n">df_weather</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">()):</span>
+    <span class="n">missing_site_irradiance_dts</span> <span class="o">=</span> <span class="n">df_pv</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;irradiance_Wm-2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing_site_irradiance_dts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># i.e. no missing values</span>
+        <span class="k">return</span> <span class="n">df_pv</span>
+
+    <span class="n">df_irradiance_features</span> <span class="o">=</span> <span class="n">construct_df_irradiance_features</span><span class="p">(</span><span class="n">df_weather</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">)</span>
+    <span class="n">missing_dt_X</span> <span class="o">=</span> <span class="n">df_irradiance_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_site_irradiance_dts</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;site_solar&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_X_y_data</span><span class="p">(</span><span class="n">df_irradiance_features</span><span class="p">,</span> <span class="s1">&#39;site_solar&#39;</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">df_pv</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_site_irradiance_dts</span><span class="p">,</span> <span class="s1">&#39;irradiance_Wm-2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">missing_dt_X</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;irradiance_Wm-2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;There are still null values for the solar site irradiance&#39;</span>
+
+    <span class="k">return</span> <span class="n">df_pv</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_pv</span> <span class="o">=</span> <span class="n">interpolate_missing_site_irradiance</span><span class="p">(</span><span class="n">df_pv</span><span class="p">,</span> <span class="n">df_weather</span><span class="p">)</span>
+
+<span class="n">df_pv</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>irradiance_Wm-2    0.000000
+panel_temp_C       0.000000
+pv_power_mw        0.000645
+dtype: float64
+</code></pre></div>
+<p><br></p>
+<p>Now that we have the irradiance and temperature we're ready to start filling in the missing values for power output, again using the same regression interpolation method</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">construct_df_power_features</span><span class="p">(</span><span class="n">df_pv</span><span class="p">):</span>
+    <span class="n">df_power_features</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_pv</span>
+                         <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span><span class="p">))</span>
+                         <span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_power_features</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_power_features</span> <span class="o">=</span> <span class="n">construct_df_power_features</span><span class="p">(</span><span class="n">df_pv</span><span class="p">)</span>
+
+<span class="n">df_power_features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'datetime')</th>
+<th align="right">('hour', 'Unnamed: 1_level_1')</th>
+<th align="right">('irradiance_Wm-2', 'Unnamed: 2_level_1')</th>
+<th align="right">('panel_temp_C', 'Unnamed: 3_level_1')</th>
+<th align="right">('pv_power_mw', 'Unnamed: 4_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2017-11-03 00:00:00+00:00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">7.05</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 00:30:00+00:00</td>
+<td align="right">0.5</td>
+<td align="right">0</td>
+<td align="right">7.38</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 01:00:00+00:00</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">7.7</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 01:30:00+00:00</td>
+<td align="right">1.5</td>
+<td align="right">0</td>
+<td align="right">7.48</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2017-11-03 02:00:00+00:00</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">7.2</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;std_linear&#39;</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="s1">&#39;random_forest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(),</span>
+    <span class="s1">&#39;boosted&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">rerun_site_power_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">model_scores_filename</span> <span class="o">=</span> <span class="s1">&#39;site_power_interp_model_results.csv&#39;</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dates</span> <span class="o">=</span> <span class="n">split_X_y_data_with_index</span><span class="p">(</span><span class="n">df_power_features</span><span class="p">,</span> <span class="s1">&#39;pv_power_mw&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">rerun_site_power_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">model_scores_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">evaluate_models</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">)</span>
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">model_scores_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">model_scores_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;metric&#39;</span><span class="p">)</span>
+
+<span class="n">df_model_scores</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'metric')</th>
+<th align="right">('std_linear', 'Unnamed: 1_level_1')</th>
+<th align="right">('random_forest', 'Unnamed: 2_level_1')</th>
+<th align="right">('boosted', 'Unnamed: 3_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">mae</td>
+<td align="right">0.061519</td>
+<td align="right">0.041122</td>
+<td align="right">0.043927</td>
+</tr>
+<tr>
+<td align="left">rmse</td>
+<td align="right">0.14598</td>
+<td align="right">0.135822</td>
+<td align="right">0.133212</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">top_model</span> <span class="o">=</span> <span class="n">df_model_scores</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+<span class="n">df_pred</span> <span class="o">=</span> <span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">[</span><span class="n">top_model</span><span class="p">])</span>
+
+<span class="n">df_pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">pred</th>
+<th align="right">true</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">-0.000829</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">-0.000634</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">-0.000178</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">0.000163</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">-0.001097</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Obervation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Text(0, 0.5, &#39;Prediction&#39;)
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_65_1.png" /></p>
+<h5 id="anomalous-data-points-in-pv-data">Anomalous data points in PV data<a class="headerlink" href="#anomalous-data-points-in-pv-data" title="Permanent link">&para;</a></h5>
+<p>The PV data shows a number of points where the observed value is 0 but the prediction is much higher. </p>
+<p>First let's try and identify them (setting the tolerance to be lower will capture more values as anomalous). </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">identify_anomalies_pv</span><span class="p">(</span><span class="n">df_pred</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">foo</span><span class="p">[</span><span class="s1">&#39;difference&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">pred</span> <span class="o">-</span> <span class="n">foo</span><span class="o">.</span><span class="n">true</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span><span class="p">[(</span><span class="n">foo</span><span class="o">.</span><span class="n">difference</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">true</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">foo</span><span class="o">.</span><span class="n">index</span>
+
+<span class="n">anomalous_dates</span> <span class="o">=</span> <span class="n">dates</span><span class="p">[</span><span class="n">identify_anomalies_pv</span><span class="p">(</span><span class="n">df_pred</span><span class="p">)]</span>
+<span class="n">anomalous_df</span> <span class="o">=</span> <span class="n">df_power_features</span><span class="p">[</span><span class="n">df_power_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">anomalous_dates</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">anomalous_df</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span> <span class="c1"># Check this histogram to eyeball if any unreasonable anomalous values are caught by the tolerance (e.g. late at night)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(array([ 3.,  9., 24., 22., 34., 22., 30., 12.,  9.,  3.]),
+ array([ 6.  ,  7.25,  8.5 ,  9.75, 11.  , 12.25, 13.5 , 14.75, 16.  ,
+        17.25, 18.5 ]),
+ &lt;BarContainer object of 10 artists&gt;)
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_67_1.png" /></p>
+<p>Replace these values in <code>df_power_features</code>. </p>
+<div class="highlight"><pre><span></span><code><span class="n">df_power_features_clean</span> <span class="o">=</span> <span class="n">df_power_features</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_power_features_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_power_features_clean</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">anomalous_dates</span><span class="p">),</span> <span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</code></pre></div>
+<p>Rerun the previous model fitting and check the pred vs. actual graph. </p>
+<div class="highlight"><pre><span></span><code><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;std_linear&#39;</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="s1">&#39;random_forest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(),</span>
+    <span class="s1">&#39;boosted&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">rerun_site_power_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">model_scores_filename</span> <span class="o">=</span> <span class="s1">&#39;site_power_interp_clean_model_results.csv&#39;</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dates</span> <span class="o">=</span> <span class="n">split_X_y_data_with_index</span><span class="p">(</span><span class="n">df_power_features_clean</span><span class="p">,</span> <span class="s1">&#39;pv_power_mw&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">rerun_site_power_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">model_scores_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">evaluate_models</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">)</span>
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">model_scores_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">model_scores_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;metric&#39;</span><span class="p">)</span>
+
+<span class="n">top_model</span> <span class="o">=</span> <span class="n">df_model_scores</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+<span class="n">df_pred</span> <span class="o">=</span> <span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">[</span><span class="n">top_model</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Obervation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Text(0, 0.5, &#39;Prediction&#39;)
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_71_1.png" /></p>
+<p>The above graph looks to be a cleaner with tolerance at 0.1. It looks like there might still be some which aren't though. Consider lowering the tolerance.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">pv_anomalies_to_nan</span><span class="p">(</span><span class="n">df_pv</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">GradientBoostingRegressor</span><span class="p">(),</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run this function to identify places where predicted values for pv_power_mw are much larger</span>
+<span class="sd">    than true values and where the true value is 0 (we expect these are anomalies) and make these values nan.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df_power_features</span> <span class="o">=</span> <span class="n">construct_df_power_features</span><span class="p">(</span><span class="n">df_pv</span><span class="p">)</span>
+
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dates</span> <span class="o">=</span> <span class="n">split_X_y_data_with_index</span><span class="p">(</span><span class="n">df_power_features</span><span class="p">,</span> <span class="s1">&#39;pv_power_mw&#39;</span><span class="p">)</span>
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;difference&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">pred</span> <span class="o">-</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">true</span>
+    <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dates</span>
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+
+    <span class="n">anomalous_idx</span> <span class="o">=</span> <span class="n">df_pred</span><span class="p">[(</span><span class="n">df_pred</span><span class="o">.</span><span class="n">difference</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_pred</span><span class="o">.</span><span class="n">true</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span>    
+
+    <span class="n">df_pv</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_pv</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">anomalous_idx</span><span class="p">),</span> <span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">return</span> <span class="n">df_pv</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_pv</span> <span class="o">=</span> <span class="n">pv_anomalies_to_nan</span><span class="p">(</span><span class="n">df_pv</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">interpolate_missing_site_power</span><span class="p">(</span><span class="n">df_pv</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">()):</span>
+    <span class="n">missing_site_power_dts</span> <span class="o">=</span> <span class="n">df_pv</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing_site_power_dts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># i.e. no missing values</span>
+        <span class="k">return</span> <span class="n">df_pv</span>
+
+    <span class="n">df_power_features</span> <span class="o">=</span> <span class="n">construct_df_power_features</span><span class="p">(</span><span class="n">df_pv</span><span class="p">)</span>
+    <span class="n">missing_dt_X</span> <span class="o">=</span> <span class="n">df_power_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_site_power_dts</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;pv_power_mw&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_X_y_data</span><span class="p">(</span><span class="n">df_power_features</span><span class="p">,</span> <span class="s1">&#39;pv_power_mw&#39;</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">df_pv</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_site_power_dts</span><span class="p">,</span> <span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">missing_dt_X</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">df_pv</span><span class="p">[</span><span class="s1">&#39;pv_power_mw&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;There are still null values for the solar site power&#39;</span>
+
+    <span class="k">return</span> <span class="n">df_pv</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_pv</span> <span class="o">=</span> <span class="n">interpolate_missing_site_power</span><span class="p">(</span><span class="n">df_pv</span><span class="p">)</span>
+
+<span class="n">df_pv</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>irradiance_Wm-2    0.0
+panel_temp_C       0.0
+pv_power_mw        0.0
+dtype: float64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">interpolate_missing_weather_solar</span><span class="p">(</span><span class="n">df_pv</span><span class="p">,</span> <span class="n">df_weather</span><span class="p">,</span> <span class="n">weather_col</span><span class="o">=</span><span class="s1">&#39;solar_location2&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">()):</span>
+    <span class="n">missing_weather_solar_dts</span> <span class="o">=</span> <span class="n">df_weather</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_weather</span><span class="p">[</span><span class="n">weather_col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing_weather_solar_dts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># i.e. no missing values</span>
+        <span class="k">return</span> <span class="n">df_pv</span>
+
+    <span class="n">df_irradiance_features</span> <span class="o">=</span> <span class="n">construct_df_irradiance_features</span><span class="p">(</span><span class="n">df_weather</span><span class="p">,</span> <span class="n">df_pv</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;site_solar&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">missing_dt_X</span> <span class="o">=</span> <span class="n">df_irradiance_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_weather_solar_dts</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">weather_col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_X_y_data</span><span class="p">(</span><span class="n">df_irradiance_features</span><span class="p">,</span> <span class="n">weather_col</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">df_weather</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_weather_solar_dts</span><span class="p">,</span> <span class="n">weather_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">missing_dt_X</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">df_weather</span><span class="p">[</span><span class="n">weather_col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;There are still null values for the weather dataset solar observations&#39;</span>
+
+    <span class="k">return</span> <span class="n">df_weather</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_weather</span> <span class="o">=</span> <span class="n">interpolate_missing_weather_solar</span><span class="p">(</span><span class="n">df_pv</span><span class="p">,</span> <span class="n">df_weather</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">())</span>
+
+<span class="n">df_weather</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>solar_location1    0.0000
+solar_location2    0.0000
+solar_location3    0.0000
+solar_location4    0.0000
+solar_location5    0.0000
+solar_location6    0.0000
+temp_location1     0.0000
+temp_location2     0.0000
+temp_location3     0.0000
+temp_location4     0.0011
+temp_location5     0.0000
+temp_location6     0.0000
+dtype: float64
+</code></pre></div>
+<p><br></p>
+<h3 id="interpolate-missing-temp-data">Interpolate Missing Temp Data<a class="headerlink" href="#interpolate-missing-temp-data" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">foo</span> <span class="o">=</span> <span class="n">interpolate_missing_temps</span><span class="p">(</span><span class="n">df_weather</span><span class="p">,</span> <span class="s1">&#39;temp_location4&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">())</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>solar_location1    0.0
+solar_location2    0.0
+solar_location3    0.0
+solar_location4    0.0
+solar_location5    0.0
+solar_location6    0.0
+temp_location1     0.0
+temp_location2     0.0
+temp_location3     0.0
+temp_location4     0.0
+temp_location5     0.0
+temp_location6     0.0
+dtype: float64
+</code></pre></div>
+<p><br></p>
+<p>Finally we'll export the relevant code to our <code>batopt</code> module</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../01-retrieval/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Retrieval
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../03-charging/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Charging
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['header.autohide', 'navigation.tabs', 'navigation.instant', 'search.suggest'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

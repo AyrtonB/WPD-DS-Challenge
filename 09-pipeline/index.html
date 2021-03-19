@@ -1,0 +1,1380 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.1, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Pipeline - WPD-DS-Challenge</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pipeline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="WPD-DS-Challenge" class="md-header-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WPD-DS-Challenge
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Pipeline
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../methodology/" class="md-tabs__link">
+      Methodology
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../notes/00-brief/" class="md-tabs__link">
+      Challenge
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../00-utilities/" class="md-tabs__link md-tabs__link--active">
+        Development
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="WPD-DS-Challenge" class="md-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WPD-DS-Challenge
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methodology/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notes/00-brief/" class="md-nav__link">
+        Challenge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-utilities/" class="md-nav__link">
+        Utilities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-retrieval/" class="md-nav__link">
+        Retrieval
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-cleaning/" class="md-nav__link">
+        Cleaning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-charging/" class="md-nav__link">
+        Charging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-discharging/" class="md-nav__link">
+        Discharging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-tuning/" class="md-nav__link">
+        Tuning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-pv-forecast/" class="md-nav__link">
+        PV
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-christmas/" class="md-nav__link">
+        Christmas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pipeline
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pipeline
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end" class="md-nav__link">
+    End-to-End
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end" class="md-nav__link">
+    End-to-End
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/AyrtonB/WPD-DS-Challenge/edit/main/docs/09-pipeline.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="kn">from</span> <span class="nn">dagster</span> <span class="kn">import</span> <span class="n">execute_pipeline</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">solid</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">batopt</span> <span class="kn">import</span> <span class="n">clean</span><span class="p">,</span> <span class="n">discharge</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">pv</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FEAutils</span> <span class="k">as</span> <span class="nn">hlp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="end-to-end">End-to-End<a class="headerlink" href="#end-to-end" title="Permanent link">&para;</a></h3>
+<p>We're now going to combine these steps into a pipeline using dagster, first we'll create the individual components.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@solid</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">raw_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">loaded_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;pv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">load_training_dataset</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="s1">&#39;pv&#39;</span><span class="p">)</span>
+    <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">load_training_dataset</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="s1">&#39;demand&#39;</span><span class="p">)</span>
+    <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">load_training_dataset</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">,</span> <span class="n">dt_idx_freq</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">loaded_data</span>
+
+<span class="nd">@solid</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">loaded_data</span><span class="p">,</span> <span class="n">raw_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="c1"># Cleaning</span>
+    <span class="n">cleaned_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;pv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;pv&#39;</span><span class="p">]</span>
+                          <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clean</span><span class="o">.</span><span class="n">pv_anomalies_to_nan</span><span class="p">)</span>
+                          <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clean</span><span class="o">.</span><span class="n">interpolate_missing_panel_temps</span><span class="p">,</span> <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">])</span>
+                          <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clean</span><span class="o">.</span><span class="n">interpolate_missing_site_irradiance</span><span class="p">,</span> <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">])</span>
+                          <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clean</span><span class="o">.</span><span class="n">interpolate_missing_site_power</span><span class="p">)</span>
+                         <span class="p">)</span>
+    <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">interpolate_missing_weather_solar</span><span class="p">(</span><span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;pv&#39;</span><span class="p">],</span> <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">])</span>
+    <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">interpolate_missing_temps</span><span class="p">(</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">],</span> <span class="s1">&#39;temp_location4&#39;</span><span class="p">)</span>
+
+    <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Saving</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span>
+
+    <span class="n">set_num</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">identify_latest_set_num</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">)</span>
+
+    <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;pv&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">intermediate_data_dir</span><span class="si">}</span><span class="s1">/pv_set</span><span class="si">{</span><span class="n">set_num</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+    <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;demand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">intermediate_data_dir</span><span class="si">}</span><span class="s1">/demand_set</span><span class="si">{</span><span class="n">set_num</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+    <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">intermediate_data_dir</span><span class="si">}</span><span class="s1">/weather_set</span><span class="si">{</span><span class="n">set_num</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">intermediate_data_dir</span>
+
+<span class="nd">@solid</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">fit_and_save_charge_model</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">charge_opt_model_fp</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">charge</span><span class="o">.</span><span class="n">prepare_training_input_data</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">start_hour</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">charge</span><span class="o">.</span><span class="n">fit_and_save_charging_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">charge_opt_model_fp</span><span class="p">,</span> <span class="o">**</span><span class="n">model_params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="nd">@solid</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">fit_and_save_pv_model</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">prepare_training_input_data</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span>
+    <span class="n">pv</span><span class="o">.</span><span class="n">fit_and_save_pv_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="o">**</span><span class="n">model_params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="nd">@solid</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">fit_and_save_discharge_model</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">discharge_opt_model_fp</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">discharge</span><span class="o">.</span><span class="n">prepare_training_input_data</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span>
+    <span class="n">discharge</span><span class="o">.</span><span class="n">fit_and_save_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">discharge_opt_model_fp</span><span class="p">,</span> <span class="o">**</span><span class="n">model_params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="nd">@solid</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">construct_battery_profile</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">charge_model_success</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">discharge_model_success</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">raw_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">discharge_opt_model_fp</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">charge_model_success</span> <span class="ow">and</span> <span class="n">discharge_model_success</span><span class="p">,</span> <span class="s1">&#39;Model training was unsuccessful&#39;</span>
+
+    <span class="n">s_discharge_profile</span> <span class="o">=</span> <span class="n">discharge</span><span class="o">.</span><span class="n">optimise_test_discharge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">discharge_opt_model_fp</span><span class="p">)</span>
+    <span class="n">s_charge_profile</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">optimise_test_charge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">pv_model_fp</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">)</span>
+
+    <span class="n">s_battery_profile</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_charge_profile</span> <span class="o">+</span> <span class="n">s_discharge_profile</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">s_battery_profile</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;charge_MW&#39;</span>
+
+    <span class="k">return</span> <span class="n">s_battery_profile</span>
+
+<span class="nd">@solid</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">check_and_save_battery_profile</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">s_battery_profile</span><span class="p">,</span> <span class="n">output_data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="c1"># Check that solution meets battery constraints</span>
+    <span class="k">assert</span> <span class="n">constraints</span><span class="o">.</span><span class="n">schedule_is_legal</span><span class="p">(</span><span class="n">s_battery_profile</span><span class="p">),</span> <span class="s2">&quot;Solution violates constraints&quot;</span>
+
+    <span class="c1"># Saving</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_data_dir</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">output_data_dir</span><span class="p">)</span>
+
+    <span class="n">s_battery_profile</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">s_battery_profile</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">s_battery_profile</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_data_dir</span><span class="si">}</span><span class="s1">/latest_submission.csv&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> 
+</code></pre></div>
+<p><br></p>
+<p>Then we'll combine them in a pipeline</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pipeline</span>
+<span class="k">def</span> <span class="nf">end_to_end_pipeline</span><span class="p">():</span> 
+    <span class="c1"># loading and cleaning</span>
+    <span class="n">loaded_data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+    <span class="n">intermediate_data_dir</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">loaded_data</span><span class="p">)</span>
+
+    <span class="c1"># charging</span>
+    <span class="n">charge_model_success</span> <span class="o">=</span> <span class="n">fit_and_save_pv_model</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span>
+<span class="c1">#     charge_model_success = fit_and_save_charge_model(intermediate_data_dir)</span>
+
+    <span class="c1"># discharing</span>
+    <span class="n">discharge_model_success</span> <span class="o">=</span> <span class="n">fit_and_save_discharge_model</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span>
+
+    <span class="c1"># combining and saving</span>
+    <span class="n">s_battery_profile</span> <span class="o">=</span> <span class="n">construct_battery_profile</span><span class="p">(</span><span class="n">charge_model_success</span><span class="p">,</span> <span class="n">discharge_model_success</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">)</span>
+    <span class="n">check_and_save_battery_profile</span><span class="p">(</span><span class="n">s_battery_profile</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<p>Which we'll now run a test</p>
+<div class="highlight"><pre><span></span><code><span class="n">run_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;solids&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;load_data&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;inputs&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;raw_data_dir&#39;</span><span class="p">:</span> <span class="s1">&#39;../data/raw&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;clean_data&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;inputs&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;raw_data_dir&#39;</span><span class="p">:</span> <span class="s1">&#39;../data/raw&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;intermediate_data_dir&#39;</span><span class="p">:</span> <span class="s1">&#39;../data/intermediate&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;fit_and_save_discharge_model&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;inputs&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;discharge_opt_model_fp&#39;</span><span class="p">:</span> <span class="s1">&#39;../models/discharge_opt.sav&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;model_params&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;mse&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+                    <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">74</span>                    
+                <span class="p">}</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;fit_and_save_pv_model&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;inputs&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;pv_model_fp&#39;</span><span class="p">:</span> <span class="s1">&#39;../models/pv_model.sav&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;model_params&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;mse&#39;</span><span class="p">,</span> 
+                    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                    <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">150</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;construct_battery_profile&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;inputs&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;raw_data_dir&#39;</span><span class="p">:</span> <span class="s1">&#39;../data/raw&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;discharge_opt_model_fp&#39;</span><span class="p">:</span> <span class="s1">&#39;../models/discharge_opt.sav&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;pv_model_fp&#39;</span><span class="p">:</span> <span class="s1">&#39;../models/pv_model.sav&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;start_time&#39;</span><span class="p">:</span> <span class="s1">&#39;08:00&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;check_and_save_battery_profile&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;inputs&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;output_data_dir&#39;</span><span class="p">:</span> <span class="s1">&#39;../data/output&#39;</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">execute_pipeline</span><span class="p">(</span><span class="n">end_to_end_pipeline</span><span class="p">,</span> <span class="n">run_config</span><span class="o">=</span><span class="n">run_config</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[32m2021-03-18 23:57:42[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - ENGINE_EVENT - Starting initialization of resources [asset_store].
+[32m2021-03-18 23:57:42[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - ENGINE_EVENT - Finished initialization of resources [asset_store].
+[32m2021-03-18 23:57:42[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - PIPELINE_START - Started execution of pipeline &quot;end_to_end_pipeline&quot;.
+[32m2021-03-18 23:57:42[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - ENGINE_EVENT - Executing steps in process (pid: 31776)
+[32m2021-03-18 23:57:42[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - load_data.compute - STEP_START - Started execution of step &quot;load_data.compute&quot;.
+[32m2021-03-18 23:57:42[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - load_data.compute - STEP_INPUT - Got input &quot;raw_data_dir&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-18 23:57:43[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - load_data.compute - STEP_OUTPUT - Yielded output &quot;result&quot; of type &quot;Any&quot;. (Type check passed).
+[32m2021-03-18 23:57:43[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - load_data.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
+[32m2021-03-18 23:57:43[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - load_data.compute - STEP_SUCCESS - Finished execution of step &quot;load_data.compute&quot; in 927ms.
+[32m2021-03-18 23:57:43[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - clean_data.compute - STEP_START - Started execution of step &quot;clean_data.compute&quot;.
+[32m2021-03-18 23:57:43[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - clean_data.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input loaded_data in memory object store using pickle.
+[32m2021-03-18 23:57:43[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - clean_data.compute - STEP_INPUT - Got input &quot;loaded_data&quot; of type &quot;Any&quot;. (Type check passed).
+[32m2021-03-18 23:57:43[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - clean_data.compute - STEP_INPUT - Got input &quot;raw_data_dir&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-18 23:57:43[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - clean_data.compute - STEP_INPUT - Got input &quot;intermediate_data_dir&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - clean_data.compute - STEP_OUTPUT - Yielded output &quot;result&quot; of type &quot;Any&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - clean_data.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - clean_data.compute - STEP_SUCCESS - Finished execution of step &quot;clean_data.compute&quot; in 5m10s.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_discharge_model.compute - STEP_START - Started execution of step &quot;fit_and_save_discharge_model.compute&quot;.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_discharge_model.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input intermediate_data_dir in memory object store using pickle.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_discharge_model.compute - STEP_INPUT - Got input &quot;intermediate_data_dir&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_discharge_model.compute - STEP_INPUT - Got input &quot;discharge_opt_model_fp&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_discharge_model.compute - STEP_INPUT - Got input &quot;model_params&quot; of type &quot;dict&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_discharge_model.compute - STEP_OUTPUT - Yielded output &quot;result&quot; of type &quot;Any&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_discharge_model.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_discharge_model.compute - STEP_SUCCESS - Finished execution of step &quot;fit_and_save_discharge_model.compute&quot; in 6.42ms.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_pv_model.compute - STEP_START - Started execution of step &quot;fit_and_save_pv_model.compute&quot;.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_pv_model.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input intermediate_data_dir in memory object store using pickle.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_pv_model.compute - STEP_INPUT - Got input &quot;intermediate_data_dir&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_pv_model.compute - STEP_INPUT - Got input &quot;pv_model_fp&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_pv_model.compute - STEP_INPUT - Got input &quot;model_params&quot; of type &quot;dict&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_pv_model.compute - STEP_OUTPUT - Yielded output &quot;result&quot; of type &quot;Any&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_pv_model.compute - OBJECT_STORE_OPERATION - Stored intermediate object for output result in memory object store using pickle.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - fit_and_save_pv_model.compute - STEP_SUCCESS - Finished execution of step &quot;fit_and_save_pv_model.compute&quot; in 8.25ms.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_START - Started execution of step &quot;construct_battery_profile.compute&quot;.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input charge_model_success in memory object store using pickle.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input discharge_model_success in memory object store using pickle.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - OBJECT_STORE_OPERATION - Retrieved intermediate object for input intermediate_data_dir in memory object store using pickle.
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_INPUT - Got input &quot;charge_model_success&quot; of type &quot;Bool&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_INPUT - Got input &quot;discharge_model_success&quot; of type &quot;Bool&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_INPUT - Got input &quot;intermediate_data_dir&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_INPUT - Got input &quot;raw_data_dir&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_INPUT - Got input &quot;discharge_opt_model_fp&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_INPUT - Got input &quot;pv_model_fp&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:53[0m - dagster - [34mDEBUG[0m - end_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_INPUT - Got input &quot;start_time&quot; of type &quot;String&quot;. (Type check passed).
+[32m2021-03-19 00:02:54[0m - dagster - [34mERROR[0m - [31mend_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - construct_battery_profile.compute - STEP_FAILURE - Execution of step &quot;construct_battery_profile.compute&quot; failed.
+
+ValueError: invalid literal for int() with base 10: &#39;4(Conflicted copy 2021-03-18 by DESKTOP-VRE38DV)&#39;
+
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\errors.py&quot;, line 180, in user_code_error_boundary
+    yield
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py&quot;, line 475, in _user_event_sequence_for_step_compute_fn
+    for event in iterate_with_context(raise_interrupts_immediately, gen):
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\utils\__init__.py&quot;, line 443, in iterate_with_context
+    next_output = next(iterator)
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\compute.py&quot;, line 105, in _execute_core_compute
+    for step_output in _yield_compute_results(compute_context, inputs, compute_fn):
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\compute.py&quot;, line 76, in _yield_compute_results
+    for event in user_event_sequence:
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\definitions\decorators\solid.py&quot;, line 227, in compute
+    result = fn(context, **kwargs)
+  File &quot;&lt;ipython-input-9-77cebb2828a3&gt;&quot;, line 64, in construct_battery_profile
+    s_discharge_profile = discharge.optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp)
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\discharge.py&quot;, line 330, in optimise_test_discharge_profile
+    df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=test_start_date, test_end_date=test_end_date)
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\discharge.py&quot;, line 311, in prepare_test_feature_data
+    df_features = (clean
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py&quot;, line 70, in combine_training_datasets
+    single_datasets[dataset_name] = load_training_dataset(raw_data_dir, dataset_name, set_num=set_num)
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py&quot;, line 47, in load_training_dataset
+    set_num = identify_latest_set_num(raw_data_dir)
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py&quot;, line 30, in identify_latest_set_num
+    set_num = max([
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py&quot;, line 31, in &lt;listcomp&gt;
+    int(f.split(&#39;_set&#39;)[1].replace(&#39;.csv&#39;, &#39;&#39;))
+[0m
+[32m2021-03-19 00:02:54[0m - dagster - [34mERROR[0m - [31mend_to_end_pipeline - 2b0e926e-82f2-4668-a4dc-2292c082698c - 31776 - PIPELINE_FAILURE - Execution of pipeline &quot;end_to_end_pipeline&quot; failed. An exception was thrown during execution.
+
+ValueError: invalid literal for int() with base 10: &#39;4(Conflicted copy 2021-03-18 by DESKTOP-VRE38DV)&#39;
+
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py&quot;, line 665, in _pipeline_execution_iterator
+    for event in pipeline_context.executor.execute(pipeline_context, execution_plan):
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\executor\in_process.py&quot;, line 36, in execute
+    for event in inner_plan_execution_iterator(pipeline_context, execution_plan):
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_plan.py&quot;, line 77, in inner_plan_execution_iterator
+    for step_event in check.generator(
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_plan.py&quot;, line 272, in _dagster_event_sequence_for_step
+    raise dagster_user_error.user_exception
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\errors.py&quot;, line 180, in user_code_error_boundary
+    yield
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py&quot;, line 475, in _user_event_sequence_for_step_compute_fn
+    for event in iterate_with_context(raise_interrupts_immediately, gen):
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\utils\__init__.py&quot;, line 443, in iterate_with_context
+    next_output = next(iterator)
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\compute.py&quot;, line 105, in _execute_core_compute
+    for step_output in _yield_compute_results(compute_context, inputs, compute_fn):
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\compute.py&quot;, line 76, in _yield_compute_results
+    for event in user_event_sequence:
+  File &quot;C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\dagster\core\definitions\decorators\solid.py&quot;, line 227, in compute
+    result = fn(context, **kwargs)
+  File &quot;&lt;ipython-input-9-77cebb2828a3&gt;&quot;, line 64, in construct_battery_profile
+    s_discharge_profile = discharge.optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp)
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\discharge.py&quot;, line 330, in optimise_test_discharge_profile
+    df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=test_start_date, test_end_date=test_end_date)
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\discharge.py&quot;, line 311, in prepare_test_feature_data
+    df_features = (clean
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py&quot;, line 70, in combine_training_datasets
+    single_datasets[dataset_name] = load_training_dataset(raw_data_dir, dataset_name, set_num=set_num)
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py&quot;, line 47, in load_training_dataset
+    set_num = identify_latest_set_num(raw_data_dir)
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py&quot;, line 30, in identify_latest_set_num
+    set_num = max([
+  File &quot;c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py&quot;, line 31, in &lt;listcomp&gt;
+    int(f.split(&#39;_set&#39;)[1].replace(&#39;.csv&#39;, &#39;&#39;))
+[0m
+
+
+
+---------------------------------------------------------------------------
+
+DagsterExecutionStepExecutionError        Traceback (most recent call last)
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_plan.py in _dagster_event_sequence_for_step(step_context, retries)
+    211 
+--&gt; 212         for step_event in check.generator(step_events):
+    213             yield step_event
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py in core_dagster_event_sequence_for_step(step_context, prior_attempt_count)
+    285         # timer block above in order for time to be recorded accurately.
+--&gt; 286         for user_event in check.generator(
+    287             _step_output_error_checked_user_event_sequence(step_context, user_event_sequence)
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py in _step_output_error_checked_user_event_sequence(step_context, user_event_sequence)
+     58 
+---&gt; 59     for user_event in user_event_sequence:
+     60         if not isinstance(user_event, Output):
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py in _user_event_sequence_for_step_compute_fn(step_context, evaluated_inputs)
+    475         for event in iterate_with_context(raise_interrupts_immediately, gen):
+--&gt; 476             yield event
+    477
+
+
+~\anaconda3\envs\batopt\lib\contextlib.py in __exit__(self, type, value, traceback)
+    134             try:
+--&gt; 135                 self.gen.throw(type, value, traceback)
+    136             except StopIteration as exc:
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\errors.py in user_code_error_boundary(error_cls, msg_fn, control_flow_exceptions, **kwargs)
+    189         # with the error reported further up the stack
+--&gt; 190         raise_from(
+    191             error_cls(msg_fn(), user_exception=e, original_exc_info=sys.exc_info(), **kwargs), e
+
+
+~\anaconda3\envs\batopt\lib\site-packages\future\utils\__init__.py in raise_from(exc, cause)
+    402         execstr = &quot;raise __python_future_raise_from_exc from __python_future_raise_from_cause&quot;
+--&gt; 403         exec(execstr, myglobals, mylocals)
+    404
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\errors.py in &lt;module&gt;
+
+
+DagsterExecutionStepExecutionError: Error occurred during the execution of step:
+        step key: &quot;construct_battery_profile.compute&quot;
+        solid invocation: &quot;construct_battery_profile&quot;
+        solid definition: &quot;construct_battery_profile&quot;
+
+
+
+During handling of the above exception, another exception occurred:
+
+
+ValueError                                Traceback (most recent call last)
+
+    [... skipping hidden 1 frame]
+
+
+&lt;ipython-input-11-565c9a96880b&gt; in &lt;module&gt;
+     57 
+---&gt; 58 execute_pipeline(end_to_end_pipeline, run_config=run_config)
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in execute_pipeline(pipeline, run_config, mode, preset, tags, solid_selection, instance, raise_on_error)
+    323     with _ephemeral_instance_if_missing(instance) as execute_instance:
+--&gt; 324         return _logged_execute_pipeline(
+    325             pipeline,
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\telemetry.py in wrap(*args, **kwargs)
+     88         log_action(instance=instance, action=f.__name__ + &quot;_started&quot;, client_time=start_time)
+---&gt; 89         result = f(*args, **kwargs)
+     90         end_time = datetime.datetime.now()
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in _logged_execute_pipeline(pipeline, instance, run_config, mode, preset, tags, solid_selection, raise_on_error)
+    374 
+--&gt; 375     return execute_run(pipeline, pipeline_run, instance, raise_on_error=raise_on_error)
+    376
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in execute_run(pipeline, pipeline_run, instance, raise_on_error)
+    176     )
+--&gt; 177     event_list = list(_execute_run_iterable)
+    178     pipeline_context = _execute_run_iterable.pipeline_context
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in __iter__(self)
+    726                 if self.pipeline_context:  # False if we had a pipeline init failure
+--&gt; 727                     for event in self.iterator(
+    728                         execution_plan=self.execution_plan, pipeline_context=self.pipeline_context,
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in _pipeline_execution_iterator(pipeline_context, execution_plan)
+    664     try:
+--&gt; 665         for event in pipeline_context.executor.execute(pipeline_context, execution_plan):
+    666             if event.is_step_failure:
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\executor\in_process.py in execute(self, pipeline_context, execution_plan)
+     35         with time_execution_scope() as timer_result:
+---&gt; 36             for event in inner_plan_execution_iterator(pipeline_context, execution_plan):
+     37                 yield event
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_plan.py in inner_plan_execution_iterator(pipeline_context, execution_plan)
+     76                 else:
+---&gt; 77                     for step_event in check.generator(
+     78                         _dagster_event_sequence_for_step(step_context, retries)
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_plan.py in _dagster_event_sequence_for_step(step_context, retries)
+    271         if step_context.raise_on_error:
+--&gt; 272             raise dagster_user_error.user_exception
+    273
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\errors.py in user_code_error_boundary(error_cls, msg_fn, control_flow_exceptions, **kwargs)
+    179     try:
+--&gt; 180         yield
+    181     except control_flow_exceptions as cf:
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py in _user_event_sequence_for_step_compute_fn(step_context, evaluated_inputs)
+    474         # Allow interrupts again during each step of the execution
+--&gt; 475         for event in iterate_with_context(raise_interrupts_immediately, gen):
+    476             yield event
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\utils\__init__.py in iterate_with_context(context_manager_class, iterator)
+    442             try:
+--&gt; 443                 next_output = next(iterator)
+    444             except StopIteration:
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\compute.py in _execute_core_compute(compute_context, inputs, compute_fn)
+    104     all_results = []
+--&gt; 105     for step_output in _yield_compute_results(compute_context, inputs, compute_fn):
+    106         yield step_output
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\compute.py in _yield_compute_results(compute_context, inputs, compute_fn)
+     75 
+---&gt; 76     for event in user_event_sequence:
+     77         if isinstance(event, (Output, AssetMaterialization, Materialization, ExpectationResult)):
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\definitions\decorators\solid.py in compute(context, input_defs)
+    226 
+--&gt; 227         result = fn(context, **kwargs)
+    228
+
+
+&lt;ipython-input-9-77cebb2828a3&gt; in construct_battery_profile(_, charge_model_success, discharge_model_success, intermediate_data_dir, raw_data_dir, discharge_opt_model_fp, pv_model_fp, start_time)
+     63 
+---&gt; 64     s_discharge_profile = discharge.optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp)
+     65     s_charge_profile = pv.optimise_test_charge_profile(raw_data_dir, intermediate_data_dir, pv_model_fp, start_time=start_time)
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\discharge.py in optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, test_start_date, test_end_date)
+    329 def optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, test_start_date=None, test_end_date=None):
+--&gt; 330     df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=test_start_date, test_end_date=test_end_date)
+    331     evening_datetimes = extract_evening_datetimes(df_features)
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\discharge.py in prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date, test_end_date)
+    310     # Loading input data
+--&gt; 311     df_features = (clean
+    312                    .combine_training_datasets(intermediate_data_dir)
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py in combine_training_datasets(raw_data_dir, set_num)
+     69     for dataset_name in dataset_names:
+---&gt; 70         single_datasets[dataset_name] = load_training_dataset(raw_data_dir, dataset_name, set_num=set_num)
+     71
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py in load_training_dataset(raw_data_dir, dataset_name, set_num, parse_dt_idx, dt_idx_freq)
+     46     if set_num is None:
+---&gt; 47         set_num = identify_latest_set_num(raw_data_dir)
+     48
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py in identify_latest_set_num(data_dir)
+     29 def identify_latest_set_num(data_dir):
+---&gt; 30     set_num = max([
+     31         int(f.split(&#39;_set&#39;)[1].replace(&#39;.csv&#39;, &#39;&#39;))
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py in &lt;listcomp&gt;(.0)
+     30     set_num = max([
+---&gt; 31         int(f.split(&#39;_set&#39;)[1].replace(&#39;.csv&#39;, &#39;&#39;))
+     32         for f in os.listdir(data_dir)
+
+
+ValueError: invalid literal for int() with base 10: &#39;4(Conflicted copy 2021-03-18 by DESKTOP-VRE38DV)&#39;
+
+
+The above exception was the direct cause of the following exception:
+
+
+DagsterExecutionStepExecutionError        Traceback (most recent call last)
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_plan.py in _dagster_event_sequence_for_step(step_context, retries)
+    211 
+--&gt; 212         for step_event in check.generator(step_events):
+    213             yield step_event
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py in core_dagster_event_sequence_for_step(step_context, prior_attempt_count)
+    285         # timer block above in order for time to be recorded accurately.
+--&gt; 286         for user_event in check.generator(
+    287             _step_output_error_checked_user_event_sequence(step_context, user_event_sequence)
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py in _step_output_error_checked_user_event_sequence(step_context, user_event_sequence)
+     58 
+---&gt; 59     for user_event in user_event_sequence:
+     60         if not isinstance(user_event, Output):
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py in _user_event_sequence_for_step_compute_fn(step_context, evaluated_inputs)
+    475         for event in iterate_with_context(raise_interrupts_immediately, gen):
+--&gt; 476             yield event
+    477
+
+
+~\anaconda3\envs\batopt\lib\contextlib.py in __exit__(self, type, value, traceback)
+    134             try:
+--&gt; 135                 self.gen.throw(type, value, traceback)
+    136             except StopIteration as exc:
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\errors.py in user_code_error_boundary(error_cls, msg_fn, control_flow_exceptions, **kwargs)
+    189         # with the error reported further up the stack
+--&gt; 190         raise_from(
+    191             error_cls(msg_fn(), user_exception=e, original_exc_info=sys.exc_info(), **kwargs), e
+
+
+~\anaconda3\envs\batopt\lib\site-packages\future\utils\__init__.py in raise_from(exc, cause)
+    402         execstr = &quot;raise __python_future_raise_from_exc from __python_future_raise_from_cause&quot;
+--&gt; 403         exec(execstr, myglobals, mylocals)
+    404
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\errors.py in &lt;module&gt;
+
+
+DagsterExecutionStepExecutionError: Error occurred during the execution of step:
+        step key: &quot;construct_battery_profile.compute&quot;
+        solid invocation: &quot;construct_battery_profile&quot;
+        solid definition: &quot;construct_battery_profile&quot;
+
+
+
+During handling of the above exception, another exception occurred:
+
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-11-565c9a96880b&gt; in &lt;module&gt;
+     56 }
+     57 
+---&gt; 58 execute_pipeline(end_to_end_pipeline, run_config=run_config)
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in execute_pipeline(pipeline, run_config, mode, preset, tags, solid_selection, instance, raise_on_error)
+    322 
+    323     with _ephemeral_instance_if_missing(instance) as execute_instance:
+--&gt; 324         return _logged_execute_pipeline(
+    325             pipeline,
+    326             instance=execute_instance,
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\telemetry.py in wrap(*args, **kwargs)
+     87         start_time = datetime.datetime.now()
+     88         log_action(instance=instance, action=f.__name__ + &quot;_started&quot;, client_time=start_time)
+---&gt; 89         result = f(*args, **kwargs)
+     90         end_time = datetime.datetime.now()
+     91         log_action(
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in _logged_execute_pipeline(pipeline, instance, run_config, mode, preset, tags, solid_selection, raise_on_error)
+    373     )
+    374 
+--&gt; 375     return execute_run(pipeline, pipeline_run, instance, raise_on_error=raise_on_error)
+    376 
+    377
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in execute_run(pipeline, pipeline_run, instance, raise_on_error)
+    175         ),
+    176     )
+--&gt; 177     event_list = list(_execute_run_iterable)
+    178     pipeline_context = _execute_run_iterable.pipeline_context
+    179
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in __iter__(self)
+    725             try:
+    726                 if self.pipeline_context:  # False if we had a pipeline init failure
+--&gt; 727                     for event in self.iterator(
+    728                         execution_plan=self.execution_plan, pipeline_context=self.pipeline_context,
+    729                     ):
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\api.py in _pipeline_execution_iterator(pipeline_context, execution_plan)
+    663     generator_closed = False
+    664     try:
+--&gt; 665         for event in pipeline_context.executor.execute(pipeline_context, execution_plan):
+    666             if event.is_step_failure:
+    667                 failed_steps.append(event.step_key)
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\executor\in_process.py in execute(self, pipeline_context, execution_plan)
+     34 
+     35         with time_execution_scope() as timer_result:
+---&gt; 36             for event in inner_plan_execution_iterator(pipeline_context, execution_plan):
+     37                 yield event
+     38
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_plan.py in inner_plan_execution_iterator(pipeline_context, execution_plan)
+     75                     active_execution.mark_skipped(step.key)
+     76                 else:
+---&gt; 77                     for step_event in check.generator(
+     78                         _dagster_event_sequence_for_step(step_context, retries)
+     79                     ):
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_plan.py in _dagster_event_sequence_for_step(step_context, retries)
+    270 
+    271         if step_context.raise_on_error:
+--&gt; 272             raise dagster_user_error.user_exception
+    273 
+    274     # case (4) in top comment
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\errors.py in user_code_error_boundary(error_cls, msg_fn, control_flow_exceptions, **kwargs)
+    178     )
+    179     try:
+--&gt; 180         yield
+    181     except control_flow_exceptions as cf:
+    182         # A control flow exception has occurred and should be propagated
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\execute_step.py in _user_event_sequence_for_step_compute_fn(step_context, evaluated_inputs)
+    473 
+    474         # Allow interrupts again during each step of the execution
+--&gt; 475         for event in iterate_with_context(raise_interrupts_immediately, gen):
+    476             yield event
+    477
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\utils\__init__.py in iterate_with_context(context_manager_class, iterator)
+    441         with context_manager_class():
+    442             try:
+--&gt; 443                 next_output = next(iterator)
+    444             except StopIteration:
+    445                 return
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\compute.py in _execute_core_compute(compute_context, inputs, compute_fn)
+    103 
+    104     all_results = []
+--&gt; 105     for step_output in _yield_compute_results(compute_context, inputs, compute_fn):
+    106         yield step_output
+    107         if isinstance(step_output, Output):
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\execution\plan\compute.py in _yield_compute_results(compute_context, inputs, compute_fn)
+     74         return
+     75 
+---&gt; 76     for event in user_event_sequence:
+     77         if isinstance(event, (Output, AssetMaterialization, Materialization, ExpectationResult)):
+     78             yield event
+
+
+~\anaconda3\envs\batopt\lib\site-packages\dagster\core\definitions\decorators\solid.py in compute(context, input_defs)
+    225             kwargs[input_name] = input_defs[input_name]
+    226 
+--&gt; 227         result = fn(context, **kwargs)
+    228 
+    229         if inspect.isgenerator(result):
+
+
+&lt;ipython-input-9-77cebb2828a3&gt; in construct_battery_profile(_, charge_model_success, discharge_model_success, intermediate_data_dir, raw_data_dir, discharge_opt_model_fp, pv_model_fp, start_time)
+     62     assert charge_model_success and discharge_model_success, &#39;Model training was unsuccessful&#39;
+     63 
+---&gt; 64     s_discharge_profile = discharge.optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp)
+     65     s_charge_profile = pv.optimise_test_charge_profile(raw_data_dir, intermediate_data_dir, pv_model_fp, start_time=start_time)
+     66
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\discharge.py in optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, test_start_date, test_end_date)
+    328 # Cell
+    329 def optimise_test_discharge_profile(raw_data_dir, intermediate_data_dir, discharge_opt_model_fp, test_start_date=None, test_end_date=None):
+--&gt; 330     df_features = prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=test_start_date, test_end_date=test_end_date)
+    331     evening_datetimes = extract_evening_datetimes(df_features)
+    332     X_test = df_features.loc[evening_datetimes].values
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\discharge.py in prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date, test_end_date)
+    309 def prepare_test_feature_data(raw_data_dir, intermediate_data_dir, test_start_date=None, test_end_date=None):
+    310     # Loading input data
+--&gt; 311     df_features = (clean
+    312                    .combine_training_datasets(intermediate_data_dir)
+    313                    .interpolate(limit=1)
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py in combine_training_datasets(raw_data_dir, set_num)
+     68 
+     69     for dataset_name in dataset_names:
+---&gt; 70         single_datasets[dataset_name] = load_training_dataset(raw_data_dir, dataset_name, set_num=set_num)
+     71 
+     72     # Constructing date range
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py in load_training_dataset(raw_data_dir, dataset_name, set_num, parse_dt_idx, dt_idx_freq)
+     45 def load_training_dataset(raw_data_dir: str, dataset_name: str=&#39;demand&#39;, set_num=None, parse_dt_idx: bool=True, dt_idx_freq: str=&#39;30T&#39;) -&gt; pd.DataFrame:
+     46     if set_num is None:
+---&gt; 47         set_num = identify_latest_set_num(raw_data_dir)
+     48 
+     49     allowed_datasets = [&#39;demand&#39;, &#39;pv&#39;, &#39;weather&#39;]
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py in identify_latest_set_num(data_dir)
+     28 # Cell
+     29 def identify_latest_set_num(data_dir):
+---&gt; 30     set_num = max([
+     31         int(f.split(&#39;_set&#39;)[1].replace(&#39;.csv&#39;, &#39;&#39;))
+     32         for f in os.listdir(data_dir)
+
+
+c:\users\ayrto\desktop\hackathons\wpd-ds-challenge\batopt\clean.py in &lt;listcomp&gt;(.0)
+     29 def identify_latest_set_num(data_dir):
+     30     set_num = max([
+---&gt; 31         int(f.split(&#39;_set&#39;)[1].replace(&#39;.csv&#39;, &#39;&#39;))
+     32         for f in os.listdir(data_dir)
+     33         if &#39;set&#39; in f
+
+
+ValueError: invalid literal for int() with base 10: &#39;4(Conflicted copy 2021-03-18 by DESKTOP-VRE38DV)&#39;
+</code></pre></div>
+<p><br></p>
+<p>We'll then visualise the latest charging profile</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_latest_submission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/output/latest_submission.csv&#39;</span><span class="p">)</span>
+
+<span class="n">s_latest_submission</span> <span class="o">=</span> <span class="n">df_latest_submission</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;datetime&#39;</span><span class="p">)[</span><span class="s1">&#39;charge_MW&#39;</span><span class="p">]</span>
+<span class="n">s_latest_submission</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">s_latest_submission</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+<span class="n">s_latest_submission</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Charge (MW)&#39;</span><span class="p">)</span>
+<span class="n">hlp</span><span class="o">.</span><span class="n">hide_spines</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../img/latest_submission.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<p>Finally we'll export the relevant code to our <code>batopt</code> module</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../08-christmas/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Christmas
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['header.autohide', 'navigation.tabs', 'navigation.instant', 'search.suggest'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

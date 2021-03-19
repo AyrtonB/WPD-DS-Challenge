@@ -1,0 +1,2010 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.1, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Discharging - WPD-DS-Challenge</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#battery-discharging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="WPD-DS-Challenge" class="md-header-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WPD-DS-Challenge
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Discharging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../methodology/" class="md-tabs__link">
+      Methodology
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../notes/00-brief/" class="md-tabs__link">
+      Challenge
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../00-utilities/" class="md-tabs__link md-tabs__link--active">
+        Development
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="WPD-DS-Challenge" class="md-nav__button md-logo" aria-label="WPD-DS-Challenge">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WPD-DS-Challenge
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/AyrtonB/WPD-DS-Challenge/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    WPD-DS-Challenge
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methodology/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notes/00-brief/" class="md-nav__link">
+        Challenge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-utilities/" class="md-nav__link">
+        Utilities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-retrieval/" class="md-nav__link">
+        Retrieval
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-cleaning/" class="md-nav__link">
+        Cleaning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-charging/" class="md-nav__link">
+        Charging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Discharging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Discharging
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-inputs" class="md-nav__link">
+    User Inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-data" class="md-nav__link">
+    Preparing Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploratory-demand-analysis" class="md-nav__link">
+    Exploratory Demand Analysis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategy-development-with-perfect-foresight" class="md-nav__link">
+    Strategy Development with Perfect Foresight
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategy-development-under-uncertainty" class="md-nav__link">
+    Strategy Development under Uncertainty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-integration-helpers" class="md-nav__link">
+    Pipeline Integration Helpers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-constraints/" class="md-nav__link">
+        Constraints
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-tuning/" class="md-nav__link">
+        Tuning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-pv-forecast/" class="md-nav__link">
+        PV
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-christmas/" class="md-nav__link">
+        Christmas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-pipeline/" class="md-nav__link">
+        Pipeline
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-inputs" class="md-nav__link">
+    User Inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-data" class="md-nav__link">
+    Preparing Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploratory-demand-analysis" class="md-nav__link">
+    Exploratory Demand Analysis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategy-development-with-perfect-foresight" class="md-nav__link">
+    Strategy Development with Perfect Foresight
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategy-development-under-uncertainty" class="md-nav__link">
+    Strategy Development under Uncertainty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-integration-helpers" class="md-nav__link">
+    Pipeline Integration Helpers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/AyrtonB/WPD-DS-Challenge/edit/main/docs/04-discharging.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="battery-discharging">Battery Discharging<a class="headerlink" href="#battery-discharging" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span>
+
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">acf</span>
+<span class="kn">from</span> <span class="nn">moepy.lowess</span> <span class="kn">import</span> <span class="n">Lowess</span><span class="p">,</span> <span class="n">quantile_model</span>
+
+<span class="kn">from</span> <span class="nn">batopt</span> <span class="kn">import</span> <span class="n">clean</span><span class="p">,</span> <span class="n">utils</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">from</span> <span class="nn">ipypb</span> <span class="kn">import</span> <span class="n">track</span>
+<span class="kn">import</span> <span class="nn">FEAutils</span> <span class="k">as</span> <span class="nn">hlp</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="user-inputs">User Inputs<a class="headerlink" href="#user-inputs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">raw_data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/raw&#39;</span>
+<span class="n">intermediate_data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/intermediate&#39;</span>
+<span class="n">cache_data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/nb-cache&#39;</span>
+<span class="n">discharge_opt_model_fp</span> <span class="o">=</span> <span class="s1">&#39;../models/discharge_opt.sav&#39;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="preparing-data">Preparing Data<a class="headerlink" href="#preparing-data" title="Permanent link">&para;</a></h3>
+<p>We'll start by loading the datasets, we'll interpolate the weather data which is at an hourly granularity </p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">combine_training_datasets</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right">demand</th>
+<th align="right">pv</th>
+<th align="right">weather</th>
+<th align="right">demand_MW</th>
+<th align="right">irradiance_Wm-2</th>
+<th align="right">panel_temp_C</th>
+<th align="right">pv_power_mw</th>
+<th align="right">solar_location1</th>
+<th align="right">solar_location2</th>
+<th align="right">solar_location3</th>
+<th align="right">solar_location4</th>
+<th align="right">solar_location5</th>
+<th align="right">solar_location6</th>
+<th align="right">temp_location1</th>
+<th align="right">temp_location2</th>
+<th align="right">temp_location3</th>
+<th align="right">temp_location4</th>
+<th align="right">temp_location5</th>
+<th align="right">temp_location6</th>
+<th align="right">holidays</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2019-03-16 21:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6.87</td>
+<td align="right">7.035</td>
+<td align="right">6.185</td>
+<td align="right">6.76</td>
+<td align="right">8.595</td>
+<td align="right">8.755</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2019-03-16 22:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6.73</td>
+<td align="right">6.85</td>
+<td align="right">6.03</td>
+<td align="right">6.19</td>
+<td align="right">8.55</td>
+<td align="right">8.71</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2019-03-16 22:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6.575</td>
+<td align="right">6.695</td>
+<td align="right">5.94</td>
+<td align="right">5.97</td>
+<td align="right">8.44</td>
+<td align="right">8.595</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2019-03-16 23:00:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6.42</td>
+<td align="right">6.54</td>
+<td align="right">5.85</td>
+<td align="right">5.75</td>
+<td align="right">8.33</td>
+<td align="right">8.48</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">2019-03-16 23:30:00+00:00</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6.42</td>
+<td align="right">6.54</td>
+<td align="right">5.85</td>
+<td align="right">5.75</td>
+<td align="right">8.33</td>
+<td align="right">8.48</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Next we'll construct our features dataframe</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">construct_df_discharge_features</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dt_rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">dt_rng</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dt_rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">)</span>
+
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">dt_rng</span><span class="p">)</span>
+
+    <span class="c1"># Filtering for the temperature weather data</span>
+    <span class="n">temp_loc_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;temp_location&#39;</span><span class="p">)]</span>
+    <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">temp_loc_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">temp_loc_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">ffill</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;spatial_avg_temp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Should look into excluding temp_location5 and temp_location6</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;daily_avg_temp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;spatial_avg_temp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+
+    <span class="c1"># Adding lagged demand</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;SP_demand_7d_lag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">48</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="n">s_evening_demand</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between_time</span><span class="p">(</span><span class="s1">&#39;15:30&#39;</span><span class="p">,</span> <span class="s1">&#39;21:00&#39;</span><span class="p">)</span>
+    <span class="n">dt_to_lagged_evening_avg</span> <span class="o">=</span> <span class="n">s_evening_demand</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">s_evening_demand</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+    <span class="n">dt_to_lagged_evening_max</span> <span class="o">=</span> <span class="n">s_evening_demand</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">s_evening_demand</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;evening_demand_avg_7d_lag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">dt_to_lagged_evening_avg</span><span class="p">)</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;evening_demand_max_7d_lag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">dt_to_lagged_evening_max</span><span class="p">)</span>
+
+    <span class="c1"># Adding datetime features</span>
+    <span class="n">dts</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">)</span> <span class="c1"># We want to use the &#39;behavioural&#39; timezone</span>
+
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;weekend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dts</span><span class="o">.</span><span class="n">dayofweek</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dts</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">dts</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;doy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dts</span><span class="o">.</span><span class="n">dayofyear</span>
+    <span class="n">df_features</span><span class="p">[</span><span class="s1">&#39;dow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dts</span><span class="o">.</span><span class="n">dayofweek</span>
+
+    <span class="c1"># Removing NaN values</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df_features</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_features</span> <span class="o">=</span> <span class="n">construct_df_discharge_features</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">df_features</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right">temp_location1</th>
+<th align="right">temp_location2</th>
+<th align="right">temp_location3</th>
+<th align="right">temp_location4</th>
+<th align="right">temp_location5</th>
+<th align="right">temp_location6</th>
+<th align="right">spatial_avg_temp</th>
+<th align="right">daily_avg_temp</th>
+<th align="right">SP_demand_7d_lag</th>
+<th align="right">evening_demand_avg_7d_lag</th>
+<th align="right">evening_demand_max_7d_lag</th>
+<th align="right">weekend</th>
+<th align="right">hour</th>
+<th align="right">doy</th>
+<th align="right">dow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2019-03-16 21:30:00+00:00</td>
+<td align="right">6.87</td>
+<td align="right">7.035</td>
+<td align="right">6.185</td>
+<td align="right">6.76</td>
+<td align="right">8.595</td>
+<td align="right">8.755</td>
+<td align="right">7.36667</td>
+<td align="right">9.56998</td>
+<td align="right">3.2</td>
+<td align="right">3.94833</td>
+<td align="right">4.54</td>
+<td align="right">1</td>
+<td align="right">21.5</td>
+<td align="right">75</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td align="left">2019-03-16 22:00:00+00:00</td>
+<td align="right">6.73</td>
+<td align="right">6.85</td>
+<td align="right">6.03</td>
+<td align="right">6.19</td>
+<td align="right">8.55</td>
+<td align="right">8.71</td>
+<td align="right">7.17667</td>
+<td align="right">9.56998</td>
+<td align="right">2.97</td>
+<td align="right">3.94833</td>
+<td align="right">4.54</td>
+<td align="right">1</td>
+<td align="right">22</td>
+<td align="right">75</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td align="left">2019-03-16 22:30:00+00:00</td>
+<td align="right">6.575</td>
+<td align="right">6.695</td>
+<td align="right">5.94</td>
+<td align="right">5.97</td>
+<td align="right">8.44</td>
+<td align="right">8.595</td>
+<td align="right">7.03583</td>
+<td align="right">9.56998</td>
+<td align="right">2.69</td>
+<td align="right">3.94833</td>
+<td align="right">4.54</td>
+<td align="right">1</td>
+<td align="right">22.5</td>
+<td align="right">75</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td align="left">2019-03-16 23:00:00+00:00</td>
+<td align="right">6.42</td>
+<td align="right">6.54</td>
+<td align="right">5.85</td>
+<td align="right">5.75</td>
+<td align="right">8.33</td>
+<td align="right">8.48</td>
+<td align="right">6.895</td>
+<td align="right">9.56998</td>
+<td align="right">2.51</td>
+<td align="right">3.94833</td>
+<td align="right">4.54</td>
+<td align="right">1</td>
+<td align="right">23</td>
+<td align="right">75</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td align="left">2019-03-16 23:30:00+00:00</td>
+<td align="right">6.42</td>
+<td align="right">6.54</td>
+<td align="right">5.85</td>
+<td align="right">5.75</td>
+<td align="right">8.33</td>
+<td align="right">8.48</td>
+<td align="right">6.895</td>
+<td align="right">9.56998</td>
+<td align="right">2.33</td>
+<td align="right">3.94833</td>
+<td align="right">4.54</td>
+<td align="right">1</td>
+<td align="right">23.5</td>
+<td align="right">75</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>We'll now create demand and features time-series with the same date indexes</p>
+<div class="highlight"><pre><span></span><code><span class="n">dt_idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">)</span>
+
+<span class="n">s_demand</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt_idx</span><span class="p">,</span> <span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span>
+<span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt_idx</span><span class="p">]</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="exploratory-demand-analysis">Exploratory Demand Analysis<a class="headerlink" href="#exploratory-demand-analysis" title="Permanent link">&para;</a></h3>
+<p>We'll start by exploring the relationship between time of day and demand, in this instance fitting a quantile LOWESS model to get a probabilistic view of likely loads at specific times of day</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">estimate_daily_demand_quantiles</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">23.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="o">**</span><span class="n">model_kwargs</span><span class="p">):</span>
+    <span class="c1"># Fitting the model</span>
+    <span class="n">df_quantiles</span> <span class="o">=</span> <span class="n">quantile_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_pred</span><span class="o">=</span><span class="n">x_pred</span><span class="p">,</span> <span class="o">**</span><span class="n">model_kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Cleaning names and sorting for plotting</span>
+    <span class="n">df_quantiles</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;p</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">col</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_quantiles</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="n">df_quantiles</span> <span class="o">=</span> <span class="n">df_quantiles</span><span class="p">[</span><span class="n">df_quantiles</span><span class="o">.</span><span class="n">columns</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">df_quantiles</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">dts</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">dts</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">dts</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">rerun_daily_demand_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">daily_demand_filename</span> <span class="o">=</span> <span class="s1">&#39;daily_demand_quantile_model_results.csv&#39;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">rerun_daily_demand_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">daily_demand_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
+    <span class="n">df_quantiles</span> <span class="o">=</span> <span class="n">estimate_daily_demand_quantiles</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">num_fits</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> <span class="n">robust_iters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">df_quantiles</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">daily_demand_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df_quantiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">daily_demand_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">df_quantiles</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="right">('Unnamed: 0_level_0', 'x')</th>
+<th align="right">('p90', 'Unnamed: 1_level_1')</th>
+<th align="right">('p80', 'Unnamed: 2_level_1')</th>
+<th align="right">('p70', 'Unnamed: 3_level_1')</th>
+<th align="right">('p60', 'Unnamed: 4_level_1')</th>
+<th align="right">('p50', 'Unnamed: 5_level_1')</th>
+<th align="right">('p40', 'Unnamed: 6_level_1')</th>
+<th align="right">('p30', 'Unnamed: 7_level_1')</th>
+<th align="right">('p20', 'Unnamed: 8_level_1')</th>
+<th align="right">('p10', 'Unnamed: 9_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">2.79849</td>
+<td align="right">2.71229</td>
+<td align="right">2.64641</td>
+<td align="right">2.56191</td>
+<td align="right">2.39701</td>
+<td align="right">2.10668</td>
+<td align="right">1.88967</td>
+<td align="right">1.81977</td>
+<td align="right">1.77097</td>
+</tr>
+<tr>
+<td align="right">0.237374</td>
+<td align="right">2.76187</td>
+<td align="right">2.67597</td>
+<td align="right">2.60871</td>
+<td align="right">2.5275</td>
+<td align="right">2.3697</td>
+<td align="right">2.09069</td>
+<td align="right">1.86875</td>
+<td align="right">1.79585</td>
+<td align="right">1.74577</td>
+</tr>
+<tr>
+<td align="right">0.474747</td>
+<td align="right">2.72532</td>
+<td align="right">2.63973</td>
+<td align="right">2.57116</td>
+<td align="right">2.49312</td>
+<td align="right">2.34246</td>
+<td align="right">2.0744</td>
+<td align="right">1.84797</td>
+<td align="right">1.77185</td>
+<td align="right">1.72058</td>
+</tr>
+<tr>
+<td align="right">0.712121</td>
+<td align="right">2.68871</td>
+<td align="right">2.60348</td>
+<td align="right">2.53355</td>
+<td align="right">2.45863</td>
+<td align="right">2.31533</td>
+<td align="right">2.05794</td>
+<td align="right">1.82746</td>
+<td align="right">1.74759</td>
+<td align="right">1.69522</td>
+</tr>
+<tr>
+<td align="right">0.949495</td>
+<td align="right">2.65212</td>
+<td align="right">2.56737</td>
+<td align="right">2.49614</td>
+<td align="right">2.42416</td>
+<td align="right">2.28829</td>
+<td align="right">2.04086</td>
+<td align="right">1.80704</td>
+<td align="right">1.72319</td>
+<td align="right">1.6696</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>We'll now visualise these quantile fits alongside the raw data</p>
+<p>N.b. the x values have been slightly jittered in order to make their distribution easier to visualise</p>
+<div class="highlight"><pre><span></span><code><span class="n">x_jittered</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">/</span><span class="mf">2.5</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_jittered</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">df_quantiles</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">hlp</span><span class="o">.</span><span class="n">hide_spines</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Percentiles&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of Day&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Demand (MW)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../img/daily_demand_profile.png&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_14_0.png" /></p>
+<p><br></p>
+<p>One of the issues with the quantile fit is that it hides the a lot of the spikiness in individual daily profiles, here we'll create a function for randomly sampling days so we can visualise them alongside each other.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="n">reset_idx_dt</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sample_random_day</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">random_dt</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+    <span class="n">s_sample_dt</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">random_dt</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">s_sample_dt</span>
+
+<span class="k">def</span> <span class="nf">sample_random_days</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">num_days</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">df_sample_dts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_days</span><span class="p">):</span>
+        <span class="n">s_sample_dt</span> <span class="o">=</span> <span class="n">sample_random_day</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">s_sample_dt</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">date</span><span class="p">())</span>
+        <span class="n">s_sample_dt</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">reset_idx_dt</span><span class="p">(</span><span class="n">s_sample_dt</span><span class="p">)</span>
+        <span class="n">df_sample_dts</span><span class="p">[</span><span class="n">dt</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_sample_dt</span>
+
+    <span class="n">df_sample_dts</span> <span class="o">=</span> <span class="n">df_sample_dts</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_sample_dts</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_sample_dts</span> <span class="o">=</span> <span class="n">sample_random_days</span><span class="p">(</span><span class="n">s_demand</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+
+<span class="n">df_sample_dts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">hlp</span><span class="o">.</span><span class="n">hide_spines</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Demand (MW)&#39;</span><span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xmajorticklabels</span><span class="p">(),</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_17_0.png" /></p>
+<p><br></p>
+<p>We'll also check the auto-correlation of the demand time-series, particularly in regard to the the correlation of the most recent value with the value from one week prior (what will be available for the test data)</p>
+<div class="highlight"><pre><span></span><code><span class="n">acf_array</span> <span class="o">=</span> <span class="n">acf</span><span class="p">(</span><span class="n">s_demand</span><span class="p">,</span> <span class="n">fft</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nlags</span><span class="o">=</span><span class="mi">48</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">day_blocks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">48</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">14</span><span class="p">)])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">s_acf_days_max</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">acf_array</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">day_blocks</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">corr_with_last_weeks_SP</span> <span class="o">=</span> <span class="n">s_acf_days_max</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">s_acf_days_max</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">14.5</span><span class="p">],</span> <span class="p">[</span><span class="n">corr_with_last_weeks_SP</span><span class="p">,</span> <span class="n">corr_with_last_weeks_SP</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Day&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Correlation&#39;</span><span class="p">)</span>
+<span class="n">hlp</span><span class="o">.</span><span class="n">hide_spines</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_19_0.png" /></p>
+<p><br></p>
+<p>We'll also fit a quantile model for the relationship between temperature and demand</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;temp_location&#39;</span><span class="p">)]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">rerun_temp_demand_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">temp_demand_filename</span> <span class="o">=</span> <span class="s1">&#39;temp_demand_quantile_model_results.csv&#39;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">rerun_temp_demand_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">temp_demand_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
+    <span class="n">df_quantiles</span> <span class="o">=</span> <span class="n">estimate_daily_demand_quantiles</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">num_fits</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> <span class="n">robust_iters</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">df_quantiles</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">temp_demand_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df_quantiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">temp_demand_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">df_quantiles</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="right">('Unnamed: 0_level_0', 'x')</th>
+<th align="right">('p90', 'Unnamed: 1_level_1')</th>
+<th align="right">('p80', 'Unnamed: 2_level_1')</th>
+<th align="right">('p70', 'Unnamed: 3_level_1')</th>
+<th align="right">('p60', 'Unnamed: 4_level_1')</th>
+<th align="right">('p50', 'Unnamed: 5_level_1')</th>
+<th align="right">('p40', 'Unnamed: 6_level_1')</th>
+<th align="right">('p30', 'Unnamed: 7_level_1')</th>
+<th align="right">('p20', 'Unnamed: 8_level_1')</th>
+<th align="right">('p10', 'Unnamed: 9_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">4.97915</td>
+<td align="right">4.54269</td>
+<td align="right">4.2198</td>
+<td align="right">3.87288</td>
+<td align="right">3.37484</td>
+<td align="right">2.90171</td>
+<td align="right">2.70959</td>
+<td align="right">2.59651</td>
+<td align="right">2.46055</td>
+</tr>
+<tr>
+<td align="right">0.237374</td>
+<td align="right">4.96727</td>
+<td align="right">4.52208</td>
+<td align="right">4.20217</td>
+<td align="right">3.86098</td>
+<td align="right">3.37012</td>
+<td align="right">2.89377</td>
+<td align="right">2.69721</td>
+<td align="right">2.58177</td>
+<td align="right">2.44486</td>
+</tr>
+<tr>
+<td align="right">0.474747</td>
+<td align="right">4.95515</td>
+<td align="right">4.50144</td>
+<td align="right">4.18453</td>
+<td align="right">3.84911</td>
+<td align="right">3.36556</td>
+<td align="right">2.88588</td>
+<td align="right">2.685</td>
+<td align="right">2.56718</td>
+<td align="right">2.42925</td>
+</tr>
+<tr>
+<td align="right">0.712121</td>
+<td align="right">4.94284</td>
+<td align="right">4.48071</td>
+<td align="right">4.16686</td>
+<td align="right">3.83725</td>
+<td align="right">3.3611</td>
+<td align="right">2.87787</td>
+<td align="right">2.67285</td>
+<td align="right">2.55265</td>
+<td align="right">2.41369</td>
+</tr>
+<tr>
+<td align="right">0.949495</td>
+<td align="right">4.93029</td>
+<td align="right">4.45984</td>
+<td align="right">4.14914</td>
+<td align="right">3.82542</td>
+<td align="right">3.35674</td>
+<td align="right">2.86969</td>
+<td align="right">2.66073</td>
+<td align="right">2.53816</td>
+<td align="right">2.39816</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Which we'll visualise similarly to the daily demand profile</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">df_quantiles</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">hlp</span><span class="o">.</span><span class="n">hide_spines</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Percentiles&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (degC)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Demand (MW)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../img/temp_demand_profile.png&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_23_0.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ^ Should use daily average (or evening block) instead of each SP</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="strategy-development-with-perfect-foresight">Strategy Development with Perfect Foresight<a class="headerlink" href="#strategy-development-with-perfect-foresight" title="Permanent link">&para;</a></h3>
+<p>Here we'll develop a charging strategy for when we have perfect foresight, starting by sampling a random day from the demand series and then extracting the evening profile as an array from that</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">extract_evening_demand_profile</span><span class="p">(</span><span class="n">s_demand_sample_dt</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="s1">&#39;15:30&#39;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="s1">&#39;20:30&#39;</span><span class="p">):</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">s_demand_sample_dt</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">date</span><span class="p">())</span>
+    <span class="n">evening_demand_profile</span> <span class="o">=</span> <span class="n">s_demand_sample_dt</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dt</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">start_time</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dt</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">end_time</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="k">return</span> <span class="n">evening_demand_profile</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">evening_demand_profile</span> <span class="o">=</span> <span class="n">sample_random_day</span><span class="p">(</span><span class="n">s_demand</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">extract_evening_demand_profile</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evening_demand_profile</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&lt;matplotlib.lines.Line2D at 0x2051e5fe790&gt;]
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_27_1.png" /></p>
+<p><br></p>
+<p>We'll then write an algorithm for peak flattening</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">flatten_peak</span><span class="p">(</span><span class="n">evening_demand_profile</span><span class="p">,</span> <span class="n">charge</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">peak</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">evening_demand_profile</span><span class="p">)</span>
+    <span class="n">adj_evening_demand_profile</span> <span class="o">=</span> <span class="n">evening_demand_profile</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="n">charge</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">num_periods_plateaued</span> <span class="o">=</span> <span class="p">(</span><span class="n">evening_demand_profile</span><span class="o">&gt;=</span><span class="n">peak</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># If the evening demand profile has been fully flattened</span>
+        <span class="c1"># then split up the remaining charge equally across all SPs</span>
+        <span class="n">fully_flattened</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">fully_flattened</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">remaining_discharge_rate_for_each_SP</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">time_unit</span><span class="p">)</span><span class="o">*</span><span class="n">charge</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="p">)</span>
+            <span class="n">adj_evening_demand_profile</span> <span class="o">-=</span> <span class="n">remaining_discharge_rate_for_each_SP</span>
+            <span class="n">charge</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">break</span>
+
+        <span class="c1"># If there is still a peak then determine the next highest value </span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">peak</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="p">)</span>
+            <span class="n">highest_non_peak</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="p">[</span><span class="n">peak</span><span class="o">&gt;</span><span class="n">adj_evening_demand_profile</span><span class="p">])</span>
+
+            <span class="n">proposed_additional_discharge</span> <span class="o">=</span> <span class="n">time_unit</span><span class="o">*</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="p">,</span> <span class="n">highest_non_peak</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+        <span class="c1"># if its possible to reduce the peak to the next highest value do so</span>
+        <span class="k">if</span> <span class="n">charge</span> <span class="o">&gt;=</span> <span class="n">proposed_additional_discharge</span><span class="p">:</span>
+            <span class="n">adj_evening_demand_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="p">,</span> <span class="n">highest_non_peak</span><span class="p">)</span>
+            <span class="n">charge</span> <span class="o">-=</span> <span class="n">proposed_additional_discharge</span>
+
+        <span class="c1"># If the capacity constraints are broken when reducing to the next </span>
+        <span class="c1"># highest value then just lower the current peak as far as possible</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_peak</span> <span class="o">=</span> <span class="n">peak</span> <span class="o">-</span> <span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">time_unit</span><span class="p">)</span><span class="o">*</span><span class="n">charge</span><span class="o">/</span><span class="p">(</span><span class="n">num_periods_plateaued</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">adj_evening_demand_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="p">,</span> <span class="n">new_peak</span><span class="p">)</span>
+            <span class="n">charge</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">adj_evening_demand_profile</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">adj_evening_demand_profile</span> <span class="o">=</span> <span class="n">flatten_peak</span><span class="p">(</span><span class="n">evening_demand_profile</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evening_demand_profile</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">adj_evening_demand_profile</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&lt;matplotlib.lines.Line2D at 0x2051e599f70&gt;]
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_30_1.png" /></p>
+<p><br></p>
+<p>Which we can deduct from the original evening profile to construct the discharge profile</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="n">construct_discharge_profile</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">evening_demand_profile</span><span class="p">,</span> <span class="n">adj_evening_demand_profile</span><span class="p">:</span> <span class="o">-</span><span class="p">(</span><span class="n">evening_demand_profile</span> <span class="o">-</span> <span class="n">adj_evening_demand_profile</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">discharge_profile</span> <span class="o">=</span> <span class="n">construct_discharge_profile</span><span class="p">(</span><span class="n">evening_demand_profile</span><span class="p">,</span> <span class="n">adj_evening_demand_profile</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">discharge_profile</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&lt;matplotlib.lines.Line2D at 0x2051e53a490&gt;]
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_33_1.png" /></p>
+<p><br></p>
+<p>Rather than the sample day we've just used we'll now repeat this step for all days we have demand data on, returning a series of the new discharge values that can be easily added to the charging values</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">construct_discharge_s</span><span class="p">(</span><span class="n">s_demand</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="s1">&#39;15:30&#39;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="s1">&#39;20:30&#39;</span><span class="p">):</span>
+    <span class="n">s_discharge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">s_demand</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span> <span class="n">s_demand</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+        <span class="n">evening_demand_profile</span> <span class="o">=</span> <span class="n">s_demand</span><span class="p">[</span><span class="n">dt</span><span class="p">]</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">extract_evening_demand_profile</span><span class="p">)</span>
+        <span class="n">adj_evening_demand_profile</span> <span class="o">=</span> <span class="n">flatten_peak</span><span class="p">(</span><span class="n">evening_demand_profile</span><span class="p">)</span>
+
+        <span class="n">discharge_profile</span> <span class="o">=</span> <span class="n">construct_discharge_profile</span><span class="p">(</span><span class="n">evening_demand_profile</span><span class="p">,</span> <span class="n">adj_evening_demand_profile</span><span class="p">)</span>
+        <span class="n">s_discharge</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dt</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">start_time</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dt</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">end_time</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">discharge_profile</span>
+
+    <span class="k">return</span> <span class="n">s_discharge</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">s_discharge</span> <span class="o">=</span> <span class="n">construct_discharge_s</span><span class="p">(</span><span class="n">s_demand</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="s1">&#39;15:30&#39;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="s1">&#39;20:30&#39;</span><span class="p">)</span>
+
+<span class="n">s_discharge</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">48</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_36_1.png" /></p>
+<p><br></p>
+<p>We can also use this discharging profile to see what the new peaks look like</p>
+<div class="highlight"><pre><span></span><code><span class="n">s_demand</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">48</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="p">(</span><span class="n">s_demand</span><span class="o">+</span><span class="n">s_discharge</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">48</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_38_1.png" /></p>
+<p><br></p>
+<h3 id="strategy-development-under-uncertainty">Strategy Development under Uncertainty<a class="headerlink" href="#strategy-development-under-uncertainty" title="Permanent link">&para;</a></h3>
+<p>Our overall approach can be thought of as follows:</p>
+<ol>
+<li>Generate an optimal discharge profile under perfect foresight</li>
+<li>Train a regression model to emulate the optimal discharge profile</li>
+<li>Clean profile to ensure that constraints aren't broken and the full 6 MWh is fully utilised</li>
+</ol>
+<p>We've generated our optimal discharge profile, now we're ready to train the model. We'll first split up our X and y values, filtering only for those that fall into the evening period</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">extract_evening_datetimes</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span>
+    <span class="n">evening_datetimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[(</span><span class="mf">20.5</span><span class="o">&gt;=</span><span class="n">hour</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mf">15.5</span><span class="o">&lt;=</span><span class="n">hour</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">evening_datetimes</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">evening_datetimes</span> <span class="o">=</span> <span class="n">extract_evening_datetimes</span><span class="p">(</span><span class="n">df_features</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">s_discharge</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</code></pre></div>
+<p><br></p>
+<p>We'll create a basic prediction using a standard linear model</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_pred</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">evening_datetimes</span><span class="p">)</span>
+
+<span class="n">df_pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="right">pred</th>
+<th align="right">true</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2017-11-10 15:30:00+00:00</td>
+<td align="right">-0.300207</td>
+<td align="right">-0.125455</td>
+</tr>
+<tr>
+<td align="left">2017-11-10 16:00:00+00:00</td>
+<td align="right">-0.554003</td>
+<td align="right">-0.565455</td>
+</tr>
+<tr>
+<td align="left">2017-11-10 16:30:00+00:00</td>
+<td align="right">-1.03486</td>
+<td align="right">-1.12546</td>
+</tr>
+<tr>
+<td align="left">2017-11-10 17:00:00+00:00</td>
+<td align="right">-1.55369</td>
+<td align="right">-1.58546</td>
+</tr>
+<tr>
+<td align="left">2017-11-10 17:30:00+00:00</td>
+<td align="right">-1.65075</td>
+<td align="right">-1.66545</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>However, in this approach there's nothing to enforce the battery constraints, namely maximum total discharge and instantaneous discharge rate. This becomes apparant when we visualise the distribution of total discharge volumes each evening.</p>
+<div class="highlight"><pre><span></span><code><span class="n">s_daily_discharge</span> <span class="o">=</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_pred</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">s_daily_discharge</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>C:\Users\Ayrto\anaconda3\envs\batopt\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+
+
+
+
+
+&lt;AxesSubplot:xlabel=&#39;pred&#39;, ylabel=&#39;Density&#39;&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_45_2.png" /></p>
+<p><br></p>
+<p>To account for this we can normalise each daily discharge profile by the ratio between the current total discharge and the maximum current discharge</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">normalise_total_discharge</span><span class="p">(</span><span class="n">s_pred</span><span class="p">,</span> <span class="n">charge</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">s_daily_discharge</span> <span class="o">=</span> <span class="n">s_pred</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">s_pred</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">total_discharge</span> <span class="ow">in</span> <span class="n">s_daily_discharge</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">s_pred</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">)]</span> <span class="o">*=</span> <span class="o">-</span><span class="n">charge</span><span class="o">/</span><span class="p">(</span><span class="n">time_unit</span><span class="o">*</span><span class="n">total_discharge</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">s_pred</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">s_daily_discharge</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_pred</span>
+                     <span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span>
+                     <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">normalise_total_discharge</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_pred</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+                     <span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+                    <span class="p">)</span>
+
+<span class="n">s_daily_discharge</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>-12.0    485
+Name: pred, dtype: int64
+</code></pre></div>
+<p><br></p>
+<p>We also need to ensure that the discharge rate remains within the bounds of the problem definition, i.e. no greater than -2.5 MW</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="n">clip_discharge_rate</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s_pred</span><span class="p">,</span> <span class="n">max_rate</span><span class="o">=-</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">min_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span> <span class="n">s_pred</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="n">max_rate</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="n">min_rate</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">s_pred</span> <span class="o">=</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clip_discharge_rate</span><span class="p">)</span>
+
+<span class="n">s_pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2017-11-10 15:30:00+00:00   -0.297164
+2017-11-10 16:00:00+00:00   -0.548387
+2017-11-10 16:30:00+00:00   -1.024373
+2017-11-10 17:00:00+00:00   -1.537942
+2017-11-10 17:30:00+00:00   -1.634021
+Name: pred, dtype: object
+</code></pre></div>
+<p><br></p>
+<p>We'll now combine these post prediction processing steps into a single function, ready to use in our model evaluation</p>
+<p><strong>Note that the normalisation must come after the clipping. Otherwise the total charge constraint can be violated if the model predicts a discharge &gt; 0</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="n">post_pred_discharge_proc_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s_pred</span><span class="p">:</span> <span class="p">(</span><span class="n">s_pred</span>
+                                                <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">clip_discharge_rate</span><span class="p">)</span>
+                                                <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">normalise_total_discharge</span><span class="p">)</span>
+                                               <span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">post_pred_discharge_proc_func</span><span class="p">(</span><span class="n">s_pred</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">s_pred</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>-12.0    485
+Name: pred, dtype: int64
+</code></pre></div>
+<p><br></p>
+<p>We'll create a new function that evaluates our discharge profile in terms of the peak reduction achieved relative the reduction using an optimal discharge profile. We'll then use this and our standard mae and rmse metrics to evaluate some different models.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">construct_peak_reduction_calculator</span><span class="p">(</span><span class="n">s_demand</span><span class="p">,</span> <span class="n">evening_datetimes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">evening_datetimes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">evening_datetimes</span> <span class="o">=</span> <span class="n">extract_evening_datetimes</span><span class="p">(</span><span class="n">s_demand</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">calc_peak_reduction</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+        <span class="c1"># Checking evening datetimes</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">evening_datetimes</span> <span class="o">=</span> <span class="n">extract_evening_datetimes</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">s_demand</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;The prediction series must be the same length as the number of evening datetimes in the main dataframe, </span><span class="si">{</span><span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">s_demand</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+
+        <span class="c1"># Post-processing the discharge profile to handle constraints </span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">post_pred_discharge_proc_func</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+
+        <span class="c1"># Identifying daily peaks</span>
+        <span class="n">s_old_peaks</span> <span class="o">=</span> <span class="n">s_demand</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">evening_datetimes</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">s_new_peaks</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_demand</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">+</span><span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">evening_datetimes</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">s_optimal_peaks</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_demand</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">evening_datetimes</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+        <span class="c1"># Calculating the peak reduction</span>
+        <span class="n">s_new_pct_peak_reduction</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">s_old_peaks</span><span class="o">-</span><span class="n">s_new_peaks</span><span class="p">)</span><span class="o">/</span><span class="n">s_old_peaks</span>
+        <span class="n">s_optimal_pct_peak_reduction</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">s_old_peaks</span><span class="o">-</span><span class="n">s_optimal_peaks</span><span class="p">)</span><span class="o">/</span><span class="n">s_old_peaks</span>
+
+        <span class="c1"># after cleaning anomalous demand data should add an assert to check for non finite values</span>
+
+        <span class="n">pct_of_max_possible_reduction</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">s_new_pct_peak_reduction</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span>
+                                             <span class="n">s_optimal_pct_peak_reduction</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">pct_of_max_possible_reduction</span>
+
+    <span class="k">if</span> <span class="n">scorer</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">calc_peak_reduction</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">calc_peak_reduction</span>
+
+<span class="k">def</span> <span class="nf">evaluate_discharge_models</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">features_kwargs</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">construct_df_discharge_features</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">features_kwargs</span><span class="p">)</span>
+    <span class="n">s_discharge</span> <span class="o">=</span> <span class="n">construct_discharge_s</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">],</span> <span class="n">start_time</span><span class="o">=</span><span class="s1">&#39;15:30&#39;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="s1">&#39;20:30&#39;</span><span class="p">)</span>
+
+    <span class="n">evening_datetimes</span> <span class="o">=</span> <span class="n">extract_evening_datetimes</span><span class="p">(</span><span class="n">df_features</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">s_discharge</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="n">model_scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">peak_reduction_calc</span> <span class="o">=</span> <span class="n">construct_peak_reduction_calculator</span><span class="p">(</span><span class="n">s_demand</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">],</span> <span class="n">evening_datetimes</span><span class="o">=</span><span class="n">evening_datetimes</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">track</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="n">df_pred</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">evening_datetimes</span><span class="p">)</span>
+        <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_pred_discharge_proc_func</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">])</span>
+
+        <span class="n">model_scores</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;pct_optimal_reduction&#39;</span><span class="p">:</span> <span class="n">peak_reduction_calc</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;optimal_discharge_mae&#39;</span><span class="p">:</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;optimal_discharge_rmse&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]))</span>
+        <span class="p">}</span>
+
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_scores</span><span class="p">)</span>
+
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;metric&#39;</span>
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;model&#39;</span>
+
+    <span class="k">return</span> <span class="n">df_model_scores</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;std_linear&#39;</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="s1">&#39;random_forest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(),</span>
+    <span class="s1">&#39;boosted&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">rerun_discharge_opt_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">discharge_opt_filename</span> <span class="o">=</span> <span class="s1">&#39;discharge_optimisation_model_results.csv&#39;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">rerun_discharge_opt_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">discharge_opt_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">evaluate_discharge_models</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="p">],</span> <span class="n">models</span><span class="p">)</span>
+    <span class="n">df_model_scores</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">discharge_opt_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df_model_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">discharge_opt_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;metric&#39;</span><span class="p">)</span>
+
+<span class="n">df_model_scores</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'metric')</th>
+<th align="right">('std_linear', 'Unnamed: 1_level_1')</th>
+<th align="right">('random_forest', 'Unnamed: 2_level_1')</th>
+<th align="right">('boosted', 'Unnamed: 3_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">pct_optimal_reduction</td>
+<td align="right">85.6542</td>
+<td align="right">87.98</td>
+<td align="right">86.787</td>
+</tr>
+<tr>
+<td align="left">optimal_discharge_mae</td>
+<td align="right">0.121212</td>
+<td align="right">0.092669</td>
+<td align="right">0.100329</td>
+</tr>
+<tr>
+<td align="left">optimal_discharge_rmse</td>
+<td align="right">0.16245</td>
+<td align="right">0.121869</td>
+<td align="right">0.131338</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>We'll then generate a prediction time-series using the best performing model</p>
+<div class="highlight"><pre><span></span><code><span class="n">rerun_discharge_pred_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">discharge_pred_filename</span> <span class="o">=</span> <span class="s1">&#39;discharge_optimisation_model_pred.csv&#39;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">rerun_discharge_pred_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">discharge_pred_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cache_data_dir</span><span class="p">)):</span>
+    <span class="n">top_model</span> <span class="o">=</span> <span class="n">df_model_scores</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;pct_optimal_reduction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">generate_kfold_preds</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="p">[</span><span class="n">top_model</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">evening_datetimes</span><span class="p">)</span>
+    <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_pred_discharge_proc_func</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">])</span>
+    <span class="n">df_pred</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">discharge_pred_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">discharge_pred_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+
+<span class="n">df_pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'datetime')</th>
+<th align="right">('pred', 'Unnamed: 1_level_1')</th>
+<th align="right">('true', 'Unnamed: 2_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2017-11-10 15:30:00+00:00</td>
+<td align="right">-0.213378</td>
+<td align="right">-0.125455</td>
+</tr>
+<tr>
+<td align="left">2017-11-10 16:00:00+00:00</td>
+<td align="right">-0.735541</td>
+<td align="right">-0.565455</td>
+</tr>
+<tr>
+<td align="left">2017-11-10 16:30:00+00:00</td>
+<td align="right">-1.19438</td>
+<td align="right">-1.12546</td>
+</tr>
+<tr>
+<td align="left">2017-11-10 17:00:00+00:00</td>
+<td align="right">-1.57704</td>
+<td align="right">-1.58546</td>
+</tr>
+<tr>
+<td align="left">2017-11-10 17:30:00+00:00</td>
+<td align="right">-1.61426</td>
+<td align="right">-1.66545</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>We'll quickly check the residuals time-series for model-drift</p>
+<div class="highlight"><pre><span></span><code><span class="n">s_residuals</span> <span class="o">=</span> <span class="n">df_pred</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">s_residuals</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;datetime&#39;&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_61_1.png" /></p>
+<p><br></p>
+<p>As well as the scatter-plot between the true and estimated optimal charging rates</p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">],</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Obervation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Text(0, 0.5, &#39;Prediction&#39;)
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_63_1.png" /></p>
+<p><br></p>
+<h3 id="pipeline-integration-helpers">Pipeline Integration Helpers<a class="headerlink" href="#pipeline-integration-helpers" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">prepare_training_input_data</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">):</span>
+    <span class="c1"># Loading input data</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">combine_training_datasets</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">construct_df_discharge_features</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="c1"># Filtering for overlapping feature and target data</span>
+    <span class="n">dt_idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;30T&#39;</span><span class="p">)</span>
+
+    <span class="n">s_demand</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt_idx</span><span class="p">,</span> <span class="s1">&#39;demand_MW&#39;</span><span class="p">]</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt_idx</span><span class="p">]</span>
+
+    <span class="c1"># Constructing the discharge series</span>
+    <span class="n">s_discharge</span> <span class="o">=</span> <span class="n">construct_discharge_s</span><span class="p">(</span><span class="n">s_demand</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="s1">&#39;15:30&#39;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="s1">&#39;20:30&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Filtering for evening datetimes</span>
+    <span class="n">evening_datetimes</span> <span class="o">=</span> <span class="n">extract_evening_datetimes</span><span class="p">(</span><span class="n">df_features</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">s_discharge</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_training_input_data</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span>
+
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>((5335, 15), (5335,))
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">fit_and_save_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">discharge_opt_model_fp</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="o">**</span><span class="n">model_params</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model_class</span><span class="p">(</span><span class="o">**</span><span class="n">model_params</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">discharge_opt_model_fp</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+    <span class="k">return</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">fit_and_save_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">discharge_opt_model_fp</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Wall time: 6.65 s
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">load_trained_model</span><span class="p">(</span><span class="n">discharge_opt_model_fp</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">discharge_opt_model_fp</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">load_trained_model</span><span class="p">(</span><span class="n">discharge_opt_model_fp</span><span class="p">)</span>
+
+<span class="n">model</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Wall time: 176 ms
+
+
+
+
+
+RandomForestRegressor()
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">load_latest_submission_template</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">latest_submission_template_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>    
+    <span class="k">if</span> <span class="n">latest_submission_template_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">latest_submission_template_name</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">filename</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;teamname_set&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">])</span>
+
+    <span class="n">df_submission_template</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">raw_data_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">latest_submission_template_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">df_submission_template</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_submission_template</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df_submission_template</span> <span class="o">=</span> <span class="n">df_submission_template</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_submission_template</span>
+
+<span class="k">def</span> <span class="nf">prepare_test_feature_data</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># Loading input data</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="p">(</span><span class="n">clean</span>
+                   <span class="o">.</span><span class="n">combine_training_datasets</span><span class="p">(</span><span class="n">intermediate_data_dir</span><span class="p">)</span>
+                   <span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                   <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">construct_df_discharge_features</span><span class="p">)</span>
+                  <span class="p">)</span>
+
+    <span class="c1"># Loading default index (latest submission)</span>
+    <span class="k">if</span> <span class="n">test_end_date</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">test_start_date</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">load_latest_submission_template</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">df_features</span><span class="p">[</span><span class="n">test_start_date</span><span class="p">:</span><span class="n">test_end_date</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="c1"># Filtering feature data on submission datetimes</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">df_features</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_features</span> <span class="o">=</span> <span class="n">prepare_test_feature_data</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">)</span>
+
+<span class="n">df_features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">('Unnamed: 0_level_0', 'datetime')</th>
+<th align="right">('temp_location1', 'Unnamed: 1_level_1')</th>
+<th align="right">('temp_location2', 'Unnamed: 2_level_1')</th>
+<th align="right">('temp_location3', 'Unnamed: 3_level_1')</th>
+<th align="right">('temp_location4', 'Unnamed: 4_level_1')</th>
+<th align="right">('temp_location5', 'Unnamed: 5_level_1')</th>
+<th align="right">('temp_location6', 'Unnamed: 6_level_1')</th>
+<th align="right">('spatial_avg_temp', 'Unnamed: 7_level_1')</th>
+<th align="right">('daily_avg_temp', 'Unnamed: 8_level_1')</th>
+<th align="right">('SP_demand_7d_lag', 'Unnamed: 9_level_1')</th>
+<th align="right">('evening_demand_avg_7d_lag', 'Unnamed: 10_level_1')</th>
+<th align="right">('evening_demand_max_7d_lag', 'Unnamed: 11_level_1')</th>
+<th align="right">('weekend', 'Unnamed: 12_level_1')</th>
+<th align="right">('hour', 'Unnamed: 13_level_1')</th>
+<th align="right">('doy', 'Unnamed: 14_level_1')</th>
+<th align="right">('dow', 'Unnamed: 15_level_1')</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2019-03-10 00:00:00+00:00</td>
+<td align="right">9.69</td>
+<td align="right">8.98</td>
+<td align="right">7.01</td>
+<td align="right">5.83</td>
+<td align="right">11.59</td>
+<td align="right">11.22</td>
+<td align="right">9.05333</td>
+<td align="right">8.16849</td>
+<td align="right">2.43</td>
+<td align="right">4.22667</td>
+<td align="right">4.85</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">69</td>
+<td align="right">6</td>
+</tr>
+<tr>
+<td align="left">2019-03-10 00:30:00+00:00</td>
+<td align="right">10.45</td>
+<td align="right">9.91</td>
+<td align="right">7.74</td>
+<td align="right">5.745</td>
+<td align="right">11.8</td>
+<td align="right">11.425</td>
+<td align="right">9.51167</td>
+<td align="right">8.16849</td>
+<td align="right">2.4</td>
+<td align="right">4.22667</td>
+<td align="right">4.85</td>
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">69</td>
+<td align="right">6</td>
+</tr>
+<tr>
+<td align="left">2019-03-10 01:00:00+00:00</td>
+<td align="right">11.21</td>
+<td align="right">10.84</td>
+<td align="right">8.47</td>
+<td align="right">5.66</td>
+<td align="right">12.01</td>
+<td align="right">11.63</td>
+<td align="right">9.97</td>
+<td align="right">8.16849</td>
+<td align="right">2.28</td>
+<td align="right">4.22667</td>
+<td align="right">4.85</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">69</td>
+<td align="right">6</td>
+</tr>
+<tr>
+<td align="left">2019-03-10 01:30:00+00:00</td>
+<td align="right">11.225</td>
+<td align="right">11.08</td>
+<td align="right">9.57</td>
+<td align="right">5.785</td>
+<td align="right">12.075</td>
+<td align="right">11.69</td>
+<td align="right">10.2375</td>
+<td align="right">8.16849</td>
+<td align="right">2.11</td>
+<td align="right">4.22667</td>
+<td align="right">4.85</td>
+<td align="right">1</td>
+<td align="right">1.5</td>
+<td align="right">69</td>
+<td align="right">6</td>
+</tr>
+<tr>
+<td align="left">2019-03-10 02:00:00+00:00</td>
+<td align="right">11.24</td>
+<td align="right">11.32</td>
+<td align="right">10.67</td>
+<td align="right">5.91</td>
+<td align="right">12.14</td>
+<td align="right">11.75</td>
+<td align="right">10.505</td>
+<td align="right">8.16849</td>
+<td align="right">2.03</td>
+<td align="right">4.22667</td>
+<td align="right">4.85</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">69</td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">#exports</span>
+<span class="k">def</span> <span class="nf">optimise_test_discharge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">discharge_opt_model_fp</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">prepare_test_feature_data</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">test_start_date</span><span class="o">=</span><span class="n">test_start_date</span><span class="p">,</span> <span class="n">test_end_date</span><span class="o">=</span><span class="n">test_end_date</span><span class="p">)</span>
+    <span class="n">evening_datetimes</span> <span class="o">=</span> <span class="n">extract_evening_datetimes</span><span class="p">(</span><span class="n">df_features</span><span class="p">)</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">df_features</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">evening_datetimes</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">load_trained_model</span><span class="p">(</span><span class="n">discharge_opt_model_fp</span><span class="p">)</span>
+    <span class="n">discharge_profile</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="n">s_discharge_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">discharge_profile</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">evening_datetimes</span><span class="p">)</span>
+    <span class="n">s_discharge_profile</span> <span class="o">=</span> <span class="n">s_discharge_profile</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">s_discharge_profile</span> <span class="o">=</span> <span class="n">post_pred_discharge_proc_func</span><span class="p">(</span><span class="n">s_discharge_profile</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">s_discharge_profile</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">s_discharge_profile</span> <span class="o">=</span> <span class="n">optimise_test_discharge_profile</span><span class="p">(</span><span class="n">raw_data_dir</span><span class="p">,</span> <span class="n">intermediate_data_dir</span><span class="p">,</span> <span class="n">discharge_opt_model_fp</span><span class="p">)</span>
+
+<span class="n">s_discharge_profile</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;datetime&#39;&gt;
+</code></pre></div>
+<p><img alt="png" src="../img/nbs/output_74_1.png" /></p>
+<p><br></p>
+<p>Finally we'll export the relevant code to our <code>batopt</code> module</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../03-charging/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Charging
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../05-constraints/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Constraints
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['header.autohide', 'navigation.tabs', 'navigation.instant', 'search.suggest'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
