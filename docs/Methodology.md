@@ -30,14 +30,8 @@ We used Python, making extensive use of the `pandas`, `sklearn`, and `skopt` lib
 
 > What inputs did you include within the models? Please also include whether you used lagged versions of the variables, any interacting variables, or any features generated/engineered from the data.
 
-PV Model (no specific order):
-* 
-
-We also included rolling variables for both solar irradiance and temperature. The irradiance time-series for sites 1 and 4 were not found to benefit the model and were removed.
-
-<br>
-
 Discharge Model (in order of importance):
+
 * hour (integer for time of day)                
 * doy (integer for day of year)                      
 * temp_location4          
@@ -55,6 +49,25 @@ Discharge Model (in order of importance):
 * dow (integer for day of week)  
 
 As the main model used was a Random Forest (which can handle discrete changes) the temporal variables did not need further feature engineering.
+
+<br>
+
+PV Model (no specific order):
+
+* temp_location1
+* temp_location2
+* temp_location3
+* temp_location4
+* temp_location5
+* temp_location6
+* solar_location1
+* solar_location2
+* solar_location3
+* solar_location5
+* solar_location6
+* pv_7d_lag
+* hour
+* doy
 
 <br>
 

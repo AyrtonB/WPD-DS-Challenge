@@ -127,10 +127,8 @@ def construct_df_charge_features(df, dt_rng=None):
     # Adding datetime features
     dts = df_features.index.tz_convert('Europe/London') # We want to use the 'behavioural' timezone
 
-#     df_features['weekend'] = dts.dayofweek.isin([5, 6]).astype(int)
-#     df_features['hour'] = dts.hour + dts.minute/60
-#     df_features['doy'] = dts.dayofyear
-#     df_features['dow'] = dts.dayofweek
+    df_features['weekend'] = dts.dayofweek.isin([5, 6]).astype(int)
+    df_features['dow'] = dts.dayofweek
 
     hour = dts.hour + dts.minute/60
     df_features['sin_hour'] = np.sin(2*np.pi*hour/24)

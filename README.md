@@ -9,14 +9,13 @@ An example charging profile from our latest submission can be seen below
 <br>
 <br>
 
-### To Do
+### Installation
 
-- [ ] One more check for dodgy data in inputs (will probs have to do each week)
-- [x] Download holiday dates
-- [ ] Add holiday dates as features
-- [ ] Add in later oversampling
-- [ ] Looked at lagged variables for charge model
-- [ ] Tune the charge model
+You can install the battery optimisation library using:
+
+```bash
+pip install batopt
+```
 
 <br>
 <br>
@@ -154,7 +153,7 @@ notebook2script()
 <br>
 <br>
 
-### Potential Research Questions
+### Potential Further Research Questions
 
 * How does the relative importance of the discharge and charge models change seasonally?
 * How much harder is it to optimise when the real-time grid carbon intensity is used?

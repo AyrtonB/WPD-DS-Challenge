@@ -55,6 +55,8 @@ nb_img_dir = '../img/nbs'
 
 ### Monkey Patching `skopt`
 
+We'll quickly fix the issue `skopt` has with the latest `sklearn` version, first we'll fix the `BayesSearchCV` initialisation
+
 ```python
 #exports
 def bayes_search_CV_init(self, estimator, search_spaces, optimizer_kwargs=None,
@@ -80,6 +82,10 @@ def bayes_search_CV_init(self, estimator, search_spaces, optimizer_kwargs=None,
         
 BayesSearchCV.__init__ = bayes_search_CV_init
 ```
+
+<br>
+
+We'll then fix the `BayesSearchCV` fit method
 
 ```python
 #exports
@@ -255,16 +261,11 @@ pandas_RF = PandasRandomForestRegressor()
 pandas_RF
 ```
 
-
-
-
-    PandasRandomForestRegressor(score_func=<function r2_score at 0x00000224383448B0>)
-
-
-
 <br>
 
-### Converting Notebooks to Markdown
+### Saving the Development Notebooks
+
+We'll first convert the notebooks to markdown
 
 ```python
 #exports
@@ -305,17 +306,9 @@ def convert_nbs_to_md(nbs_dir, docs_nb_img_dir, docs_dir):
 convert_nbs_to_md(dev_nbs_dir, docs_nb_img_dir, docs_dir)
 ```
 
-
-<div><span class="Text-label" style="display:inline-block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; min-width:0; max-width:15ex; vertical-align:middle; text-align:right"></span>
-<progress style="width:60ex" max="7" value="7" class="Progress-main"/></progress>
-<span class="Progress-label"><strong>100%</strong></span>
-<span class="Iteration-label">7/7</span>
-<span class="Time-label">[00:03<00:00, 0.44s/it]</span></div>
-
-
 <br>
 
-### Cleaning Markdown Tables
+We'll then parse the HTML tables into markdown
 
 ```python
 #exports
@@ -403,7 +396,7 @@ for md_fp in md_fps:
 
 <br>
 
-### Cleaning Image Paths
+And finally change the filepaths for any images in the notebooks
 
 ```python
 #exports

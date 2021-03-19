@@ -34,14 +34,16 @@ plugins:
   
 nav:
   - Home: index.md
+  - Methodology: methodology.md
+  - Challenge: notes/00-brief.md
   - Development: 
     - Utilities: 00-utilities.md
-    - Cleaning: 01-data-cleaning.md
-    - Discharging: 02-battery-discharge.md
-    - Charging: 03-pv-forecast.md
-    - Optimiser: 04-battery-optimisation.md
-    - Evaluation: 05-evaluation.md
-    - Pipeline: 06-pipeline.md
-  - Notes: 
-    - Brief: notes/00-brief.md
-    - Kick-off: notes/01-kickoff-meeting.md
+    - Retrieval: 01-retrieval.md
+    - Cleaning: 02-cleaning.md
+    - Charging: 03-charging.md
+    - Discharging: 04-discharging.md
+    - Constraints: 05-constraints.md
+    - Tuning: 06-tuning.md
+    - PV: 07-pv-forecast.md
+    - Christmas: 08-christmas.md
+    - Pipeline: 09-pipeline.md
