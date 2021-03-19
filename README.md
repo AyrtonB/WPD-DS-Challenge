@@ -13,7 +13,7 @@ An example charging profile from our latest submission can be seen below
 
 ### Installation
 
-You can install the battery optimisation library using:
+You can install the battery optimisation library developed in this work using:
 
 ```bash
 pip install batopt
